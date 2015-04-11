@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<html>
+
+<script type="text/javascript">
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?94f6ddbfbc53cb18818538cafd3ba350";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+<head>
+  <script src="//dn-lbstatics.qbox.me/lbservice/busuanzi/1.0/busuanzi.mini.js"/></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>Optional&lt;T&gt;可选类型浅谈 | Optional Swift 博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="OST">
+  
+  
+    <meta name="description" content="清明已过，是时候收收心，继续码代码了。
+
+Optional 可选类型闲谈在我印象中，可选类型应该分为显示可选类型和隐式可选类型。分别是这样的：
+var explicitPara:Type?    //显示  初始化时假如不给赋值 默认都是nil
+var implicitPara:Type!    //隐式
+不知道自己记得对不对。两者都是可选类型，自然就有共性，可选类型定义为一个变量(不仅仅是cla">
+  
+  <meta name="description" content="清明已过，是时候收收心，继续码代码了。
+
+Optional 可选类型闲谈在我印象中，可选类型应该分为显示可选类型和隐式可选类型。分别是这样的：
+var explicitPara:Type?    //显示  初始化时假如不给赋值 默认都是nil
+var implicitPara:Type!    //隐式
+不知道自己记得对不对。两者都是可选类型，自然就有共性，可选类型定义为一个变量(不仅仅是cla">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Optional<T>可选类型浅谈">
+<meta property="og:url" content="http://optionalswift.cn/2015/04/01/Optional<T>可选类型浅谈/index.html">
+<meta property="og:site_name" content="Optional Swift 博客">
+<meta property="og:description" content="清明已过，是时候收收心，继续码代码了。
+
+Optional 可选类型闲谈在我印象中，可选类型应该分为显示可选类型和隐式可选类型。分别是这样的：
+var explicitPara:Type?    //显示  初始化时假如不给赋值 默认都是nil
+var implicitPara:Type!    //隐式
+不知道自己记得对不对。两者都是可选类型，自然就有共性，可选类型定义为一个变量(不仅仅是cla">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Optional<T>可选类型浅谈">
+<meta name="twitter:description" content="清明已过，是时候收收心，继续码代码了。
+
+Optional 可选类型闲谈在我印象中，可选类型应该分为显示可选类型和隐式可选类型。分别是这样的：
+var explicitPara:Type?    //显示  初始化时假如不给赋值 默认都是nil
+var implicitPara:Type!    //隐式
+不知道自己记得对不对。两者都是可选类型，自然就有共性，可选类型定义为一个变量(不仅仅是cla">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">Optional Swift 博客</a></h1>
+    <p><a href="/">Optional means having a value in it or equal nil. you choose!</a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/categories">分类</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/about">关于</a></li>
+      
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/04/01/Optional<T>可选类型浅谈/">
+  <time datetime="2015-04-01T07:30:16.000Z">
+    2015-04-01
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">Optional&lt;T&gt;可选类型浅谈</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <blockquote>
+<p>清明已过，是时候收收心，继续码代码了。</p>
+</blockquote>
+<h4 id="Optional_可选类型闲谈">Optional<t> 可选类型闲谈</t></h4><p>在我印象中，可选类型应该分为显示可选类型和隐式可选类型。分别是这样的：</p>
+<pre><code><span class="keyword">var</span> explicitPara:<span class="built_in">Type</span>?    <span class="comment">//显示  初始化时假如不给赋值 默认都是nil</span>
+<span class="keyword">var</span> implicitPara:<span class="built_in">Type</span>!    <span class="comment">//隐式</span>
+</code></pre><p>不知道自己记得对不对。两者都是可选类型，自然就有共性，可选类型定义为一个变量(不仅仅是<code>class</code>)要么有值，且值等于x,要么就不存在(nil)。</p>
+<blockquote>
+<p>注：与oc中nil是一个指针指向不存在的对象不同，swift中，nil可不是一个指针，而是一个特定类型的空值。任何类型的可选变量都可以设为nil，通俗理解就是不仅仅是class类型可以=nil， string ，int ,char都可以不存在=nil。这样使得编程时候更为安全。</p>
+</blockquote>
+<p>昨天我还对显示可选类型和隐式可选类型之间的差异询问了群里的朋友，以及再次翻阅了<em>The Swift programming Language</em>。</p>
+<a id="more"></a>
+<p>可选类型总觉得就是把值放进一个叫做<em>Optional</em>的盒子中。可选类型是一个枚举，声明是这样的：</p>
+<pre><code><span class="class"><span class="keyword">enum</span> <span class="title">Optional</span>&lt;<span class="title">T</span>&gt;:<span class="title">Reflectable</span>,<span class="title">NilLiteralConvertibel</span></span>{
+    <span class="keyword">case</span> <span class="type">None</span>
+    <span class="keyword">case</span> <span class="type">Some</span>(<span class="type">T</span>)
+
+    <span class="comment">/// 构建一个 a `nil` instance.</span>
+    <span class="keyword">init</span>()
+
+    <span class="comment">/// 构建一个 a non-\ `nil` instance that stores `some`.</span>
+    <span class="keyword">init</span>(<span class="number">_</span> some: <span class="type">T</span>)
+
+    <span class="comment">/// If `self == nil`, returns `nil`.  Otherwise, returns `f(self!)`.</span>
+    <span class="func"><span class="keyword">func</span> <span class="title">map</span><span class="generics">&lt;U&gt;</span><span class="params">(f: <span class="params">(T)</span></span></span> -&gt; <span class="type">U</span>) -&gt; <span class="type">U</span>?
+
+    <span class="comment">/// Returns a mirror that reflects `self`.</span>
+    <span class="func"><span class="keyword">func</span> <span class="title">getMirror</span><span class="params">()</span></span> -&gt; <span class="type">MirrorType</span>
+
+    <span class="comment">/// Create an instance initialized with `nil`.</span>
+    <span class="keyword">init</span>(nilLiteral: ())
+
+}
+</code></pre><p>可见两种情况 <em>None</em> 以及 <em>Some(T)</em>， 对于<em>T</em>,只不过是一个泛型，指代传入的类型(传入Int，T就是Int ;传入String,T就是String;传入类，T就是特定class)。这个还是有点意思的。</p>
+<p>继续上面，既然把值放入了盒子中，自然取出来就是要有一个解包(<em>unwrap</em>)的行为，<em>swift</em>是用<strong><code>!</code></strong>表示该行为。方便记忆，举个例子：</p>
+<pre><code>var <span class="built_in">str</span>:<span class="keyword">String</span>? = <span class="string">"hello world"</span>        <span class="comment">//把值放入盒子中包裹起来了</span>
+
+<span class="comment">/*
+    输出Optional("hello world") 连带外面那层盒子也打印出来了
+    其中"hello world" 存储到了 some 中
+*/</span>
+<span class="built_in">println</span>(<span class="built_in">str</span>)                        
+
+<span class="built_in">println</span>(<span class="built_in">str</span>!)                        <span class="comment">//输出“hello world” . 解包取出值  盒子已经丢弃</span>
+</code></pre><p>解包就是这么一个形式，上面是一个显示的可选类型，当然解包方式还包括<code>if-let</code>可选绑定，<code>??</code>等。</p>
+<blockquote>
+<p>显示可选类型和隐式可选类型两者有什么不同，使用场景又是怎样？ 当时问题就这么蹦出来…</p>
+</blockquote>
+<ol>
+<li><p>首先必须明确可选类型定义：<font size="4" color="red">两种情况：值存在且等于x(程序中的赋值);值不存在=nil</font>。那么也就是说 <em>explicit Optional</em> 和 <em>implicit Optional</em> 都存在值不存在情况喽。</p>
+</li>
+<li><p>显示可选类型总是要通过一些手段(比如<code>if-let</code>)来检查值是否存在，然后再解包取值(<em><code>！</code></em>)。确实这么做能够提高安全性，但是有时候过于繁琐。就比如有些情况是这样的，可选类型一旦经过初始化后，一直都是有效的。既然我们已经明确知道可选类型变量初始化之后很长一段时间，或者说始终，都是有值的。那么我们还要每次进行繁琐的解包行为呢？（ps:用<code>if-let</code>先可选绑定取值或者用<em><code>!</code></em>强制解包取值)。</p>
+</li>
+<li><p>因此我们使用隐式可选类型(<em>implicity Optional</em>)，即类似(<code>var para:Type!</code>)来声明。这样做的好处用一个简单实例来表示：</p>
+</li>
+</ol>
+<pre><code><span class="tag">var</span> str:String! = <span class="string">"hello world"</span>        <span class="comment">//初始化赋值</span>
+
+<span class="comment">//注意没有使用 ! 来解包了 而是偷偷帮我们解包取值了 这也就是为啥叫做隐式解包</span>
+<span class="comment">//打印结果就是hello world 与Optional("hello world")不同</span>
+<span class="function"><span class="title">println</span><span class="params">(str)</span></span>                        
+</code></pre><ol>
+<li><p>但是需要强调的是假如变量用来存储的值是有可能没有的，最好还是使用显示可选类型，也就是带有<em><code>?</code></em>的。那么什么时候用隐士可选类型呢？</p>
+</li>
+<li><p>你会注意一些<em>IBOutlet</em>都是带有<em><code>!</code></em>的隐式可选类型。那是因为一旦<code>Storyboard</code>初始化完成，那么这些接口都是赋值完毕不再改动，以后用起来就不需要再去显示解包了，这里注意(不是没有了解包，而是偷偷地 自动地帮你解包)，不再需要每个都判断值是否存在，也不必用<em><code>!</code></em>来解包取值，直接使用即可。</p>
+</li>
+<li><p>再举个例子加深下自身理解。就好比平常用的，控制器中总会有那么些声明：</p>
+<pre><code><span class="tag">class</span> <span class="tag">ViewController</span><span class="pseudo">:UIViewController</span>{
+
+    <span class="comment">//请看这里 变量声明</span>
+    <span class="tag">var</span> <span class="tag">searchResult</span> <span class="pseudo">:Result</span>!        <span class="comment">//这里是用 ! 还是 ？</span>
+
+    <span class="tag">override</span> <span class="tag">viewDidLoad</span>(){
+    ...
+    }
+    ...
+}
+</code></pre><p> 我现在这么理解，假设当然处于一个其他<code>ControllerA</code>中，有一个<code>button</code>跳转到这个<em><code>ViewController</code></em>，并且传递给<code>searchResult</code>值，你必然肯定值是存在的(ps：当然在SB中跳转 我们会在<code>prepareForSegue</code>中来设置)。一旦赋值好就不改变了，那么自然就是用隐式可选类型恰当。假如这个<code>searchResult</code>是在当前<code>ViewController</code>下通过<em>http Get</em>请求获取，自然存在没有值的情况，那么用<em><code>?</code></em>合适吧。</p>
+<p> 不过希望自己能理解的是，假如隐式可选类型等于<em><code>nil</code></em>了，那么你在使用时不做判断处理直接拿来使用必定要抛出一个错误。 所以你在使用隐式可选类型之前一定要考虑，是否一旦赋值必定不会再存在值为空的情况。假如还是有可能，建议用<strong><code>?</code></strong></p>
+</li>
+</ol>
+<font size="4"><br>目前就理解到这个程度。若以后还有新的理解 或者上述表达哪里不准确，我将进一步修改。<br></font>
+
+
+
+
+
+    
+  </div>
+  <footer>
+    
+      
+  <div class="categories">
+    <a class="categories-link" href="/categories/swift-language/">swift_language</a>
+  </div>
+
+      
+  <div class="tags">
+    <a class="tags-link" href="/tags/swift基础入门/">swift基础入门</a>, <a class="tags-link" href="/tags/swift语法/">swift语法</a>
+  </div>
+
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">评论</h1>
+  <div class="ds-thread" data-title="Optional&lt;T&gt;可选类型浅谈">
+  </div>
+</section>
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2015 <a href="/">OST</a>
+  
+</div>
+<div class="theme-copyright">
+  Redesign by <a href="_widget" target="_blank">PMST</a>
+   | 
+  Owned by <a href="http://optionalswift.cn" target="_blank">Optional Swift Team</a> 
+   |
+  本站总访问量<span id="value_site_counter"></span>次
+
+</div>
+<div class="clearfix"></div>
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'optionalswift' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox();
+  })(jQuery);
+</script>
+
+</body>
+</html>
