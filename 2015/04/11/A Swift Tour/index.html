@@ -1,103 +1,117 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-
-<script type="text/javascript">
-
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?94f6ddbfbc53cb18818538cafd3ba350";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-
-</script>
-
 <head>
-  <script src="//dn-lbstatics.qbox.me/lbservice/busuanzi/1.0/busuanzi.mini.js"/></script>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+   
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+     
   
   <title>A Swift Tour  | Optional Swift 博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  
-    <meta name="author" content="OST">
-  
-  
-    <meta name="description" content="目录[TOC]
-About SwiftSwift是一门汲取了C与Objective-C的精华，用来开发iOS和OS X应用的新的编程语言（由苹果公司于2014年6月7日发布）。Swift摆脱了C语言兼容性的约束，采用安全的编程模式并且添加了现代化的特性，让编程更加容易，灵活和有趣。Swift诞生伊始，在成熟而又深受欢迎的Cocoa、Cocoa Touch框架的支持下，可以重新定位软件开发工作。
-S">
-  
-  <meta name="description" content="目录[TOC]
-About SwiftSwift是一门汲取了C与Objective-C的精华，用来开发iOS和OS X应用的新的编程语言（由苹果公司于2014年6月7日发布）。Swift摆脱了C语言兼容性的约束，采用安全的编程模式并且添加了现代化的特性，让编程更加容易，灵活和有趣。Swift诞生伊始，在成熟而又深受欢迎的Cocoa、Cocoa Touch框架的支持下，可以重新定位软件开发工作。
-S">
+  <meta name="keywords" content="我是关键词优化 A Swift Tour  undefined" />
+    <meta name="description" content="我是描述优化" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="About SwiftSwift是一门汲取了C与Objective-C的精华，用来开发iOS和OS X应用的新的编程语言（由苹果公司于2014年6月7日发布）。Swift摆脱了C语言兼容性的约束，采用安全的编程模式并且添加了现代化的特性，让编程更加容易，灵活和有趣。Swift诞生伊始，在成熟而又深受欢迎的Cocoa、Cocoa Touch框架的支持下，可以重新定位软件开发工作。
+Swift是花费了">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A Swift Tour ">
 <meta property="og:url" content="http://optionalswift.cn/2015/04/11/A Swift Tour/index.html">
 <meta property="og:site_name" content="Optional Swift 博客">
-<meta property="og:description" content="目录[TOC]
-About SwiftSwift是一门汲取了C与Objective-C的精华，用来开发iOS和OS X应用的新的编程语言（由苹果公司于2014年6月7日发布）。Swift摆脱了C语言兼容性的约束，采用安全的编程模式并且添加了现代化的特性，让编程更加容易，灵活和有趣。Swift诞生伊始，在成熟而又深受欢迎的Cocoa、Cocoa Touch框架的支持下，可以重新定位软件开发工作。
-S">
+<meta property="og:description" content="About SwiftSwift是一门汲取了C与Objective-C的精华，用来开发iOS和OS X应用的新的编程语言（由苹果公司于2014年6月7日发布）。Swift摆脱了C语言兼容性的约束，采用安全的编程模式并且添加了现代化的特性，让编程更加容易，灵活和有趣。Swift诞生伊始，在成熟而又深受欢迎的Cocoa、Cocoa Touch框架的支持下，可以重新定位软件开发工作。
+Swift是花费了">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A Swift Tour ">
-<meta name="twitter:description" content="目录[TOC]
-About SwiftSwift是一门汲取了C与Objective-C的精华，用来开发iOS和OS X应用的新的编程语言（由苹果公司于2014年6月7日发布）。Swift摆脱了C语言兼容性的约束，采用安全的编程模式并且添加了现代化的特性，让编程更加容易，灵活和有趣。Swift诞生伊始，在成熟而又深受欢迎的Cocoa、Cocoa Touch框架的支持下，可以重新定位软件开发工作。
-S">
+<meta name="twitter:description" content="About SwiftSwift是一门汲取了C与Objective-C的精华，用来开发iOS和OS X应用的新的编程语言（由苹果公司于2014年6月7日发布）。Swift摆脱了C语言兼容性的约束，采用安全的编程模式并且添加了现代化的特性，让编程更加容易，灵活和有趣。Swift诞生伊始，在成熟而又深受欢迎的Cocoa、Cocoa Touch框架的支持下，可以重新定位软件开发工作。
+Swift是花费了">
   
   
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" href="/img/favicon.png">
   
+  <!--引用ICSCSS-->
+  <link href="http://cdn.besdlab.cn/icecss/icecss.min.css" rel="stylesheet" type="text/css">
+      <script src="http://cdn.besdlab.cn/jquery/2.1.1/jquery.2.1.1.min.js"></script>
+      <script src="http://cdn.besdlab.cn/icecss/icecss.js"></script>
+      <script src="http://cdn.besdlab.cn/icecss/plugin/ice_click.js"></script>
+      <script>
+      ice_click.init();
+      </script>
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 </head>
-
 <body>
-  <div class="wrapper">
-    <header id="header">
-  <div class="title">
-    <h1><a href="/">Optional Swift 博客</a></h1>
-    <p><a href="/">Optional means having a value in it or equal nil. you choose!</a></p>
-  </div>
-  <nav class="nav">
-    <ul>
-      
-        <li><a href="/">主页</a></li>
-      
-        <li><a href="/categories">分类</a></li>
-      
-        <li><a href="/archives">归档</a></li>
-      
-        <li><a href="/about">关于</a></li>
-      
-      
-    </ul>
-    <div class="clearfix"></div>
-  </nav>
+  <div id="container">
+    <div id="wrap">
+      <style>
+.widget{
+  background: none; 
+ -webkit-box-shadow: none; 
+box-shadow: none;
+-webkit-border-radius:0px; 
+border-radius: 0px; 
+}
+  .ice-main-nav{
+    background: url("/img/ice-icon-menu.svg") no-repeat center center;
+  }
+ .ice-menu-logo a:hover{
+    background: none;
+  }
 
-  <div class="clearfix"></div>
-</header>
-    <div class="content"><article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/04/11/A Swift Tour/">
-  <time datetime="2015-04-11T07:30:16.000Z">
-    2015-04-11
-  </time>
+      @media only screen and (min-width: 768px) {
+     .ice-main-nav {
+         width: auto;
+         height: auto;
+         background: none;
+         cursor: auto;
+     }
+   }
+</style>
+<header class="ice-menu ice-menu-hover">
+<div class="ice-menu-logo" style="font-family:'Microsoft YaHei'">
+ 
+<a href="http://optionalswift.cn">Optional Swift 博客</a>
+     
+
+</div>
+
+<nav class="ice-main-nav">
+<ul>
+
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/archives">归档</a></li>
+        
+          <li><a href="/about">关于</a></li>
+        
+</ul>
+</nav>
+</header> 
+      <div class="outer">
+        <section id="main"><article id="post-A Swift Tour" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/11/A Swift Tour/" class="article-date">
+  <time datetime="2015-04-11T07:30:16.000Z" itemprop="datePublished">2015-04-11</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/swift-language/">swift_language</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
     
+    
+      <header class="article-header">
+        
   
-    <h1 class="title">A Swift Tour </h1>
+    <h1 class="article-title" itemprop="name">
+      A Swift Tour 
+    </h1>
   
 
-  </header>
-  
-  <div class="entry">
+      </header>
     
-      <h1 id="目录">目录</h1><p>[TOC]</p>
-<h2 id="About_Swift">About Swift</h2><p><code>Swift</code>是一门汲取了<code>C</code>与<code>Objective-C</code>的精华，用来开发<code>iOS</code>和<code>OS X</code>应用的新的编程语言（由苹果公司于2014年6月7日发布）。Swift摆脱了C语言兼容性的约束，采用安全的编程模式并且添加了现代化的特性，让编程更加容易，灵活和有趣。<code>Swift</code>诞生伊始，在成熟而又深受欢迎的<code>Cocoa</code>、<code>Cocoa Touch</code>框架的支持下，可以重新定位软件开发工作。</p>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="About_Swift">About Swift</h2><p><code>Swift</code>是一门汲取了<code>C</code>与<code>Objective-C</code>的精华，用来开发<code>iOS</code>和<code>OS X</code>应用的新的编程语言（由苹果公司于2014年6月7日发布）。Swift摆脱了C语言兼容性的约束，采用安全的编程模式并且添加了现代化的特性，让编程更加容易，灵活和有趣。<code>Swift</code>诞生伊始，在成熟而又深受欢迎的<code>Cocoa</code>、<code>Cocoa Touch</code>框架的支持下，可以重新定位软件开发工作。</p>
 <p><code>Swift</code>是花费了多年打造的编程语言。苹果公司通过改进我们现行的编译器，调试器以及框架底层结构为Swift奠定了基础。我们用<code>ARC（Automatic Reference Counting - 自动引用计数）</code>简化了内存管理。我们的框架栈，是建立在<code>Foundation</code>和<code>Cocoa</code>这两个框架的坚实基础之上的，并且已经全部使之现代化，标准化。<code>Objective-C</code>它自己已经渐渐完善，支持了<code>blocks</code>，<code>collection literals</code>，以及 <code>modules</code>， 使得框架在无破坏的情况下采用现代语言技术。基于这个基础，我们现在能够介绍一门将来用于苹果开发的新的编程语言。<br><a id="more"></a><br><code>Swift</code>会让<code>Objective-C</code>的开发者感觉很熟悉。它采用了<code>Objective-C</code>参数命名方式的可读性以及动态对象模型。它可以无缝访问现有的<code>Cocoa</code>框架以及与<code>Objective-C</code>混合编程。<code>Swift</code>还介绍了许多新的特性以及结合了语言中面向过程和面向对象的部分</p>
 <p><code>Swift</code>对新的程序员很友好。它兼具编译语言的高性能（Performance）和脚本语言的交互性（Interactive）。它支持的<code>playgrounds</code>， 是一个创新的特性，能够让程序员利用<code>Swift</code>代码在不需要编译和运行app的情况下，马上看到代码所对应的结果。</p>
 <p><code>Swift</code>将现代语言和苹果的工程文化智慧很好的结合起来。编译器在性能方面充分发挥出来，而语言在开发领域充分得到展现，它们之间无须任何妥协。它的设计从<code>&quot;hello world&quot;</code>工程的规模到一个完整的操作系统都得到完整的考虑。所有的一切，让<code>Swift</code>成为所有开发者以及苹果公司未来的福音。</p>
@@ -250,75 +264,173 @@ S">
 <h2 id="扩展（Extension）">扩展（Extension）</h2><p>扩展，顾名思义，可以让一种数据类型（包括基本数据类型，数组，字典，类，枚举类型，结构体，协议）增加一些属性和方法。对于类来说，有了这样的办法实在太棒了。在java中如果要给某给类加一些属性和方法，是很容易做到的，无论你继承也好，实现结构也好，还是直接修改也好都能实现。如果要让你给Int类型增加一些方法呢？哈哈。不行了吧，下面让Swift带你走进神奇的Extension</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Int</span> </span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">numberDescription</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"this is a number: <span class="subst">\(<span class="keyword">self</span>)</span>"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">println</span>(<span class="number">66666</span>.numberDescription())</span><br><span class="line"></span><br><span class="line"><span class="comment">//控制台输出 "this is a number: 66666"</span></span><br></pre></td></tr></table></figure>
 
-    
-  </div>
-  <footer>
-    
       
-  <div class="categories">
-    <a class="categories-link" href="/categories/swift-language/">swift_language</a>
-  </div>
+    </div>
+    <footer class="article-footer">
+     
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
 
       
-  <div class="tags">
-    <a class="tags-link" href="/tags/swift基础入门/">swift基础入门</a>, <a class="tags-link" href="/tags/swift语法/">swift语法</a>
-  </div>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift基础入门/">swift基础入门</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift语法/">swift语法</a></li></ul>
 
+    </footer>
+  </div>
+  
     
-    <div class="clearfix"></div>
-  </footer>
+<nav id="article-nav">
+  
+    <a href="/2015/04/12/swift_可展开可收缩的表视图/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在 swift 中使用百度地图SDK
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/04/01/Optional<T>可选类型浅谈/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Optional&lt;T&gt;可选类型浅谈</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-
-
-<section id="comment">
-  <h1 class="title">评论</h1>
-  <div class="ds-thread" data-title="A Swift Tour ">
-  </div>
-</section>
-</div>
-  </div>
-  <footer id="footer"><div class="copyright">
   
-  &copy; 2015 <a href="/">OST</a>
-  
-</div>
-<div class="theme-copyright">
-  Redesign by <a href="_widget" target="_blank">PMST</a>
-   | 
-  Owned by <a href="http://optionalswift.cn" target="_blank">Optional Swift Team</a> 
-   |
-  本站总访问量<span id="value_site_counter"></span>次
+  <section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-A Swift Tour" data-title="A Swift Tour " data-url="http://optionalswift.cn/2015/04/11/A Swift Tour/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'optionalswift'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+  </section>
+  </section>
+        
+          <aside id="sidebar">
 
-</div>
-<div class="clearfix"></div>
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">文章分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/swift-Control/">swift_Control</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/swift-Kit/">swift_Kit</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/swift-language/">swift_language</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">关键字</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift-控件/">swift_控件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift-视图/">swift_视图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift基础入门/">swift基础入门</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift框架/">swift框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift语法/">swift语法</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">云标签</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/swift-控件/" style="font-size: 10px;">swift_控件</a><a href="/tags/swift-视图/" style="font-size: 10px;">swift_视图</a><a href="/tags/swift基础入门/" style="font-size: 15px;">swift基础入门</a><a href="/tags/swift框架/" style="font-size: 10px;">swift框架</a><a href="/tags/swift语法/" style="font-size: 20px;">swift语法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">时间胶囊</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近发表</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/04/12/在_swift_中使用百度地图_sdk/">在 swift 中使用百度地图SDK</a>
+          </li>
+        
+          <li>
+            <a href="/2015/04/12/swift_可展开可收缩的表视图/">在 swift 中使用百度地图SDK</a>
+          </li>
+        
+          <li>
+            <a href="/2015/04/11/A Swift Tour/">A Swift Tour </a>
+          </li>
+        
+          <li>
+            <a href="/2015/04/01/Optional<T>可选类型浅谈/">Optional&lt;T&gt;可选类型浅谈</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">团队成员</h3>
+    <div class="widget">
+    <ul>
+     
+          <li><a href="http://blog.csdn.net/colouful987">PMST</a></li>
+        
+          <li><a href="http://www.jianshu.com/users/ef1058d2d851/latest_articles">暮夜星辰</a></li>
+        
+          <li><a href="http://blog.csdn.net/colouful987">哦</a></li>
+        
+          <li><a href="http://blog.csdn.net/colouful987">iceAna</a></li>
+        
+        </ul>
+    </div>
+  </div>
+
+  
+
+</aside>
+
+
+        
+      </div>
+      <footer style="color:#fff;">
+  
+  <div class="ice-div ice-div-1-1" style="height:60px;background: #2c3d4f;line-height:60px;text-align:center">
+  	Powered by <a href="http://hexo.io/">Optional Swift Team</a>
+  	|
+  	Team was set up in April。
+  </div>
 </footer>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-<script src="/js/scale.fix.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+    </div>
+    
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
 
 
-<script type="text/javascript">
-  var duoshuoQuery = { short_name: 'optionalswift' };
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';
-    ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script>
+<script src="/js/script.js" type="text/javascript"></script>
 
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-  (function($){
-    $('.fancybox').fancybox();
-  })(jQuery);
-</script>
-
+  </div>
 </body>
 </html>

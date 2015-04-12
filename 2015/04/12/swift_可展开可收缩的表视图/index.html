@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+   
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+     
+  
+  <title>在 swift 中使用百度地图SDK | Optional Swift 博客</title>
+  <meta name="keywords" content="我是关键词优化 在 swift 中使用百度地图SDK undefined" />
+    <meta name="description" content="我是描述优化" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="主要学习与运行效果在本节的内容中，我们将通过一个具体实例的实现过程，详细讲解在表视图当中，如何创建一个可展开可收缩的表视图。为了让读者有着更为直观的印象，我们将通过模仿QQ好友列表来实现这个效果。
+该示例主要演示：
+
+表视图外观设计 
+自定义用户组设计
+从plist文件中读取数据
+将数据显示在表视图中
+实现表格的展开、收缩效果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 swift 中使用百度地图SDK">
+<meta property="og:url" content="http://optionalswift.cn/2015/04/12/swift_可展开可收缩的表视图/index.html">
+<meta property="og:site_name" content="Optional Swift 博客">
+<meta property="og:description" content="主要学习与运行效果在本节的内容中，我们将通过一个具体实例的实现过程，详细讲解在表视图当中，如何创建一个可展开可收缩的表视图。为了让读者有着更为直观的印象，我们将通过模仿QQ好友列表来实现这个效果。
+该示例主要演示：
+
+表视图外观设计 
+自定义用户组设计
+从plist文件中读取数据
+将数据显示在表视图中
+实现表格的展开、收缩效果">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/74454-b6eeeddfe8f96b70.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/74454-72ccab93df2dbfd0.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/74454-c7b660c7b72463ce.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/74454-f8afef2e54181509.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/74454-22a3322873820a1a.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/74454-3101ba12b7f426aa.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/74454-d4e4c78806d74da7.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/74454-457d5eb9bd5092b7.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/74454-fc68f5c9efc4d578.png">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/74454-25bfb5d431b7a1cb.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在 swift 中使用百度地图SDK">
+<meta name="twitter:description" content="主要学习与运行效果在本节的内容中，我们将通过一个具体实例的实现过程，详细讲解在表视图当中，如何创建一个可展开可收缩的表视图。为了让读者有着更为直观的印象，我们将通过模仿QQ好友列表来实现这个效果。
+该示例主要演示：
+
+表视图外观设计 
+自定义用户组设计
+从plist文件中读取数据
+将数据显示在表视图中
+实现表格的展开、收缩效果">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  <!--引用ICSCSS-->
+  <link href="http://cdn.besdlab.cn/icecss/icecss.min.css" rel="stylesheet" type="text/css">
+      <script src="http://cdn.besdlab.cn/jquery/2.1.1/jquery.2.1.1.min.js"></script>
+      <script src="http://cdn.besdlab.cn/icecss/icecss.js"></script>
+      <script src="http://cdn.besdlab.cn/icecss/plugin/ice_click.js"></script>
+      <script>
+      ice_click.init();
+      </script>
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <style>
+.widget{
+  background: none; 
+ -webkit-box-shadow: none; 
+box-shadow: none;
+-webkit-border-radius:0px; 
+border-radius: 0px; 
+}
+  .ice-main-nav{
+    background: url("/img/ice-icon-menu.svg") no-repeat center center;
+  }
+ .ice-menu-logo a:hover{
+    background: none;
+  }
+
+      @media only screen and (min-width: 768px) {
+     .ice-main-nav {
+         width: auto;
+         height: auto;
+         background: none;
+         cursor: auto;
+     }
+   }
+</style>
+<header class="ice-menu ice-menu-hover">
+<div class="ice-menu-logo" style="font-family:'Microsoft YaHei'">
+ 
+<a href="http://optionalswift.cn">Optional Swift 博客</a>
+     
+
+</div>
+
+<nav class="ice-main-nav">
+<ul>
+
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/archives">归档</a></li>
+        
+          <li><a href="/about">关于</a></li>
+        
+</ul>
+</nav>
+</header> 
+      <div class="outer">
+        <section id="main"><article id="post-swift_可展开可收缩的表视图" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/12/swift_可展开可收缩的表视图/" class="article-date">
+  <time datetime="2015-04-12T07:30:16.000Z" itemprop="datePublished">2015-04-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/swift-Control/">swift_Control</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在 swift 中使用百度地图SDK
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="主要学习与运行效果">主要学习与运行效果</h2><p>在本节的内容中，我们将通过一个具体实例的实现过程，详细讲解在表视图当中，如何创建一个可展开可收缩的表视图。为了让读者有着更为直观的印象，我们将通过模仿QQ好友列表来实现这个效果。</p>
+<p>该示例主要演示：</p>
+<ol>
+<li>表视图外观设计 </li>
+<li>自定义用户组设计</li>
+<li>从plist文件中读取数据</li>
+<li>将数据显示在表视图中</li>
+<li>实现表格的展开、收缩效果</li>
+</ol>
+<a id="more"></a>
+<p>运行效果如下所示：<br><img src="http://upload-images.jianshu.io/upload_images/74454-b6eeeddfe8f96b70.png" alt="1.png"></p>
+<h2 id="表视图外观设计">表视图外观设计</h2><p>我们使用Single View Application模板创建一个swift项目，命名为Friend List，为了简便起见，Devices我们选择iPhone进行开发。</p>
+<p>打开Main.storyboard文件，删除View Controller Scene，从Xcode右下方的Object Library面板中将Navagation Controller拖动到故事板中，如下图所示：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/74454-72ccab93df2dbfd0.png" alt="2.png"></p>
+<p>Navigation Controller Scene包含了两个视图，一个是导航视图，一个是表视图。选中Navagation Controller Scene，取消Use Size Classes选项，勾选Is Initial View Controller选项，将其作为初始视图控制器运行。</p>
+<p>设置完成后，故事板将如下图所示：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/74454-c7b660c7b72463ce.png" alt="3.png"></p>
+<p>选中Root View Controller的导航栏，修改其标题为“联系人”。完成此操作后，选择Table View中的Table View Cell，在Identifier项中输入：<code>FriendCellIdentifier</code>来为其增加标识符。对于Xcode来说，每一种表视图单元格都需要声明其标识符，以让Xcode能够对其进行定位。如图所示：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/74454-f8afef2e54181509.png" alt="4.png"></p>
+<p>此时的单元格高度还比较窄，为了能够达到我们想要的结果，我们需要设置其高度，同时也因为其高度固定，因此我们定位到单元格的Size inspector中，将Row Height设置为66（或者其他你看起来舒服的值）。如图所示：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/74454-22a3322873820a1a.png" alt="5.png"></p>
+<p>向单元格中添加一个Image控件，两个Label控件，以完成粗略的QQ好友信息设计。设计效果如下图所示：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/74454-3101ba12b7f426aa.png" alt="6.png"></p>
+<p>由于我们创建了一个自定义的表视图单元格，因此我们最好为其创建一个专门的类来定义其结构，以便以后能够借用此数据结构来保存从文件中读取的信息。</p>
+<p>创建一个Friend.swift文件，文件内容如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="type">UIKit</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Friend</span>: <span class="title">NSObject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="type">Avatars</span>: <span class="type">String</span> =  <span class="string">"user_default"</span>   <span class="comment">// 图片名称，定义朋友的头像</span></span><br><span class="line">    <span class="keyword">var</span> <span class="type">Name</span>: <span class="type">String</span> = <span class="string">""</span>           <span class="comment">// 字符串，定义朋友的名字</span></span><br><span class="line">    <span class="keyword">var</span> <span class="type">Intro</span>: <span class="type">String</span> = <span class="string">""</span>            <span class="comment">// 字符串，定义朋友的个性签名</span></span><br><span class="line">    <span class="keyword">var</span> <span class="type">VIP</span>: <span class="type">Bool</span> = <span class="built_in">false</span>     <span class="comment">// 布尔值，确定朋友是否为VIP</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中，user_default文件为用户默认头像，已经放置在Image.xcassets中，用户可以自行添加你喜爱的头像并放置在xcassets中。</p>
+<p>然后我们创建一个FriendCell.swift文件，这个文件将和我们刚刚创建的那个单元格进行绑定。文件内容如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="type">UIKit</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FriendCell</span>: <span class="title">UITableViewCell</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="preprocessor">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> <span class="type">ImgAvatars</span>: <span class="type">UIImageView</span>!</span><br><span class="line">    <span class="preprocessor">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> <span class="type">LblName</span>: <span class="type">UILabel</span>!</span><br><span class="line">    <span class="preprocessor">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> <span class="type">LblIntro</span>: <span class="type">UILabel</span>!</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> friend: <span class="type">Friend</span> = <span class="type">Friend</span>()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 设置朋友信息</span></span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">setFriend</span><span class="params">(newfriend: Friend)</span></span> &#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="type">Image</span>: <span class="type">UIImage</span>? = <span class="type">UIImage</span>(named: <span class="string">"<span class="subst">\(newfriend.Avatars)</span>"</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="type">Image</span> != <span class="built_in">nil</span> &#123;</span><br><span class="line">            <span class="type">ImgAvatars</span>.image = <span class="type">Image</span>!</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="type">ImgAvatars</span>.image = <span class="type">UIImage</span>(named: <span class="string">"user_default"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">LblName</span>.text = newfriend.<span class="type">Name</span></span><br><span class="line">        <span class="type">LblIntro</span>.text = newfriend.<span class="type">Intro</span></span><br><span class="line">        <span class="keyword">if</span> friend.<span class="type">VIP</span> &#123;</span><br><span class="line">            <span class="type">LblName</span>.textColor = <span class="type">UIColor</span>.redColor()</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="type">LblName</span>.textColor = <span class="type">UIColor</span>.blackColor()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，ImgAvatars与单元格中的Image控件进行绑定，LblName和LblIntro分别与单元格中的两个Label控件进行绑定。注意此时单元格的Identify inspector中的Class要设置为我们刚刚创建的FriendCell类。</p>
+<p>接下来的代码就比较直观。这里我们对头像的读取进行了一个可选值的判定。首先先根据记录中的头像名称去读取存储好的头像。如果没有读取成功，那么Image变量将会返回一个nil值，这时就将头像设置为我们默认的头像：user_default。</p>
+<h2 id="自定义用户组设计">自定义用户组设计</h2><p>在iOS应用中，我们可以自定义表视图单元格的风格，其实原理就是向单元格中添加子视图。添加子视图的方法主要有三种：使用代码、从.xib文件加载以及直接使用storyboard进行设计。在上一节中我们就是使用storyboard进行设计，非常方便和直观。<br>在本节自定义用户组中，我们要设计单元格折叠后的父类单元格。出于代码的简便和直观起见，同时为了也为了让读者尽可能多的掌握自定义表视图的方法，因此这里我们采用.xib文件进行加载。</p>
+<p>新建一个xib文件，依次选择New File -&gt; iOS -&gt; User Interface -&gt; Empty，命名为SectionHeaderView<br>。这样我们就创建了一个xib文件。由图中可以看到，xib文件和storyboard的区别并不是很大。简单理解来说，可以把StoryBoard看做是一组viewController对应的xib，以及它们之间的转换方式的集合。</p>
+<p>我们强烈建议大家采用storyboard进行界面设计，因为storyboard是iOS 5之后苹果提供的以及强烈建议开发者使用的配置。但是，由于storyboard中已经不允许有单个view的存在，因此在某些时候我们还是需要借助于单个的xib来自定义UI。这是由于storyboard的设计理念造成的。storyboard重视层次结构，重视UI的架构和设计，更重视项目的流程。而对于单个的UI来说，则更注重于重用和定制。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/74454-d4e4c78806d74da7.png" alt="7.png"></p>
+<p>向xib界面中拖入一个View，将其Attributes inspector中的Size修改为Freeform（允许调整View的大小），Status Bar修改为None（取消状态栏显示）。</p>
+<p>向view中拖入一个Button控件和Label控件，适当调整大小，如图所示：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/74454-457d5eb9bd5092b7.png" alt="8.png"></p>
+<p>这时我们同样需要创建一个类来定义这个自定义用户组的数据结构，新建一个Group.swift文件，文件内容如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="type">UIKit</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Group</span>: <span class="title">NSObject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name: <span class="type">String</span> = <span class="string">""</span>       <span class="comment">// 字符串，定义组名称</span></span><br><span class="line">    <span class="keyword">var</span> friends: <span class="type">NSArray</span> = <span class="type">NSArray</span>()    <span class="comment">// 数组，定义了该组内所有朋友</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接下来，我们需要为我们自定义的表视图创建一个类来与之进行绑定。创建一个SectionHeaderView.swift文件，文件内容如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="type">UIKit</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 该协议将被用户组的委托实现； 当用户组被打开/关闭时，它将通知发送给委托，来告知Xcode调用何方法</span></span><br><span class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">SectionHeaderViewDelegate</span>: <span class="title">NSObjectProtocol</span> </span>&#123;</span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">sectionHeaderView</span><span class="params">(sectionHeaderView: SectionHeaderView, sectionOpened: Int)</span></span></span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">sectionHeaderView</span><span class="params">(sectionHeaderView: SectionHeaderView, sectionClosed: Int)</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SectionHeaderView</span>: <span class="title">UITableViewHeaderFooterView</span> </span>&#123;</span><br><span class="line">    <span class="preprocessor">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> <span class="type">LblTitle</span>: <span class="type">UILabel</span>!</span><br><span class="line">    <span class="preprocessor">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> <span class="type">BtnDisclosure</span>: <span class="type">UIButton</span>!</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> delegate: <span class="type">SectionHeaderViewDelegate</span>!</span><br><span class="line">    <span class="keyword">var</span> section: <span class="type">Int</span>!</span><br><span class="line">    <span class="keyword">var</span> <span class="type">HeaderOpen</span>: <span class="type">Bool</span> = <span class="built_in">false</span>  <span class="comment">// 标记HeaderView是否展开</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">awakeFromNib</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="comment">// 设置disclosure 按钮的图片（被打开）</span></span><br><span class="line">        <span class="keyword">self</span>.<span class="type">BtnDisclosure</span>.setImage(<span class="type">UIImage</span>(named: <span class="string">"carat-open"</span>), forState: <span class="type">UIControlState</span>.<span class="type">Selected</span>)</span><br><span class="line">    </span><br><span class="line">        <span class="comment">// 单击手势识别</span></span><br><span class="line">        <span class="keyword">var</span> tapGesture = <span class="type">UITapGestureRecognizer</span>(target: <span class="keyword">self</span>, action: <span class="string">"btnTap:"</span>)</span><br><span class="line">        <span class="keyword">self</span>.addGestureRecognizer(tapGesture)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="preprocessor">@IBAction</span> <span class="func"><span class="keyword">func</span> <span class="title">btnTap</span><span class="params">(sender: UITapGestureRecognizer)</span></span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.toggleOpen(<span class="built_in">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="func"><span class="keyword">func</span> <span class="title">toggleOpen</span><span class="params">(userAction: Bool)</span></span> &#123;</span><br><span class="line">        <span class="type">BtnDisclosure</span>.selected = !<span class="type">BtnDisclosure</span>.selected</span><br><span class="line">        <span class="comment">// 如果userAction传入的值为真，将给委托传递相应的消息</span></span><br><span class="line">        <span class="keyword">if</span> userAction &#123;</span><br><span class="line">            <span class="keyword">if</span> <span class="type">HeaderOpen</span> &#123;</span><br><span class="line">                delegate.sectionHeaderView(<span class="keyword">self</span>, sectionClosed: section)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                delegate.sectionHeaderView(<span class="keyword">self</span>, sectionOpened: section)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用协议的原因是SectionHeaderView是我们自定义的一个视图，而且我们专门为其新建了一个类文件来进行管理。……这个协议定义了两个方法，这两个方法名称相同，但是参数不同，被称为函数重载。在接下来我们的使用中，可以直接使用Selector选择其参数名来进行调用。</p>
+<p>awakeFromNib()是.nib文件被加载的时候，创建view对象前调用的方法。其和viewDidLoad()的区别是，当view对象被加载到内存时系统才会调用viewDidLoad()方法。因此，Xcode会先执行awakeFromNib()方法，才会执行viewDidLoad()方法。</p>
+<p>那为什么我们要用awakeFromNib()方法呢，那是因为UITableViewHeaderFooterView里面并不存在viewDidLoad()方法，我们没有办法对其重载调用，所以只能使用awakeFromNib()方法。</p>
+<p>由于向.xib文件中直接添加手势，会导致该nib文件注册失败，因此我们用代码的形式来定义一个单击手势。这个手势将控制单元格的展开和收缩。</p>
+<p>最后要注意的是，由于我们的类继承的是UITableViewHeaderFooterView，虽然在UIKit中，这个类是UIView的子类，但是由于swift还不完善的原因，在IB面板中（包括xib文件和storyboard文件）的Identity inspector的Class项中都不能够显示出我们刚刚创建出来的类，但是我们可以手动输入这个类的名称。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/74454-fc68f5c9efc4d578.png" alt="9.png"></p>
+<p>此时我们仅仅只是定义了SectionHeaderView.xib的属性和方法，但是由于用户组里面会包含多个FriendCell，因此我们还要在定义一个类来标明Group和SectionHeaderView之间的结构联系。</p>
+<p>新建一个SectionInfo.swift文件，文件内容如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="type">Foundation</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义了用户组以及FriendCell的一系列属性、方法</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SectionInfo</span>: <span class="title">NSObject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> group: <span class="type">Group</span> = <span class="type">Group</span>()</span><br><span class="line">    <span class="keyword">var</span> headerView: <span class="type">SectionHeaderView</span> = <span class="type">SectionHeaderView</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>至此，所有的表格结构、数据结构已经定义完成，接下来就是要从数据层面进行操作了。</p>
+<h2 id="从plist文件中读取数据">从plist文件中读取数据</h2><p>为了方便数据管理，我们使用数据持久化功能来保存用户组信息和朋友信息。这里我们采用属性列表来保存数据。应用程序在启动时会将该文件的全部内容读入内存，并在退出时注销。</p>
+<p>新建一个plist文件，依次选择New File -&gt; iOS -&gt; Resource -&gt; Property List，命名为FriendInfo。这样我们就创建了一个plist文件。将文件中的Property List Type修改为None，然后按照下图所示设计文件内容：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/74454-25bfb5d431b7a1cb.png" alt="10.png"></p>
+<p>接下来打开ViewController.swift文件，创建一个函数，命名为loadFriendInfo，用来读取文件。函数如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">loadFriendInfo</span><span class="params">()</span></span> -&gt; <span class="type">NSArray</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="type">FriendInfo</span>: <span class="type">NSMutableArray</span>?</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 定位到plist文件并将文件拷贝到数组中存放</span></span><br><span class="line">    <span class="keyword">var</span> fileUrl = <span class="type">NSBundle</span>.mainBundle().<span class="type">URLForResource</span>(<span class="string">"FriendInfo"</span>, withExtension: <span class="string">"plist"</span>)</span><br><span class="line">    <span class="keyword">var</span> <span class="type">GroupDictionariesArray</span> = <span class="type">NSArray</span>(contentsOfURL: fileUrl!)</span><br><span class="line">    <span class="type">FriendInfo</span> = <span class="type">NSMutableArray</span>(capacity: <span class="type">GroupDictionariesArray</span>!.<span class="built_in">count</span>)</span><br><span class="line">            </span><br><span class="line">    <span class="comment">// 遍历数组，根据组和单元格的结构分别赋值</span></span><br><span class="line">    <span class="keyword">for</span> <span class="type">GroupDictionary</span> <span class="keyword">in</span> <span class="type">GroupDictionariesArray</span>! &#123;</span><br><span class="line">        <span class="keyword">var</span> group: <span class="type">Group</span> = <span class="type">Group</span>()</span><br><span class="line">        group.name = <span class="type">GroupDictionary</span>[<span class="string">"GroupName"</span>] <span class="keyword">as</span> <span class="type">String</span></span><br><span class="line">            </span><br><span class="line">        <span class="keyword">var</span> friendDictionaries: <span class="type">NSArray</span> = <span class="type">GroupDictionary</span>[<span class="string">"Friends"</span>] <span class="keyword">as</span> <span class="type">NSArray</span></span><br><span class="line">        <span class="keyword">var</span> friends = <span class="type">NSMutableArray</span>(capacity: friendDictionaries.<span class="built_in">count</span>)</span><br><span class="line">                </span><br><span class="line">        <span class="keyword">for</span> friendDictionary <span class="keyword">in</span> friendDictionaries &#123;</span><br><span class="line">            <span class="keyword">var</span> friendAsDic: <span class="type">NSDictionary</span> = friendDictionary <span class="keyword">as</span> <span class="type">NSDictionary</span></span><br><span class="line">            <span class="keyword">var</span> friend: <span class="type">Friend</span> = <span class="type">Friend</span>()</span><br><span class="line">                    </span><br><span class="line">            friend.setValuesForKeysWithDictionary(friendAsDic)</span><br><span class="line">            friends.addObject(friend)</span><br><span class="line">        &#125;</span><br><span class="line">        group.friends = friends</span><br><span class="line">        <span class="type">FriendInfo</span>!.addObject(group)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">FriendInfo</span>!</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们来逐次分析这个函数。首先我们需要定位到我们创建的FriendInfo.plist文件，NSBundle.mainBundle中保存了一系列当前项目的信息，包括版本号、程序名等等内容，这里我们使用URLForResource()来获取FriendInfo.plist的URL地址。</p>
+<p>NSArray的contentsOfURL:</p>
+<p>由此，我们就完成了从plist文件中读取数据的操作，接下来我们可以使用FriendInfo数组里面的值，来完成值的赋予。</p>
+<h2 id="将数据显示在表视图中">将数据显示在表视图中</h2><p>有了上面的操作，现在我们就可以将我们读取到的数据显示在表视图当中了。</p>
+<p>我们首先定义一个类型为NSArray数组的变量，用来存放我们读取后的数据，以及存放用户组、单元格信息的NSMutableArray变量：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> groups: <span class="type">NSArray</span>!</span><br><span class="line"><span class="keyword">var</span> sectionInfoArray: <span class="type">NSMutableArray</span>!</span><br></pre></td></tr></table></figure></p>
+<p>接下来，我们在viewDidLoad()方法中添加如下语句，完成数据的读取和存放：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">self</span>.tableView.sectionHeaderHeight = <span class="type">CGFloat</span>(<span class="type">HeaderHeight</span>)	<span class="comment">// 用户组高度</span></span><br><span class="line">opensectionindex = <span class="type">NSNotFound</span></span><br><span class="line">        </span><br><span class="line">groups = loadFriendInfo()</span><br><span class="line"><span class="keyword">let</span> sectionHeaderNib: <span class="type">UINib</span> = <span class="type">UINib</span>(nibName: <span class="string">"SectionHeaderView"</span>, bundle: <span class="built_in">nil</span>)</span><br><span class="line"><span class="keyword">self</span>.tableView.registerNib(sectionHeaderNib, forHeaderFooterViewReuseIdentifier: <span class="type">SectionHeaderViewIdentifier</span>)</span><br></pre></td></tr></table></figure></p>
+<p>后面两个语句本章后面会对其详细介绍。</p>
+<p>接下来，我们从父类视图中重写viewWillAppear方法，来完成分组表的定义。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewWillAppear</span><span class="params">(animated: Bool)</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewWillAppear(animated)</span><br><span class="line">        </span><br><span class="line">    <span class="comment">// 检查SectionInfoArray是否已被创建，如果已被创建，则检查组的数量是否匹配当前实际组的数量。通常情况下，您需要保持SectionInfo与组、单元格信息保持同步。如果扩展功能以让用户能够在表视图中编辑信息，那么需要在编辑操作中适当更新SectionInfo</span></span><br><span class="line">    <span class="keyword">if</span> sectionInfoArray == <span class="built_in">nil</span> || sectionInfoArray.<span class="built_in">count</span> != <span class="keyword">self</span>.numberOfSectionsInTableView(<span class="keyword">self</span>.tableView) &#123;</span><br><span class="line">        <span class="comment">// 对于每个用户组来说，需要为每个单元格设立一个一致的SectionInfo对象</span></span><br><span class="line">        <span class="keyword">var</span> infoArray: <span class="type">NSMutableArray</span> = <span class="type">NSMutableArray</span>()</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">for</span> group <span class="keyword">in</span> groups &#123;</span><br><span class="line">            <span class="keyword">var</span> dictionary: <span class="type">NSArray</span> = (group <span class="keyword">as</span> <span class="type">Group</span>).friends</span><br><span class="line">            <span class="keyword">var</span> sectionInfo = <span class="type">SectionInfo</span>()</span><br><span class="line">            sectionInfo.group = group <span class="keyword">as</span> <span class="type">Group</span></span><br><span class="line">            sectionInfo.headerView.<span class="type">HeaderOpen</span> = <span class="built_in">false</span></span><br><span class="line">            </span><br><span class="line">            infoArray.addObject(sectionInfo)</span><br><span class="line">        &#125;</span><br><span class="line">        sectionInfoArray = infoArray</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接下来依次实现这几个方法：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">canBecomeFirstResponder</span><span class="params">()</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>判断一个对象是否可以成为第一响应者。默认返回false。<br>如果一个响应对象通过这个方法返回true，那么它成为了第一响应对象，并且可以接收触摸事件和动作消息。<br>我们的UITableView是UIView的子类，因此必须重写这个方法才可以成为第一响应者。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">numberOfSectionsInTableView</span><span class="params">(tableView: UITableView)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.groups.<span class="built_in">count</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>numberOfSectionsInTableView()方法返回表视图有多少个section。一个用户组对应一个section。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> sectionInfo: <span class="type">SectionInfo</span> = sectionInfoArray[section] <span class="keyword">as</span> <span class="type">SectionInfo</span></span><br><span class="line">    <span class="keyword">var</span> numStoriesInSection = sectionInfo.group.friends.<span class="built_in">count</span></span><br><span class="line">    <span class="keyword">var</span> sectionOpen = sectionInfo.headerView.<span class="type">HeaderOpen</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> sectionOpen ? numStoriesInSection : <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>tableView:numberOfRowsInSection:方法返回对应的section中有多少个元素，也就是多少行。在这里我们先确定用户组是否被打开，如果打开则返回对应的用户组中的所有朋友数量，否则为0。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="type">FriendCellIdentifier</span> = <span class="string">"FriendCellIdentifier"</span></span><br><span class="line">    <span class="keyword">var</span> cell: <span class="type">FriendCell</span> = tableView.dequeueReusableCellWithIdentifier(<span class="type">FriendCellIdentifier</span>) <span class="keyword">as</span> <span class="type">FriendCell</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">var</span> group: <span class="type">Group</span> = (sectionInfoArray[indexPath.section] <span class="keyword">as</span> <span class="type">SectionInfo</span>).group</span><br><span class="line">    cell.friend = group.friends[indexPath.row] <span class="keyword">as</span> <span class="type">Friend</span></span><br><span class="line">    cell.setFriend(cell.friend)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> cell</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>tableView:cellForRowAtIndexPath:方法返回指定的行的单元格。一个朋友对应一个单元格。在这个方法中，我们通过dequeueReusableCellWithIdentifier()方法来读取对应标识符的单元格，在这里是我们在main.Stroyboard中定义的那个单元格。还记得我们给那个单元格添加了“FriendCellIdentifier”标识符吗？</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(tableView: UITableView, viewForHeaderInSection section: Int)</span></span> -&gt; <span class="type">UIView</span>? &#123;</span><br><span class="line">    <span class="comment">// 返回指定的section header视图</span></span><br><span class="line">    <span class="keyword">var</span> sectionHeaderView: <span class="type">SectionHeaderView</span> = <span class="keyword">self</span>.tableView.dequeueReusableHeaderFooterViewWithIdentifier(<span class="type">SectionHeaderViewIdentifier</span>) <span class="keyword">as</span> <span class="type">SectionHeaderView</span></span><br><span class="line">    <span class="keyword">var</span> sectionInfo: <span class="type">SectionInfo</span> = sectionInfoArray[section] <span class="keyword">as</span> <span class="type">SectionInfo</span></span><br><span class="line">        </span><br><span class="line">    sectionInfo.headerView = sectionHeaderView</span><br><span class="line">    sectionHeaderView.<span class="type">LblTitle</span>.text = sectionInfo.group.name</span><br><span class="line">    sectionHeaderView.section = section</span><br><span class="line">    sectionHeaderView.delegate = <span class="keyword">self</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> sectionHeaderView</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和上面的方法相似，tableView:viewForHeaderInSection:方法返回section中的表头(Header)类型。我们的SectionHeaderView声明的是UITableViewHeaderFooterView类型，这个方法是专门用来返回该类型的实例的。<br>可以看到，这个方法中使用了和上面方法极其相似的dequeueReusableHeaderFooterViewWithIdentifier()方法。这个方法的作用同样也是读取对应标识符的单元格。不过不同的是，使用这个方法前需要注册nib文件或者注册描述这个单元格的类。因此，之前我们就使用了如下两条语句注册nib文件，以便于swift能够读取到这个单元格。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sectionHeaderNib: <span class="type">UINib</span> = <span class="type">UINib</span>(nibName: <span class="string">"SectionHeaderView"</span>, bundle: <span class="built_in">nil</span>)</span><br><span class="line"><span class="keyword">self</span>.tableView.registerNib(sectionHeaderNib, forHeaderFooterViewReuseIdentifier: <span class="type">SectionHeaderViewIdentifier</span>)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath)</span></span> -&gt; <span class="type">CGFloat</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">CGFloat</span>(<span class="type">DefaultRowHeight</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个方法返回指定的单元格的高度，这里我们返回的是单元格的默认高度。</p>
+<h2 id="实现表格的展开、收缩效果">实现表格的展开、收缩效果</h2><p>我们给ViewController这个类继承SectionHeaderViewDelegate协议，此时，类的头部变成这样：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UITableViewController</span>, <span class="title">SectionHeaderViewDelegate</span></span></span><br></pre></td></tr></table></figure></p>
+<p>接下来，我们在ViewController类中实现协议中定义的两个函数：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">sectionHeaderView</span><span class="params">(sectionHeaderView: SectionHeaderView, sectionOpened: Int)</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> sectionInfo: <span class="type">SectionInfo</span> = sectionInfoArray[sectionOpened] <span class="keyword">as</span> <span class="type">SectionInfo</span></span><br><span class="line">    sectionInfo.headerView.<span class="type">HeaderOpen</span> = <span class="built_in">true</span></span><br><span class="line">        </span><br><span class="line">    <span class="comment">//创建一个包含单元格索引路径的数组来实现插入单元格的操作：这些路径对应当前节的每个单元格</span></span><br><span class="line">    <span class="keyword">var</span> countOfRowsToInsert = sectionInfo.group.friends.<span class="built_in">count</span></span><br><span class="line">    <span class="keyword">var</span> indexPathsToInsert = <span class="type">NSMutableArray</span>()</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; countOfRowsToInsert; i++) &#123;</span><br><span class="line">        indexPathsToInsert.addObject(<span class="type">NSIndexPath</span>(forRow: i, inSection: sectionOpened))</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="comment">// 创建一个包含单元格索引路径的数组来实现删除单元格的操作：这些路径对应之前打开的节的单元格</span></span><br><span class="line">    <span class="keyword">var</span> indexPathsToDelete = <span class="type">NSMutableArray</span>()</span><br><span class="line">    <span class="keyword">var</span> previousOpenSectionIndex = opensectionindex</span><br><span class="line">    <span class="keyword">if</span> previousOpenSectionIndex != <span class="type">NSNotFound</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> previousOpenSection: <span class="type">SectionInfo</span> = sectionInfoArray[previousOpenSectionIndex] <span class="keyword">as</span> <span class="type">SectionInfo</span></span><br><span class="line">        previousOpenSection.headerView.<span class="type">HeaderOpen</span> = <span class="built_in">false</span></span><br><span class="line">        previousOpenSection.headerView.toggleOpen(<span class="built_in">false</span>)</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">var</span> countOfRowsToDelete = previousOpenSection.group.friends.<span class="built_in">count</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; countOfRowsToDelete; i++) &#123;</span><br><span class="line">            indexPathsToDelete.addObject(<span class="type">NSIndexPath</span>(forRow: i, inSection: previousOpenSectionIndex))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="comment">// 设计动画，以便让表格的打开和关闭拥有一个流畅的效果</span></span><br><span class="line">    <span class="keyword">var</span> insertAnimation: <span class="type">UITableViewRowAnimation</span></span><br><span class="line">    <span class="keyword">var</span> deleteAnimation: <span class="type">UITableViewRowAnimation</span></span><br><span class="line">    <span class="keyword">if</span> previousOpenSectionIndex == <span class="type">NSNotFound</span> || sectionOpened &lt; previousOpenSectionIndex &#123;</span><br><span class="line">        insertAnimation = <span class="type">UITableViewRowAnimation</span>.<span class="type">Top</span></span><br><span class="line">        deleteAnimation = <span class="type">UITableViewRowAnimation</span>.<span class="type">Bottom</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        insertAnimation = <span class="type">UITableViewRowAnimation</span>.<span class="type">Bottom</span></span><br><span class="line">        deleteAnimation = <span class="type">UITableViewRowAnimation</span>.<span class="type">Top</span></span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    <span class="comment">// 应用单元格的更新</span></span><br><span class="line">    <span class="keyword">self</span>.tableView.beginUpdates()</span><br><span class="line">    <span class="keyword">self</span>.tableView.deleteRowsAtIndexPaths(indexPathsToDelete, withRowAnimation: deleteAnimation)</span><br><span class="line">    <span class="keyword">self</span>.tableView.insertRowsAtIndexPaths(indexPathsToInsert, withRowAnimation: insertAnimation)</span><br><span class="line">    opensectionindex = sectionOpened</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">self</span>.tableView.endUpdates()</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>我们来解析一下这个函数。首先创建了一个包含单元格索引路径的数组来实现插入单元格的操作，这个数组存放有将要打开的用户组中的所有朋友信息。接下来是创建了一个包含单元格索引路径的数组来实现删除单元格的操作。首先将先前已打开的用户组关闭（调用toggleOpen()函数），随后将数组中放入已打开的用户组中的所有朋友信息。<br>最后，执行删除行的操作，再执行插入行的操作，注意顺序不要颠倒了（想想为什么？）<br>我们使用beginUpdates()方法和endUpdates()方法将删除、插入操作“包”了起来，这两个方法是配合起来使用的，标记了一个tableView的动画块，分别代表动画的开始和结束。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">sectionHeaderView</span><span class="params">(sectionHeaderView: SectionHeaderView, sectionClosed: Int)</span></span> &#123;</span><br><span class="line">    <span class="comment">// 在表格关闭的时候，创建一个包含单元格索引路径的数组，接下来从表格中删除这些行</span></span><br><span class="line">    <span class="keyword">var</span> sectionInfo: <span class="type">SectionInfo</span> = <span class="keyword">self</span>.sectionInfoArray[sectionClosed] <span class="keyword">as</span> <span class="type">SectionInfo</span></span><br><span class="line">    sectionInfo.headerView.<span class="type">HeaderOpen</span> = <span class="built_in">false</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">var</span> countOfRowsToDelete = <span class="keyword">self</span>.tableView.numberOfRowsInSection(sectionClosed)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">if</span> countOfRowsToDelete &gt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> indexPathsToDelete = <span class="type">NSMutableArray</span>()</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; countOfRowsToDelete; i++) &#123;</span><br><span class="line">            indexPathsToDelete.addObject(<span class="type">NSIndexPath</span>(forRow: i, inSection: sectionClosed))</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">self</span>.tableView.deleteRowsAtIndexPaths(indexPathsToDelete, withRowAnimation: <span class="type">UITableViewRowAnimation</span>.<span class="type">Top</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    opensectionindex = <span class="type">NSNotFound</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和上面的方法类似，在此我们不做过多的解释了。</p>
+<p>到这里，我们的教程就结束了。有兴趣的同学可以去我的 Github 上面下载demo项目的源代码：<a href="https://github.com/SemperIdem/TVAnimationsGestures-Swift" target="_blank" rel="external">TVAnimationsGestures-Swift</a>，这个 demo 是苹果官方提供的 demo 的 Swift 版本，大家可以基于这个版本来实现可展开可收缩的表视图。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+     
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift-控件/">swift_控件</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift-视图/">swift_视图</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/04/12/在_swift_中使用百度地图_sdk/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在 swift 中使用百度地图SDK
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/04/11/A Swift Tour/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">A Swift Tour </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+  
+  <section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-swift_可展开可收缩的表视图" data-title="在 swift 中使用百度地图SDK" data-url="http://optionalswift.cn/2015/04/12/swift_可展开可收缩的表视图/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:'optionalswift'};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+      </script>
+    <!-- 多说公共JS代码 end -->
+  </section>
+  </section>
+        
+          <aside id="sidebar">
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">文章分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/swift-Control/">swift_Control</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/swift-Kit/">swift_Kit</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/swift-language/">swift_language</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">关键字</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift-控件/">swift_控件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift-视图/">swift_视图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift基础入门/">swift基础入门</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift框架/">swift框架</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift语法/">swift语法</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">云标签</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/swift-控件/" style="font-size: 10px;">swift_控件</a><a href="/tags/swift-视图/" style="font-size: 10px;">swift_视图</a><a href="/tags/swift基础入门/" style="font-size: 15px;">swift基础入门</a><a href="/tags/swift框架/" style="font-size: 10px;">swift框架</a><a href="/tags/swift语法/" style="font-size: 20px;">swift语法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">时间胶囊</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近发表</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/04/12/在_swift_中使用百度地图_sdk/">在 swift 中使用百度地图SDK</a>
+          </li>
+        
+          <li>
+            <a href="/2015/04/12/swift_可展开可收缩的表视图/">在 swift 中使用百度地图SDK</a>
+          </li>
+        
+          <li>
+            <a href="/2015/04/11/A Swift Tour/">A Swift Tour </a>
+          </li>
+        
+          <li>
+            <a href="/2015/04/01/Optional<T>可选类型浅谈/">Optional&lt;T&gt;可选类型浅谈</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">团队成员</h3>
+    <div class="widget">
+    <ul>
+     
+          <li><a href="http://blog.csdn.net/colouful987">PMST</a></li>
+        
+          <li><a href="http://www.jianshu.com/users/ef1058d2d851/latest_articles">暮夜星辰</a></li>
+        
+          <li><a href="http://blog.csdn.net/colouful987">哦</a></li>
+        
+          <li><a href="http://blog.csdn.net/colouful987">iceAna</a></li>
+        
+        </ul>
+    </div>
+  </div>
+
+  
+
+</aside>
+
+
+        
+      </div>
+      <footer style="color:#fff;">
+  
+  <div class="ice-div ice-div-1-1" style="height:60px;background: #2c3d4f;line-height:60px;text-align:center">
+  	Powered by <a href="http://hexo.io/">Optional Swift Team</a>
+  	|
+  	Team was set up in April。
+  </div>
+</footer>
+    </div>
+    
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
