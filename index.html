@@ -261,11 +261,7 @@ border-radius: 0px;
 <p>清明已过，写写代码收收心</p>
 </blockquote>
 <p>在我印象中，可选类型应该分为显示可选类型和隐式可选类型。分别是这样的：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> explicitPara:<span class="type">Type</span>?	<span class="comment">//显示  初始化时假如不给赋值 默认都是nil</span></span><br><span class="line"><span class="keyword">var</span> implicitPara:<span class="type">Type</span>!	<span class="comment">//隐式</span></span><br></pre></td></tr></table></figure></p>
-<p>不知道自己记得对不对。两者都是可选类型，自然就有共性，可选类型定义为一个变量(不仅仅是<code>class</code>)要么有值，且值等于x,要么就不存在(nil)。</p>
-<blockquote>
-<p>注：与oc中nil是一个指针指向不存在的对象不同，swift中，nil可不是一个指针，而是一个特定类型的空值。任何类型的可选变量都可以设为nil，通俗理解就是不仅仅是class类型可以=nil， string ，int ,char都可以不存在=nil。这样使得编程时候更为安全。</p>
-</blockquote>
-<p>昨天我还对显示可选类型和隐式可选类型之间的差异询问了群里的朋友，以及再次翻阅了<em>The Swift programming Language</em>。</p>
+<p>不知道自己记得对不对。两者都是可选类型，自然就有共性，可选类型定义为一个变量(不仅仅是<code>class</code>)要么有值，且值等于x,要么就不存在(nil)。<br>
         
           <p class="article-more-link">
             <a href="/2015/04/01/Optional<T>可选类型浅谈/#more">Read More</a>
