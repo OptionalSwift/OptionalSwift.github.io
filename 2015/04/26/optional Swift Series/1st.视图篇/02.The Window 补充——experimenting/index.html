@@ -23,7 +23,7 @@ var _hmt = _hmt || [];
   <script src="//dn-lbstatics.qbox.me/respond/1.4.2/respond.min.js"></script>
 
   
-  <title>swift框架 | Optional Swift 博客</title>
+  <title>The Window(补充，Experimenting With Views) | Optional Swift 博客</title>
   <meta name="author" content="OST">
   
   <meta name="description" content="Swift  you choose">
@@ -31,7 +31,7 @@ var _hmt = _hmt || [];
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="The Window(补充，Experimenting With Views)"/>
   <meta property="og:site_name" content="Optional Swift 博客"/>
 
   
@@ -220,25 +220,114 @@ var _hmt = _hmt || [];
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title tag">swift框架</h2>
-
-
-  <div class="archive">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-04-12T07:30:16.000Z"><a href="/2015/04/12/swift 框架/在_swift_中使用百度地图_sdk/">2015-04-12</a></time>
-            
-              <h1 class="title"><a href="/2015/04/12/swift 框架/在_swift_中使用百度地图_sdk/">在 swift 中使用百度地图SDK</a></h1>
-            
-          </header>
-        </div>
-      </article>
+      <img src="">
     
   </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-04-26T11:49:15.000Z"><a href="/2015/04/26/optional Swift Series/1st.视图篇/02.The Window 补充——experimenting/">2015-04-26</a></time>
+      
+      
+  
+    <h1 class="title">The Window(补充，Experimenting With Views)</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>作者：PMST<br>文章：Views - Experimenting with Views<br>系列：The Swift Beginner<br>写于：2015.04.26   </p>
+</blockquote>
+<p>回顾前文，详细讨论了如何使用<em>a main storyboard</em>和纯代码两种情况分别创建<em>window</em>。大致把界面启动、<em>window</em>创建、配置到界面呈现流程讲述了一遍。本章作为<em>The Window</em>的补充，代码实战演示如何增添视图控制器以及视图操作。<br><a id="more"></a></p>
+<h3 id="使用storyboard情况">使用storyboard情况</h3><p>首先，打开<em>Xcode</em>,新建一个<em>Single View Application</em>项目，<em>Xcode</em>将自动生成一个<em>Main.storyboard</em>文件包含到项目中；接下来选中点击查看<em>storyboard</em>中的内容，默认是一个场景(<em>scene</em>)，包含一个视图控制器(<em>view controller</em>)以及控制器所包含的<em>main view</em>；当应用启动时，正如前文所讲到的视图控制器会成为应用主窗口<em>main window</em>的<em>rootViewController</em>(假如不了解，请回顾上文)，而视图控制器的<em>view</em>则成为主窗口的<em>root view</em>。</p>
+<p>你可以尝试从<code>Object library</code>(即右下角第三个图标)中拖拽一个视图到<em>main view</em>中作为其<em>subView</em>，当应用运行时，这个拖拽进来的视图会自动实例化；当然你也可以选择使用代码来实例化一个视图，然后将其加入到<em>main view</em>中。通常我们选择在视图控制器中的<code>viewDidLoad</code>方法(这个<em>method</em>会经常使用！)中添加上述代码配置，以及使用<code>self.view</code>来获得视图控制器的<em>main view</em>。就像下面的代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">	<span class="keyword">let</span> mainView = <span class="keyword">self</span>.view</span><br><span class="line">	<span class="keyword">let</span> v = <span class="type">UIView</span>(frame:<span class="type">CGRectMake</span>(<span class="number">100</span>,<span class="number">100</span>,<span class="number">50</span>,<span class="number">50</span>))</span><br><span class="line">	v.backgroundColor = <span class="type">UIColor</span>.redColor() <span class="comment">//红色的小正方形</span></span><br><span class="line">	mainview.addSubView(v)					<span class="comment">//添加到主视图中</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用代码创建">使用代码创建</h3><p>恩…我们需要一个空项目(前文已经讲述如何创建，请点击<a href="http://colourfulcode.cn/2015/04/25/optional%20Swift%20Series/Chapter%201.%20Views/01.the%20window/" target="_blank" rel="external">这里</a>)，没有<em>.xib</em>文件，没有<em>.storyboard</em>文件，完全依靠代码来实现前面<em>demo</em>的效果。对于新手来说，这无疑是比较兴奋的！</p>
+<p>正如<em>The Window</em>一文最后给出的<em>demo</em>,由于没有分配一个视图控制器给<em>window</em>的<em>rootViewController</em>，在应用启动时会产生警告。最简单的解决方法便是在<code>application:didFinishLauchingWithOptions:</code>方法中，创建一个视图控制器并任命它为<em>window</em>的<em>rootViewController</em>。代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">application</span><span class="params">(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">self</span>.window = <span class="type">UIWindow</span>(frame: <span class="type">UIScreen</span>.mainScreen().bounds)</span><br><span class="line">  <span class="keyword">self</span>.window.rootViewController = <span class="type">UIViewController</span>()   <span class="comment">//就是这里新建了一个视图控制器</span></span><br><span class="line">  <span class="keyword">let</span> mainView = <span class="keyword">self</span>.window!.rootViewController!.view  <span class="comment">//得到主视图</span></span><br><span class="line">  <span class="keyword">let</span> v = <span class="type">UIView</span>(frame:<span class="type">CGRectMake</span>(<span class="number">100</span>,<span class="number">100</span>,<span class="number">50</span>,<span class="number">50</span>))       <span class="comment">//自定义一个视图</span></span><br><span class="line">  v.backgroundColor = <span class="type">UIColor</span>.redColor()                <span class="comment">//设置颜色为红色</span></span><br><span class="line">  mainview.addSubView(v)                          <span class="comment">//把自定义的红色视图添加到主视图中</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">self</span>.window!.backgroundColor = <span class="type">UIColor</span>.whiteColor()</span><br><span class="line">  <span class="keyword">self</span>.window!.makeKeyAndVisible() <span class="comment">//这一步很重要 </span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Swift-Beginner-Series/">Swift Beginner Series</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/ios视图/">ios视图</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/04/25/optional Swift Series/1st.视图篇/01.the window/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"optionalswift"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
