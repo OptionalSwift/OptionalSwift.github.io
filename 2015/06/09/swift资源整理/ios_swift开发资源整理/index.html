@@ -1,0 +1,696 @@
+
+
+<!DOCTYPE HTML>
+<html>
+
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?94f6ddbfbc53cb18818538cafd3ba350";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <script src="//dn-lbstatics.qbox.me/jquery/1.11.2/jquery.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.7.2.min.js"></script> 
+  <script src="//dn-lbstatics.qbox.me/pintuer/1.0/pintuer.mini.js"></script>
+  <script src="//dn-lbstatics.qbox.me/respond/1.4.2/respond.min.js"></script>
+
+  
+  <title>Swift 资源整理 | Optional Swift 博客</title>
+  <meta name="author" content="OST">
+  
+  <meta name="description" content="Swift  you choose">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Swift 资源整理"/>
+  <meta property="og:site_name" content="Optional Swift 博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Optional Swift 博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">Optional Swift 博客</a></h1>
+  <h2><a href="/">Optional means having a value in it or equaling nil</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/categories">分类</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-06-09T12:00:15.000Z"><a href="/2015/06/09/swift资源整理/ios_swift开发资源整理/">2015-06-09</a></time>
+      
+      
+  
+    <h1 class="title">Swift 资源整理</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>文档管理者:PMST<br>当前版本:V1.0.6<br>最后更新日期:2015.06.09(ps：swift2.0,开源之美)<br>注：[New]表示更新内容,此外有优秀文章、资源、框架等等，都可以推荐给我，发送到我的邮箱。<br>邮箱地址链接:<a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#109;&#x63;&#120;&#x63;&#x6f;&#x64;&#x65;&#64;&#x31;&#54;&#x33;&#46;&#x63;&#x6f;&#109;">&#109;&#x63;&#120;&#x63;&#x6f;&#x64;&#x65;&#64;&#x31;&#54;&#x33;&#46;&#x63;&#x6f;&#109;</a><br>更新周期: 每周五更新</p>
+</blockquote>
+<h2 id="目录">目录</h2><hr>
+<font size="3"><br><br>- <a href="#apple_Info">1.苹果官方资源</a><br>- <a href="#foreign_video">2.国内外视频网站推荐</a><br>- <a href="#china_document">3.中文文档</a><br>- <a href="#demo_site">4.demo网站</a><br>- <a href="#dev_tool">5.开发工具推荐</a><br>- <a href="#dev_site">6.国内外开发网站论坛</a><br>- <a href="#blog">7.技术博客推荐</a><br>- <a href="#book">8.书籍推荐</a><br>- <a href="#framework">9.第三方框架推荐</a><br>- <a href="#release_site">10.第三方发布平台</a><br>- <a href="#terminal">11.Terminal指令 适用于Xcode</a><br>- <a href="#article">12.经典文章推荐，欢迎投稿</a><br>- <a href="#question">13.iOS开发问题集锦,欢迎投稿</a><br>- <a href="#theNew">14.swift2.0语法更新和xcode改动等专题</a><br></font>
+
+<a id="more"></a>
+<p><a name="apple_Info"></a></p>
+<h3 id="1-官方资料">1.官方资料</h3><ul>
+<li><p><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/" target="_blank" rel="external">The Swift programming language online官方文档</a>  </p>
+</li>
+<li><p><a href="https://itunes.apple.com/us/book/swift-programming-language/id881256329?mt=11" target="_blank" rel="external">The Swift programming language ibooks官方文档</a></p>
+</li>
+<li><p><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/RevisionHistory.html#//apple_ref/doc/uid/TP40014097-CH40-ID459" target="_blank" rel="external">Swift语法改动官方online说明，以后会专门整理，敬请期待</a></p>
+</li>
+<li><p><a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/" target="_blank" rel="external">swift Using Swift with Cocoa and Objective-c官方文档</a></p>
+</li>
+<li><p><a href="https://developer.apple.com/library/ios/documentation/WindowsViews/Conceptual/UIScrollView_pg/CreatingBasicScrollViews/CreatingBasicScrollViews.html" target="_blank" rel="external">scroll View Guide 官方文档</a></p>
+</li>
+<li><p><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/WatchKitProgrammingGuide/index.html#//apple_ref/doc/uid/TP40014969" target="_blank" rel="external">apple watch Guide 官方文档</a></p>
+</li>
+<li><p><a href="https://developer.apple.com/library/ios/documentation/Swift/Reference/Playground_Ref/Chapters/MarkupReference.html#//apple_ref/doc/uid/TP40014789-CH3-SW14" target="_blank" rel="external">Playground online官方文档</a></p>
+</li>
+</ul>
+<ul>
+<li><p><a href="https://developer.apple.com/library/ios/navigation/" target="_blank" rel="external">上述更多官方文档…</a></p>
+</li>
+<li><p><a href="https://developer.apple.com/swift/blog/" target="_blank" rel="external">swift官方博客</a></p>
+</li>
+<li><p><a href="https://developer.apple.com/resources/" target="_blank" rel="external">apple swift 官方resource,比如xcode下载、swift语法更新等等</a></p>
+</li>
+</ul>
+<p><a name="foreign_video"></a></p>
+<h3 id="2-国内外视频网站推荐">2.国内外视频网站推荐</h3><ul>
+<li><p><a href="https://github.com/x140yu/Developing_iOS_8_Apps_With_Swift" target="_blank" rel="external">斯坦福白胡子swift教学视频以及字幕下载,视频内demo见demo章节</a></p>
+</li>
+<li><p><a href="https://itunes.com/PlymouthSwift" target="_blank" rel="external">普利茅斯 Plymouth University: iOS Development in Swift itunesU课程链接</a></p>
+</li>
+<li><p><a href="http://www.raywenderlich.com/video-tutorials" target="_blank" rel="external">raywenderlich视 部分免费,内容有视图、框架、动画等 swift&amp;oc</a></p>
+</li>
+<li><p><a href="http://www.swiftv.cn" target="_blank" rel="external">swiftv 免费视频网站 推荐下</a></p>
+</li>
+<li><p><a href="http://www.ucai.cn/openclass" target="_blank" rel="external">优才网，但不是只针对于iOS 一般</a></p>
+</li>
+<li><p><a href="http://www.daimawang.cn" target="_blank" rel="external">代码网，资料少了点</a></p>
+</li>
+<li><p><a href="http://edu.51cto.com" target="_blank" rel="external">51CTO学院 个人感觉还可以 就是部分免费</a></p>
+</li>
+</ul>
+<p><a name="china_document"></a></p>
+<h3 id="3-中文文档">3.中文文档</h3><ul>
+<li><p><a href="https://github.com/numbbbbb/the-swift-programming-language-in-chinese" target="_blank" rel="external">The swift Programming language 中文文档 github版本(ps 这绝对是最新的)</a></p>
+</li>
+<li><p><a href="http://numbbbbb.gitbooks.io/-the-swift-programming-language-/content/index.html" target="_blank" rel="external">The swift Programming language 中文文档 gitbooks版本(未来眼之老码团队维护)</a></p>
+</li>
+<li><p><a href="http://numbbbbb.gitbooks.io/-the-swift-programming-language-/content/chapter1/03_revision_history.html" target="_blank" rel="external">swift 各个历史版本改动</a></p>
+</li>
+</ul>
+<p><a name="demo_site"></a></p>
+<h3 id="4-demo网站">4.demo网站</h3><ul>
+<li><p><a href="http://web.stanford.edu/class/cs193p/cgi-bin/drupal/" target="_blank" rel="external">斯坦福白胡子视频源代码下载</a></p>
+</li>
+<li><p><a href="http://www.code4app.com" target="_blank" rel="external">Code4App 提供了众多demo 以及 框架，值得推荐</a>  </p>
+</li>
+<li><p><a href="http://www.pudn.com" target="_blank" rel="external">PUDN 代码下载门户网站 多达240万个源代码,不仅仅是swift</a></p>
+</li>
+<li><p><a href="https://github.com/ipader/SwiftGuide/blob/master/Featured.md" target="_blank" rel="external">swift 开源项目精选.github，假如你希望为开源事业做贡献 那么请打开</a></p>
+</li>
+</ul>
+<p><a name="dev_tool"></a></p>
+<h3 id="5-开发工具推荐">5.开发工具推荐</h3><ul>
+<li><p><a href="http://blog.cocoapods.org/Pod-Authors-Guide-to-CocoaPods-Frameworks/" target="_blank" rel="external">CocoaPods package manager 不用多说</a></p>
+</li>
+<li><p><a href="https://www.iconfinder.com" target="_blank" rel="external">icon素材下载，由于是国外网站打开有点慢</a></p>
+</li>
+<li><p><a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">brew macOS X 不可或缺的套件管理器</a></p>
+</li>
+<li><p><a href="http://www.sketchcn.com" target="_blank" rel="external">sktech 中文网站 设计方面</a></p>
+</li>
+</ul>
+<p><a name="dev_site"></a></p>
+<h3 id="6-国内外开发网站论坛">6.国内外开发网站论坛</h3><ul>
+<li><p><a href="http://www.raywenderlich.com" target="_blank" rel="external">raywenderlich官网</a></p>
+</li>
+<li><p><a href="http://cn.cocos2d-x.org" target="_blank" rel="external">cocos 游戏开发官网</a></p>
+</li>
+<li><p><a href="http://swifter.tips" target="_blank" rel="external">swift 100 tips更新网站</a></p>
+</li>
+<li><p><a href="https://github.com" target="_blank" rel="external">github.com 开源值得推荐</a></p>
+</li>
+<li><p><a href="http://stackoverflow.com" target="_blank" rel="external">stackoverflow 问题还是这里找最直接</a></p>
+</li>
+<li><p><a href="https://swiftcast.tv/articles" target="_blank" rel="external">swiftcast 国外的一个swift教学网站 质量不错</a></p>
+</li>
+<li><p><a href="http://www.cocoachina.com" target="_blank" rel="external">Cocochina-苹果开发中文网</a></p>
+</li>
+<li><p><a href="http://www.csdn.net" target="_blank" rel="external">CSDN</a></p>
+</li>
+<li><p><a href="http://www.jianshu.com" target="_blank" rel="external">简书，页面清爽，假如你想拥有一个博客，建议try一下</a></p>
+</li>
+<li><p><a href="http://nshipster.cn" target="_blank" rel="external">nshipster 来自糖糖分享</a></p>
+</li>
+<li><p><a href="http://objccn.io" target="_blank" rel="external">objccn 喵神创建 技术站</a></p>
+</li>
+<li><p><a href="http://www.tuicool.com" target="_blank" rel="external">努力做最专业的IT阅读社区——摘自其网站title,星夜推荐</a></p>
+</li>
+</ul>
+<p><a name="blog"></a></p>
+<h3 id="7-技术博客推荐">7.技术博客推荐</h3><ul>
+<li><p><a href="http://blog.devtang.com" target="_blank" rel="external">唐巧大神的技术博客</a></p>
+</li>
+<li><p><a href="http://www.onevcat.com" target="_blank" rel="external">喵神的技术博客</a></p>
+</li>
+<li><p><a href="http://blog.csdn.net/yanfangjin" target="_blank" rel="external">yanfangjin CSDN博客，该大神转了好多iOS的开发类文章，过段收藏</a></p>
+</li>
+<li><p><a href="http://optionalswift.cn" target="_blank" rel="external">optioalswift 团队博客</a></p>
+</li>
+<li><p><a href="https://www.bloc.io/iOS?utm_source=blog&amp;utm_medium=nav" target="_blank" rel="external">BLOC 国外教程网站 不仅仅是ios</a></p>
+</li>
+<li><p><a href="http://www.ruanyifeng.com/blog/" target="_blank" rel="external">阮一峰大神博客，经典文章实在太多，不是只针对一块</a></p>
+</li>
+</ul>
+<p><a name="book"></a></p>
+<h3 id="8-书籍推荐">8.书籍推荐</h3><h4 id="8-1国内书籍">8.1国内书籍</h4><ul>
+<li>老码说编程之玩转Swift江湖，新手入门书籍，谈吐诙谐。</li>
+<li>swift 100 tips。喵神出品 值得一读，需要一定基础。</li>
+<li>iOS 开发进阶 。唐巧出品。 </li>
+</ul>
+<h4 id="8-2国外书籍">8.2国外书籍</h4><ol>
+<li>raywenderlich出品<ul>
+<li>iOS Games by Tutorials 游戏开发基于SpriteKit</li>
+<li>iOS apprentice 新手小白入门书籍，4个例子，一个例子一本书</li>
+<li>Core Data by Tutorials 。数据存储。</li>
+<li>iOS 8 by Tutorials 。开篇讲autolayout,extension等</li>
+<li>WatchKit by Tutorials 。Apple watch 开发</li>
+<li>iOS Animations by Tutorials 。 动画制作，有没有心动。</li>
+<li>Swift by Tutorials。 swift 入门书籍。</li>
+<li>Space Game Starter Kit 。 oc游戏开发</li>
+<li>Beat ‘Em Up Game Starter Kit 。 oc游戏开发 </li>
+</ul>
+</li>
+<li>o’reilly出品<ul>
+<li>Programming iOS 8</li>
+<li>Beginning_iPhone_Development_with_Swift_Exploring_the_iOS_SDK</li>
+<li>iOS 8 Swift Programming Cookbook</li>
+</ul>
+</li>
+<li>others<ul>
+<li>Functional Programming in Swift.范式编程。</li>
+<li>Developing iOS 8 Apps in Swift ——by Jameson Quave</li>
+<li>Beginning iOS 8 Programming with Swift </li>
+</ul>
+</li>
+</ol>
+<p>以上均为英文书籍，对于英文条件蛮大。认为英语不错的并且对上述书籍感兴趣可进<a href="http://optionalswift.cn" target="_blank" rel="external">团队博客</a>右侧链接查看。  </p>
+<p><a name="framework"></a></p>
+<h3 id="9-第三方框架库推荐">9.第三方框架库推荐</h3><ul>
+<li><p><a href="https://github.com/gali8/Tesseract-OCR-iOS" target="_blank" rel="external">图像识别第三方库tesseract-ios推荐</a></p>
+</li>
+<li><p><a href="https://github.com/typelift/Swiftz" target="_blank" rel="external">swiftz swiftz 为函数式编程写的一个库，定义了数据结构函数扩展等等,github链接</a> </p>
+</li>
+<li><p><a href="https://github.com/Yalantis/PullToRefresh" target="_blank" rel="external">刷新时下拉菜单定制，由Yalantis开发，好评如潮，github链接</a></p>
+</li>
+<li><p><a href="https://github.com/Khan/Prototope" target="_blank" rel="external">轻量级Javascript桥接Swift库,github链接</a></p>
+</li>
+<li><p><a href="https://github.com/Produkt/RubberBandEffect" target="_blank" rel="external">仿苹果橡皮筋动画效果，github链接</a></p>
+</li>
+<li><p><a href="https://github.com/melvitax/AFImageHelper" target="_blank" rel="external">一套针对 UIImage 和 UIImageView 的实用扩展库，功能包含填色和渐变、裁剪、缩放以及具有缓存机制的在线图片获取.摘自swift语言指南issue29.</a></p>
+</li>
+<li><p><a href="https://github.com/johnlui/SwiftSideslipLikeQQ" target="_blank" rel="external">QQ侧滑效果swift框架 github链接</a></p>
+</li>
+</ul>
+<p><a name="release_site"></a></p>
+<h3 id="10-第三方发布平台">10.第三方发布平台</h3><ul>
+<li><a href="http://www.pgyer.com" target="_blank" rel="external">蒲公英应用发布平台 你可以选择将应用发布到这里供大家使用 可惜还是要证书</a></li>
+</ul>
+<p><a name="terminal"></a></p>
+<h3 id="11-Terminal指令_适用于Xcode">11.Terminal指令 适用于Xcode</h3><ul>
+<li>spriteKit 想要看.atlasc文件到底最后生成什么.终端执行以下指令。ps:“()”内均为示意文字。  <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$cd (包含.atlasc文件的当前目录下)</span><br><span class="line">$<span class="regexp">/Applications/</span>Xcode.app<span class="regexp">/Contents/</span>Developer<span class="regexp">/usr/</span>bin<span class="regexp">/TextureAtlas sprites.atlas ~/</span>Desktop<span class="regexp">/</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a name="article"></a></p>
+<h3 id="12-经典文章推荐，欢迎投稿">12.经典文章推荐，欢迎投稿</h3><ul>
+<li><p><a href="https://www.bloc.io/tutorials/swiftris-build-your-first-ios-game-with-swift#!/chapters/675" target="_blank" rel="external">开发一款俄罗斯游戏，英文</a></p>
+</li>
+<li><p><a href="http://ios-blog.co.uk/tutorials/ios8-how-to-use-objective-c-classes-in-swift/" target="_blank" rel="external">swift oc混编,步骤详细，英文!</a> </p>
+</li>
+<li><p><a href="http://jamesonquave.com/blog/developing-ios-apps-using-swift-tutorial/" target="_blank" rel="external"> Jameson Quave 讲解用swift开发iOS教程,英文</a></p>
+</li>
+<li><p><a href="http://www.weheartswift.com/higher-order-functions-map-filter-reduce-and-more/" target="_blank" rel="external">Higher Order Functions in Swift 文章讲述了swift中的闭包以及如何使用</a></p>
+</li>
+<li><p><a href="https://www.comparakeet.com/the-definitive-list-of-app-tutorials/" target="_blank" rel="external">游戏开发，一整个列表都是，自由选择…</a></p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/8952944f7566" target="_blank" rel="external">旧版本网易新闻iOS版使用的开源组件,来源简书作者JanzTam</a></p>
+</li>
+<li><p><a href="http://www.cocoachina.com/ios/20150525/11919.html" target="_blank" rel="external">iOS应用架构谈 view层的组织和调用方案.(作者：Casa Taloyum),读下来的感受理论性很强，篇幅有点长想读的有个准备</a></p>
+</li>
+<li><p><a href="https://github.com/nixzhu/dev-blog/blob/master/2015-05-27-wormhole.md" target="_blank" rel="external">一次 Objective-C 到 Swift 的改写之旅,推荐阅读</a></p>
+</li>
+<li><p><a href="http://www.cocoachina.com/swift/20150529/11949.html" target="_blank" rel="external">Swift文档记录：Xcode 6中的变化—-NSHipster</a></p>
+</li>
+</ul>
+<p><a name="question"></a></p>
+<h3 id="13-iOS开发问题集锦,欢迎投稿">13.iOS开发问题集锦,欢迎投稿</h3><ul>
+<li><p><a href="">厚颜无耻的打个广告，博主博文有一个分类就是关于解决开发问题….</a></p>
+</li>
+<li><p><a href="http://www.cocoachina.com/bbs/read.php?tid=303132" target="_blank" rel="external">微信支付问题oc论坛分享版本</a></p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/6eaacadafa1a" target="_blank" rel="external">Swift之柯里化函数 来源简书 作者阿峥</a></p>
+</li>
+</ul>
+<p><a name="theNew"></a></p>
+<h3 id="14-swift2-0语法更新和xcode改动等专题[New!!!]">14.swift2.0语法更新和xcode改动等专题[New!!!]</h3><ul>
+<li><p><a href="http://www.csdn.net/article/2015-06-09/2824909-xcode-7-beta-and-swift" target="_blank" rel="external">Xcode 7 beta发布，Swift 2.0带来哪些新变化？ —-老码团队出品</a></p>
+</li>
+<li><p><a href="https://developer.apple.com/swift/blog/?id=29" target="_blank" rel="external">摘自官方博客 Swift2.0 最权威的说明 英文</a></p>
+</li>
+<li><p><a href="http://geek.csdn.net/news/detail/34031" target="_blank" rel="external">WWDC 2015要点：iOS 9、新OS X、watchOS 2、Swift开源 软文一篇 大致了解</a> </p>
+</li>
+<li><p><a href="http://www.infoq.com/cn/news/2015/06/swift-2-0" target="_blank" rel="external">Swift 2.0 发布：即将开源，支持 Linux 软文一篇 了解即可</a></p>
+</li>
+<li><p><a href="https://developer.apple.com/swift/" target="_blank" rel="external">官方 Introducing Swift 2 ——非官方博客</a></p>
+</li>
+<li><p><a href="https://developer.apple.com/swift/resources/" target="_blank" rel="external">Xode7 + Swift2 具体有Xcode7 Download、swift语法书、Swift Library Reference、 3个demo讲解</a></p>
+</li>
+<li><p><a href="http://adcdownload.apple.com/WWDC_2015/Xcode_7_beta/Xcode_7_beta_Release_Notes.pdf" target="_blank" rel="external">Xcode_7_beta_Release_Notes 官方地址 篇幅较长 有耐心的建议看下</a></p>
+</li>
+<li><p>…持续更新 有文章分享请发邮件给博主。<a href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x6d;&#x63;&#x78;&#x63;&#111;&#x64;&#x65;&#64;&#49;&#x36;&#51;&#46;&#99;&#x6f;&#x6d;">&#x6d;&#x63;&#x78;&#x63;&#111;&#x64;&#x65;&#64;&#49;&#x36;&#51;&#46;&#99;&#x6f;&#x6d;</a> </p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Swift-Resource/">Swift Resource</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/swift资源/">swift资源</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/05/19/optional Swift Series/1st.视图篇/05.frame/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"optionalswift"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:optionalswift.cn">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Swift-Beginner-Series/">Swift Beginner Series</a><small>6</small></li>
+  
+    <li><a href="/categories/Swift-Resource/">Swift Resource</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-language/">swift language</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-控件/">swift 控件</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-框架/">swift 框架</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-语法/">swift 语法</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">博客简介</h3>
+<ul class="entry">
+<li>本体：Optional Swift team</li>
+<li>成员：PMST、暮夜星晨、Jim、ICE</li>
+<li>宣言：value or nil ?</li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+<li>想交友的朋友请<a href="http://optionalswift.cn/about">联系我们</a></li>
+<li>QQ 号：1345614869</li>
+<font color="red">Swift 交流群：392436022</font>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">广告赞助</h3>
+<ul class="entry">
+<li><a href="http://www.aliexpress.com/store/1764462"> Fashion Wardrobe for women</a></li>	
+<li><a href="http://shop123768141.taobao.com/shop/view_shop.htm?spm=a1z0e.1.10010.3.It7e1D">程序员ios资料淘宝小店(raywenderlich等英语资料为主)</a></li>
+</ul>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li>PMST个站：<a href="http://colourfulcode.cn">Colourful Code</a></li>
+<li>Jim 个站：<a href="http://www.jinyejun.com">YeJun Jim</a></li>
+<li>想了解黑客,请戳：<a href="http://mapers.net/forum.php">路标社区</a></li>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">安静的听音乐</h3>
+<ul class="entry">
+<li>
+<audio controls="controls" height="100" width="100">
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/mp3" />
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/ogg" />
+  <embed height="100" width="100" src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" >
+</audio>
+</li>
+</ul>
+</div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+  Redesign by <a href="_widget" target="_blank">PMST</a>
+   | 
+  Owned by <a href="http://optionalswift.cn" target="_blank">Optional Swift Team</a> 
+   |
+  Team was set up in April
+	 <font id="counter"></font>
+</section>
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<!--script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script-->
+<script src="/js/counter.js"></script>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/zippera" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
