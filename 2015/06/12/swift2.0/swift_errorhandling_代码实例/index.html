@@ -1,0 +1,519 @@
+
+
+<!DOCTYPE HTML>
+<html>
+
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?94f6ddbfbc53cb18818538cafd3ba350";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <script src="//dn-lbstatics.qbox.me/jquery/1.11.2/jquery.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.7.2.min.js"></script> 
+  <script src="//dn-lbstatics.qbox.me/pintuer/1.0/pintuer.mini.js"></script>
+  <script src="//dn-lbstatics.qbox.me/respond/1.4.2/respond.min.js"></script>
+
+  
+  <title>Swift ErrorHandling 代码实例 | Optional Swift 博客</title>
+  <meta name="author" content="OST">
+  
+  <meta name="description" content="Swift  you choose">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Swift ErrorHandling 代码实例"/>
+  <meta property="og:site_name" content="Optional Swift 博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Optional Swift 博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">Optional Swift 博客</a></h1>
+  <h2><a href="/">Optional means having a value in it or equaling nil</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/categories">分类</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-06-12T12:00:15.000Z"><a href="/2015/06/12/swift2.0/swift_errorhandling_代码实例/">2015-06-12</a></time>
+      
+      
+  
+    <h1 class="title">Swift ErrorHandling 代码实例</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="环境要求：swift2-0_Xcode7">环境要求：swift2.0 Xcode7</h3><blockquote>
+<p>作者：PMST<br>团队博客地址:<a href="http://optionalswift.cn" target="_blank" rel="external">optional Swift</a><br>个人博客地址:<a href="http://colourfulcode.cn" target="_blank" rel="external">colourful code</a><br>该系列为官方文档学习笔记。</p>
+</blockquote>
+<hr>
+<h3 id="实例一：自动贩卖机">实例一：自动贩卖机</h3><a id="more"></a>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//请求出错情况有三种： 1.无效的选择 2.钱不够(差多少就是required参数) 3.无现货 售罄</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">VendingMachineError</span>:<span class="title">ErrorType</span></span>&#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="type">InvalidSelection</span></span><br><span class="line">  <span class="keyword">case</span> <span class="type">InsufficientFunds</span>(required:<span class="type">Double</span>)</span><br><span class="line">  <span class="keyword">case</span> <span class="type">OutOfStock</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//单个商品</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Item</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> price: <span class="type">Double</span>   <span class="comment">//价格</span></span><br><span class="line">  <span class="keyword">var</span> <span class="built_in">count</span>:<span class="type">Int</span>       <span class="comment">//数量</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//存货清单 字典类型 [String:Item] 其中Item 为自定义结构体用于描述商品</span></span><br><span class="line"><span class="keyword">var</span> inventory = [</span><br><span class="line">    <span class="string">"Candy Bar"</span>:<span class="type">Item</span>(price: <span class="number">1.25</span>, <span class="built_in">count</span>: <span class="number">7</span>),</span><br><span class="line">    <span class="string">"Chips"</span>:<span class="type">Item</span>(price: <span class="number">1.00</span>, <span class="built_in">count</span>: <span class="number">4</span>),</span><br><span class="line">    <span class="string">"Pretzels"</span>:<span class="type">Item</span>(price: <span class="number">0.75</span>, <span class="built_in">count</span>: <span class="number">11</span>)</span><br><span class="line">    ]</span><br><span class="line"><span class="comment">//手头的资金</span></span><br><span class="line"><span class="keyword">var</span> amountDeposited = <span class="number">1.00</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>throwing function an method 简单介绍</p>
+</blockquote>
+<p><code>throws</code> 函数用法，以下函数名字很直观就知道能否抛出错误，至于函数取名 只为形象说明。</p>
+<ul>
+<li><p><code>func cannotThrowErrors()-&gt; String</code>,这是正常的函数声明，且这类声明方式绝对不会抛出错误。</p>
+</li>
+<li><p><code>func canThrowErrors() throws -&gt; String</code>,这种函数才是能够抛出错误的，声明方式为<strong><code>(-&gt;)</code></strong> 之前写一个关键字throws即可。</p>
+</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//购物</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">vend</span><span class="params">(itemNamed name:String)</span></span> throws&#123;</span><br><span class="line">  <span class="comment">//通过商品名从清单(字典)中获取商品，假如我要的东西不存在贩卖机里 那么就要抛出错误，错误如下</span></span><br><span class="line">  guard <span class="keyword">var</span> item = inventory[name] <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//抛出错误：无效的选择</span></span><br><span class="line">    throw <span class="type">VendingMachineError</span>.<span class="type">InvalidSelection</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//判断该商品的数量是否大于0</span></span><br><span class="line">  guard item.<span class="built_in">count</span> &gt; <span class="number">0</span> <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//抛出错误 售罄</span></span><br><span class="line">    throw <span class="type">VendingMachineError</span>.<span class="type">OutOfStock</span></span><br><span class="line">  &#125; </span><br><span class="line">  <span class="comment">//到这里表明选择的商品存在 且还有余货  起码有一件</span></span><br><span class="line">  <span class="comment">//判断我的钱(1块钱....) 是否够买一件商品</span></span><br><span class="line">  <span class="keyword">if</span> amountDeposited &gt;= item.price&#123; </span><br><span class="line">    <span class="comment">//OK 钱够了 买一件</span></span><br><span class="line">    amountDeposited -= item.price <span class="comment">//买了商品就要扣钱</span></span><br><span class="line">    --item.<span class="built_in">count</span>                  <span class="comment">//贩卖机的商品数量减一</span></span><br><span class="line">    inventory[name] = item        <span class="comment">//更新贩卖机购买商品信息</span></span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//很遗憾 钱不够 看看还差多少</span></span><br><span class="line">    <span class="keyword">let</span> amountRequired = item.price - amountDeposited</span><br><span class="line">    throw <span class="type">VendingMachineError</span>.<span class="type">InsufficientFunds</span>(required: amountRequired)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面定义完毕 可以看到我们 定义了具有抛出错误的函数 func vend(itemNamed name:String) throws{};那么接下来必定是调用，使用关键字 try ，写在函数名前面即可，形如： try funcName()</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类型字典 [String:String] -&gt; [人：各自喜欢的食物]</span></span><br><span class="line"><span class="keyword">let</span> favoriteSnacks = [</span><br><span class="line">  <span class="string">"Alice"</span>:<span class="string">"Chips"</span>,</span><br><span class="line">  <span class="string">"Bob"</span>:<span class="string">"Licorice"</span>,</span><br><span class="line">  <span class="string">"Eve"</span>: <span class="string">"Pretzels"</span>,</span><br><span class="line">]</span><br><span class="line"><span class="comment">/*:</span><br><span class="line">* brief:这同样是一个能够抛出错误的函数 看throws关键字就一目了然</span><br><span class="line">* para: preson-&gt;购买点心的人名</span><br><span class="line">* return: none</span><br><span class="line">*/</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">bugFavoriteSnack</span><span class="params">(person:String)</span></span> throws&#123;</span><br><span class="line">  <span class="comment">//一样的道理 通过人名字来获取其喜欢的食物 假如人名不存在 那么默认是Candy Bar 注：??是解包的一种 自行了解</span></span><br><span class="line">  <span class="keyword">let</span> snackName = favoriteSnacks[person] ?? <span class="string">"Candy Bar"</span></span><br><span class="line">  <span class="comment">//OK 调用能够抛出错误的函数 要用try关键字</span></span><br><span class="line">  try vend(itemNamed: snackName)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>搞了一大堆 还是只是在定义 不过可以发现是从最底层(贩卖机)写起，直到定义购买的一个动作,改动作能够抛出错误.接下来实现捕获和处理错误,首先简单介绍下语法。</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">  try funcition that throws</span><br><span class="line">  statements</span><br><span class="line">&#125;catch pattern&#123;</span><br><span class="line">  statements</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实例代码如下：  </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">  try vend(itemNamed: <span class="string">"Candy Bar"</span>)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"购买成功 好吃极了"</span>)</span><br><span class="line">&#125;catch <span class="type">VendingMachineError</span>.<span class="type">InvalidSelection</span>&#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"没有这个商品"</span>)</span><br><span class="line">&#125;catch <span class="type">VendingMachineError</span>.<span class="type">OutOfStock</span>&#123;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"没货了"</span>)</span><br><span class="line">&#125;catch <span class="type">VendingMachineError</span>.<span class="type">InsufficientFunds</span>(<span class="keyword">let</span> amountRequired)&#123;</span><br><span class="line">  <span class="comment">//这里可能有点迷惑  let amountRequired 参数其实用来捕获到底差多少钱 显然这里会输出还差0.25元</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"钱不够 还差<span class="subst">\(amountRequired)</span>"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>小结：我们首先得do打头 然后 try一下函数(该函数一定要是能够抛出错误的，具有throws关键字)，然后catch一下；pattern 匹配的有三种错误 这里不一一列举了</p>
+</blockquote>
+<hr>
+<h3 id="实例二：defer用法">实例二：defer用法</h3><p>注意作用域，其次是调用顺序——即一个作用域结束，该作用域中的defer语句自下而上调用。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">lookforSomething</span><span class="params">(name:String)</span></span> throws&#123;</span><br><span class="line">  <span class="comment">//这里是作用域1 整个函数作用域</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"1-1"</span>)</span><br><span class="line">  <span class="keyword">if</span> name == <span class="string">""</span>&#123;</span><br><span class="line">    <span class="comment">//这里是作用域2 if的作用域</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"2-1"</span>)</span><br><span class="line">    defer&#123;</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"2-2"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"2-3"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"1-2"</span>)</span><br><span class="line">  defer&#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"1-3"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">"1-4"</span>)</span><br><span class="line">  <span class="keyword">if</span> name == <span class="string">"hello"</span>&#123;</span><br><span class="line">    <span class="comment">//作用域3</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"3-1"</span>)</span><br><span class="line">    defer&#123;</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"3-2"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"3-3"</span>)</span><br><span class="line">    defer&#123;</span><br><span class="line">      <span class="built_in">print</span>(<span class="string">"3-4"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//有兴趣的看看依次输出什么</span></span><br><span class="line"><span class="comment">//try! lookforSomething("")</span></span><br><span class="line"><span class="comment">//调出 debug Area 快捷键 shift+ command + y</span></span><br><span class="line">try! lookforSomething(<span class="string">"hello"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="实例三：强制try用法">实例三：强制try用法</h3><p>说下强制try用法 即 try!  显然调用的function亦或是method 仍然必须一定是 throwing 型的，有点类似可选类型中的隐式解包，因为有时候我们明确知道某个throwing function or method 不会抛出错误。那么何必用catch 来捕获呢？ 你说是不是？因为你明确知道没有错误拉(当然是你主观认为).</p>
+<pre><code class="swift"><span class="class"><span class="keyword">enum</span> <span class="title">someError</span>:<span class="title">ErrorType</span></span>{
+  <span class="keyword">case</span> <span class="type">Error1</span>
+}
+<span class="comment">//定义一个throwing function</span>
+<span class="func"><span class="keyword">func</span> <span class="title">willOnlyThrowIfTrue</span><span class="params">(value:Bool)</span></span> throws{
+  <span class="keyword">if</span> value{ throw someError.<span class="type">Error1</span>} <span class="comment">//你看把错误抛出了 仅当value = true的时候才抛出</span>
+}
+<span class="comment">//这种写法很安全</span>
+<span class="keyword">do</span>{
+  try willOnlyThrowIfTrue(<span class="built_in">false</span>)    <span class="comment">//显然这个try 一下 是没有错误的</span>
+}catch{
+  <span class="comment">// 处理错误</span>
+}
+<span class="comment">//我自认为这个函数绝对不会出现错误 那么用try!即可</span>
+try! willOnlyThrowIfTrue(<span class="built_in">false</span>)
+</code></pre>
+<p>总结：<code>try!</code>和隐式解包有点相似，假如真的发生错误，程序在运行过程中是会中断的。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Swift2-0语法改动实例/">Swift2.0语法改动实例</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/swift2/">swift2</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/06/09/swift资源整理/ios_swift开发资源整理/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"optionalswift"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:optionalswift.cn">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Swift-Beginner-Series/">Swift Beginner Series</a><small>6</small></li>
+  
+    <li><a href="/categories/Swift-Resource/">Swift Resource</a><small>1</small></li>
+  
+    <li><a href="/categories/Swift2-0语法改动实例/">Swift2.0语法改动实例</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-language/">swift language</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-控件/">swift 控件</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-框架/">swift 框架</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-语法/">swift 语法</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">博客简介</h3>
+<ul class="entry">
+<li>本体：Optional Swift team</li>
+<li>成员：PMST、暮夜星晨、Jim、ICE</li>
+<li>宣言：value or nil ?</li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+<li>想交友的朋友请<a href="http://optionalswift.cn/about">联系我们</a></li>
+<li>QQ 号：1345614869</li>
+<font color="red">Swift 交流群：392436022</font>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">广告赞助</h3>
+<ul class="entry">
+<li><a href="http://www.aliexpress.com/store/1764462"> Fashion Wardrobe for women</a></li>	
+<li><a href="http://shop123768141.taobao.com/shop/view_shop.htm?spm=a1z0e.1.10010.3.It7e1D">程序员ios资料淘宝小店(raywenderlich等英语资料为主)</a></li>
+</ul>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li>PMST个站：<a href="http://colourfulcode.cn">Colourful Code</a></li>
+<li>Jim 个站：<a href="http://www.jinyejun.com">YeJun Jim</a></li>
+<li>想了解黑客,请戳：<a href="http://mapers.net/forum.php">路标社区</a></li>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">安静的听音乐</h3>
+<ul class="entry">
+<li>
+<audio controls="controls" height="100" width="100">
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/mp3" />
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/ogg" />
+  <embed height="100" width="100" src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" >
+</audio>
+</li>
+</ul>
+</div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+  Redesign by <a href="_widget" target="_blank">PMST</a>
+   | 
+  Owned by <a href="http://optionalswift.cn" target="_blank">Optional Swift Team</a> 
+   |
+  Team was set up in April
+	 <font id="counter"></font>
+</section>
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<!--script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script-->
+<script src="/js/counter.js"></script>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/zippera" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
