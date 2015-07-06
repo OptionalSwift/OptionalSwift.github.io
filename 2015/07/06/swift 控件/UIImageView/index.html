@@ -1,0 +1,526 @@
+
+
+<!DOCTYPE HTML>
+<html>
+
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?94f6ddbfbc53cb18818538cafd3ba350";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <script src="//dn-lbstatics.qbox.me/jquery/1.11.2/jquery.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.7.2.min.js"></script> 
+  <script src="//dn-lbstatics.qbox.me/pintuer/1.0/pintuer.mini.js"></script>
+  <script src="//dn-lbstatics.qbox.me/respond/1.4.2/respond.min.js"></script>
+
+  
+  <title>UIImage | Optional Swift 博客</title>
+  <meta name="author" content="OST">
+  
+  <meta name="description" content="Swift  you choose">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="UIImage"/>
+  <meta property="og:site_name" content="Optional Swift 博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Optional Swift 博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">Optional Swift 博客</a></h1>
+  <h2><a href="/">Optional means having a value in it or equaling nil</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/categories">分类</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-06T12:14:16.000Z"><a href="/2015/07/06/swift 控件/UIImageView/">2015-07-06</a></time>
+      
+      
+  
+    <h1 class="title">UIImage</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>作者：Jim<br>文章：UIImage<br>写于：2015.07.06</p>
+</blockquote>
+<h2 id="Introduction">Introduction</h2><p>UIImageView主要是用来显示UIImage的view，也就是说它也是继承UIView的。UIImage表示图片这个对象，如果要显示出来还是得借助视图UIImageView来显示，通常给UIImageView的image属性设置为你想要显示的那个UIImage。<br><a id="more"></a></p>
+<h2 id="Frame">Frame</h2><p>UIImageView的与普通UIView不同的一点是如果不给UIImageView指定frame或者在autoLayout下给予绝对高度和绝对宽度，那么它的frame.size是根据image来计算的。这个属性叫做intrinsicContentSize，就是固有内容大小。如果用一个矩形能容纳下image，这么这个矩形的大小就是UIImageView的frame.size。</p>
+<h2 id="Image_&amp;_HighlightedImage">Image &amp; HighlightedImage</h2><p>UIImageView对象中有两个属性。一个是image，它是普通状态下所显示的那张图片，另一个是highlightedImage，它是高亮状态下所显示的图片。<strong>在普通情况下，点击UIImageView，并不是它高亮状态。它的高亮状态在一些特殊情况下，比如说UIImageView放在table view cell里面，点击table view cell的时候，则UIImageView会变成高亮状态</strong></p>
+<h2 id="BackgroundColor_&amp;_Alpha">BackgroundColor &amp; Alpha</h2><p>因为UIImageView也是一个UIView，所以它也有backgroundColor，alpha这些属性。如果image的有些区域是透明的(transparency)，那么UIImageView也会按照透明来显示。因此，UIImageView会显示各种不同形状的图片。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> earch = <span class="type">UIImage</span>(named: <span class="string">"earch"</span>)!</span><br><span class="line"><span class="keyword">let</span> imageView = <span class="type">UIImageView</span>(image: earch)</span><br></pre></td></tr></table></figure>
+<p><img src="http://i1.tietuku.com/92b3ed215e4bfe7a.png" alt="无背景地球"></p>
+<p>但是UIImageView是矩形形状的。如果给UIImageView的backgrounColor属性赋值红色.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imageView.backgroundColor = <span class="type">UIColor</span>.redColor()</span><br></pre></td></tr></table></figure>
+<p><img src="http://i1.tietuku.com/c593253fc49ba93f.png" alt="红色背景地球"></p>
+<p>同样也可以修改它的alpha值来实现半透明效果</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imageView.alpha = <span class="number">0.4</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://i1.tietuku.com/9574bf64c30c30b1.png" alt="半透明地球"></p>
+<p>UIImageView如果既没有image，也没给它的backgroundColor赋值。那么它将是不可见的。如果你要替换某张图片，只需改变它的image属性，UIImageView自动会刷新图片的。同理，如果你想移除这张图片，那么只需要将image属性赋值为nil即可。</p>
+<h2 id="ContentMode">ContentMode</h2><p>大家是否有想过，既然UIImageView也是一个UIView，那么我们按照通常的思路是给UIImageView一个frame(先不考虑autoLayout的情况下)来确定它在屏幕上的显示位置和大小。那么，如果image大小比frame大或者小，UIImageView该采取什么策略来显示？缩放？裁剪？</p>
+<p>既然存在分歧，那么UIImageView提供一个contentMode属性，来让用户决定用什么策略来显示当image过大或者过小的情况。contentMode是一个UIViewContentMode枚举类型，其定义与声明如下</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">UIViewContentMode</span> : <span class="title">Int</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">case</span> <span class="type">ScaleToFill</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">ScaleAspectFit</span> <span class="comment">// contents scaled to fit with fixed aspect. remainder is transparent</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">ScaleAspectFill</span> <span class="comment">// contents scaled to fill with fixed aspect. some portion of content may be clipped.</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Redraw</span> <span class="comment">// redraw on bounds change (calls -setNeedsDisplay)</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Center</span> <span class="comment">// contents remain same size. positioned adjusted.</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Top</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Bottom</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Left</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Right</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">TopLeft</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">TopRight</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">BottomLeft</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">BottomRight</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>ScaleToFill (默认)</p>
+<p>  表示image根据imageView大小根据相应比例缩放以填充满整个imageView的frame</p>
+</li>
+<li><p>ScaleAspectFit</p>
+<p>  表示image根据给定的一个比例(aspect)来调整image在UIImageView的中的显示，但是不一定填充满，剩余部分会是透明的</p>
+</li>
+<li><p>ScaleAspectFill</p>
+<p>  表示image根据给定的一个比例(aspect)来调整image在UIImageView的中的显示，但是会填充满，存在某些部分超出UIImageView大小，会被裁剪。</p>
+</li>
+<li><p>Redraw</p>
+<p>  表示image会重新绘制，当UIImageView调用setNeedDisplay方法的时候。</p>
+</li>
+<li><p>Center</p>
+<p>  表示不改变image的大小，将image置于UIImageView的中心。</p>
+</li>
+</ul>
+<p>其他属性不常用，不做解释，其原理和Center差不多，只不过是位置的差别。</p>
+<h2 id="ClipsToBounds">ClipsToBounds</h2><p>这个属性是指当image内容超过UIImageView边界的时候，是否进行裁剪显示。如果true，那么UIImageView只会显示image在其内的部分，其余部分不显示。如果为false，那么UIImageView会显示全部内容，包括超出边界的部分，但是它的Frame还是UIImageView的frame，并不会变大。其默认值为false。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为了不让image缩放来适应imageView，contentMode采用Center模式</span></span><br><span class="line">imageView.contentMode = .<span class="type">Center</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 固定imageView的frame</span></span><br><span class="line">imageView.frame = <span class="type">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为了看出UIImageView的frame大小，加个背景色</span></span><br><span class="line">imageView.backgroundColor = <span class="type">UIColor</span>.redColor()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 超出边界剪裁</span></span><br><span class="line">imageView.clipsToBounds = <span class="built_in">true</span></span><br></pre></td></tr></table></figure>
+<p>如图红色部分为UIImageView的frame大小</p>
+<p><img src="http://i1.tietuku.com/024ed7291e44bfec.png" alt="剪裁显示"></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 超出边界不剪裁</span></span><br><span class="line">imageView.clipsToBounds = <span class="built_in">false</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://i1.tietuku.com/0389670bf48c2d49.png" alt="不剪裁显示"></p>
+<h2 id="Resizable_Images">Resizable Images</h2><p>UIImage对象可以使用resizableImageWithCapInsets:resizingMode:方法来生成一个resizable image对象。capInsets参数，是一个UIEdgeInsets结构体，由top，left，bottom，right四个CGFloat值组成。他们代表的是在image中距离上边界，左边界，下边界，右边界各个距离，在内部画一个矩形，矩形之内为圈定的内容。resizingMode参数，是一个UIImageResizingMode枚举类型的参数。有两个值，一个是.Tile，即平铺。另一个.Stretch，即拉伸。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 平铺</span></span><br><span class="line"><span class="keyword">let</span> imageViewTile = <span class="type">UIImageView</span>()</span><br><span class="line">imageViewTile.frame = <span class="type">CGRectMake</span>(<span class="number">10</span>, <span class="number">10</span>, <span class="number">200</span>, <span class="number">100</span>)</span><br><span class="line"><span class="keyword">let</span> earchTile = earch.resizableImageWithCapInsets(<span class="type">UIEdgeInsets</span>(top: earch.size.width/<span class="number">4.0</span>, <span class="keyword">left</span>: earch.size.width/<span class="number">4.0</span>, bottom: earch.size.width/<span class="number">4.0</span>, <span class="keyword">right</span>: earch.size.width/<span class="number">4.0</span>), resizingMode: .<span class="type">Tile</span>)</span><br><span class="line">imageViewTile.image = earchTile</span><br><span class="line"><span class="keyword">self</span>.view.addSubview(imageViewTile)</span><br><span class="line">        </span><br><span class="line"><span class="comment">// 拉伸</span></span><br><span class="line"><span class="keyword">let</span> imageViewStretch = <span class="type">UIImageView</span>()</span><br><span class="line">imageViewStretch.frame = <span class="type">CGRectMake</span>(<span class="number">10</span>, <span class="number">120</span>, <span class="number">200</span>, <span class="number">100</span>)</span><br><span class="line"><span class="keyword">let</span> earchStretch = earch.resizableImageWithCapInsets(<span class="type">UIEdgeInsets</span>(top: earch.size.width/<span class="number">4.0</span>, <span class="keyword">left</span>: earch.size.width/<span class="number">4.0</span>, bottom: earch.size.width/<span class="number">4.0</span>, <span class="keyword">right</span>: earch.size.width/<span class="number">4.0</span>), resizingMode: .<span class="type">Stretch</span>)</span><br><span class="line">imageViewStretch.image = earchStretch</span><br><span class="line"><span class="keyword">self</span>.view.addSubview(imageViewStretch)</span><br></pre></td></tr></table></figure>
+<p><img src="http://i1.tietuku.com/003095999682d8e8.png" alt="平铺和伸缩效果对比"></p>
+<h2 id="Image_Rendernig_Mode">Image Rendernig Mode</h2><p>在iOS中有许多地方，比如说tab bar, navigation bar处。系统把image看成一种透明蒙版(transparency mask)，或者说是一种模板(template)。系统并不区别image的各种颜色，只有着色和透明之分。利用bar的tintColor给image原本有着色部分着色。而透明的部分不着色。这样的image可以利用UIImage的<code>imageWithRenderingMode:</code>方法来产生。其构造参数为UIImageRenderingMode枚举类型，有三个枚举值。</p>
+<ul>
+<li>.Automatic(默认)</li>
+<li>.AlwaysOriginal</li>
+<li>.AlwaysTemplate</li>
+</ul>
+<p>Automatic是默认值，它意味着当image除了在一些用了透明蒙版的特定的场合，才会是template模式，否则都是按照图片原来颜色绘制。</p>
+<p>AlwaysOriginal表示它无论在什么场合都是按照图片原来颜色绘制</p>
+<p>AlwaysTemplate表示它无论在什么场合都按照template模式来绘制。</p>
+<p>imageRenderMode是template的时候，image着色部分的绘制颜色，取决于它的tintColor。而tintColor默认是系统蓝色，并且具有继承机制。子视图的tintColor的会继承父视图的tintColor。以下是采用original模式和template模式的图</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> icon = <span class="type">UIImage</span>(named: <span class="string">"icon"</span>)!</span><br><span class="line"><span class="keyword">let</span> iconOriginal = icon.imageWithRenderingMode(.<span class="type">AlwaysOriginal</span>)</span><br><span class="line"><span class="keyword">let</span> iconTemplate = icon.imageWithRenderingMode(.<span class="type">AlwaysTemplate</span>)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">let</span> imageViewOriginal = <span class="type">UIImageView</span>(image: iconOriginal)</span><br><span class="line"><span class="keyword">let</span> imageViewTemplate = <span class="type">UIImageView</span>(image: iconTemplate)</span><br><span class="line">        </span><br><span class="line">imageViewTemplate.tintColor = <span class="type">UIColor</span>.redColor()</span><br><span class="line">        </span><br><span class="line">imageViewOriginal.center = <span class="type">CGPointMake</span>(<span class="number">100</span>, <span class="number">200</span>)</span><br><span class="line">imageViewTemplate.center = <span class="type">CGPointMake</span>(<span class="number">100</span>, <span class="number">300</span>)</span><br><span class="line">        </span><br><span class="line"><span class="keyword">self</span>.view.addSubview(imageViewOriginal)</span><br><span class="line"><span class="keyword">self</span>.view.addSubview(imageViewTemplate)</span><br></pre></td></tr></table></figure>
+<p><img src="http://i1.tietuku.com/d42c4297ba531794.png" alt="original和template对比"></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/swift-控件/">swift 控件</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/swift-控件/">swift_控件</a>, <a href="/tags/swift-视图/">swift_视图</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/07/06/swift 控件/drawing_学习笔记/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"optionalswift"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:optionalswift.cn">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Swift-Beginner-Series/">Swift Beginner Series</a><small>6</small></li>
+  
+    <li><a href="/categories/Swift-Resource/">Swift Resource</a><small>1</small></li>
+  
+    <li><a href="/categories/Swift2-0语法改动实例/">Swift2.0语法改动实例</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-language/">swift language</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-控件/">swift 控件</a><small>4</small></li>
+  
+    <li><a href="/categories/swift-框架/">swift 框架</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-语法/">swift 语法</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">博客简介</h3>
+<ul class="entry">
+<li>本体：Optional Swift team</li>
+<li>成员：PMST、暮夜星晨、Jim、ICE</li>
+<li>宣言：value or nil ?</li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+<li>想交友的朋友请<a href="http://optionalswift.cn/about">联系我们</a></li>
+<li>QQ 号：1345614869</li>
+<font color="red">Swift 交流群：392436022</font>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">广告赞助</h3>
+<ul class="entry">
+<li><a href="http://www.aliexpress.com/store/1764462"> Fashion Wardrobe for women</a></li>	
+<li><a href="http://shop123768141.taobao.com/shop/view_shop.htm?spm=a1z0e.1.10010.3.It7e1D">程序员ios资料淘宝小店(raywenderlich等英语资料为主)</a></li>
+</ul>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li>PMST个站：<a href="http://colourfulcode.cn">Colourful Code</a></li>
+<li>Jim 个站：<a href="http://www.jinyejun.com">YeJun Jim</a></li>
+<li>想了解黑客,请戳：<a href="http://mapers.net/forum.php">路标社区</a></li>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">安静的听音乐</h3>
+<ul class="entry">
+<li>
+<audio controls="controls" height="100" width="100">
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/mp3" />
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/ogg" />
+  <embed height="100" width="100" src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" >
+</audio>
+</li>
+</ul>
+</div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+  Redesign by <a href="_widget" target="_blank">PMST</a>
+   | 
+  Owned by <a href="http://optionalswift.cn" target="_blank">Optional Swift Team</a> 
+   |
+  Team was set up in April
+	 <font id="counter"></font>
+</section>
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<!--script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script-->
+<script src="/js/counter.js"></script>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/zippera" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
