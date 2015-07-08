@@ -1,0 +1,557 @@
+
+
+<!DOCTYPE HTML>
+<html>
+
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?94f6ddbfbc53cb18818538cafd3ba350";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <script src="//dn-lbstatics.qbox.me/jquery/1.11.2/jquery.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.7.2.min.js"></script> 
+  <script src="//dn-lbstatics.qbox.me/pintuer/1.0/pintuer.mini.js"></script>
+  <script src="//dn-lbstatics.qbox.me/respond/1.4.2/respond.min.js"></script>
+
+  
+  <title>Drawing 学习笔记 | Optional Swift 博客</title>
+  <meta name="author" content="OST">
+  
+  <meta name="description" content="Swift  you choose">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Drawing 学习笔记"/>
+  <meta property="og:site_name" content="Optional Swift 博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Optional Swift 博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">Optional Swift 博客</a></h1>
+  <h2><a href="/">Optional means having a value in it or equaling nil</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/categories">分类</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-06T12:10:16.000Z"><a href="/2015/07/06/swift-Control/drawing_学习笔记/">2015-07-06</a></time>
+      
+      
+  
+    <h1 class="title">Drawing 学习笔记</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="Drawing_学习笔记">Drawing 学习笔记</h3><p>笔记范围：  </p>
+<ul>
+<li>UIImage</li>
+<li>UIImageView</li>
+<li>Resizable Images</li>
+<li>Image Rendering Mode</li>
+<li>Graphics Contexts</li>
+<li>UIImage Drawing</li>
+<li>CGImage Drawing</li>
+<li>Snapshots</li>
+<li>CIFilter and CIImage</li>
+<li>Blur and Vibrancy Views</li>
+</ul>
+<a id="more"></a>
+<h4 id="UIImage">UIImage</h4><ol>
+<li>Asset catalog 和 Top level of app bundle 两个地方存储image。</li>
+<li>调用<code>init(named:)</code>方法，首先会从Asset catalog找起，其次是Top level of app bundle。</li>
+<li><code>init(named:)</code>方法有利有弊：由于会缓存到memory中，意味着一旦图片多，吃的内存就多；但是也正因为缓存到内存中，之后的调用会非常迅速！</li>
+<li>使用<code>init(contentsOfFile:)</code>方法得到图片的同时不会缓存，但是你必须定位到图片的path,<code>NSBundle.mainBundle()</code>方法得到app’s bundle，然后使用实例方法<code>pathForResource:ofType</code>来得到图片</li>
+<li>对于double-resolution 或者 triple-resolution的device,假如有@2x后缀的图片会自动调用，否则嘛会设置scale property = 2.0。iPhone中 one Point 可能包含1、2、3pixels。</li>
+<li>Asset catlog 也有sizeClass!</li>
+<li><p>通过<code>imageWithTraitCollection</code>获得图片的trait collection，<code>traitCollectionDidChanged</code>则是实时反馈属性变换(例如屏幕旋转)</p>
+ <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span>:<span class="title">MyView</span>:<span class="title">UIView</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> image:<span class="type">UIImage</span>!</span><br><span class="line">	<span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">traitCollectionDidChanged</span><span class="params">(previous:UITraitCollection?)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span> <span class="keyword">self</span>.traitCollection != previous&#123;</span><br><span class="line">			<span class="keyword">self</span>.setNeedsDisplay()	<span class="comment">//目前属性不等于先前属性previous时才进行界面重新布局</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">drawRect</span><span class="params">(rect:CGRect)</span></span>&#123;</span><br><span class="line">		<span class="comment">//视图说白了就是一个矩形</span></span><br><span class="line">		<span class="keyword">if</span> <span class="keyword">var</span> im = image&#123;</span><br><span class="line">			<span class="keyword">if</span> <span class="keyword">let</span> asset = <span class="keyword">self</span>.image.imageAsset&#123;</span><br><span class="line">				<span class="comment">//获得imageAsset</span></span><br><span class="line">				<span class="keyword">let</span> tc = <span class="keyword">self</span>.traitCollection</span><br><span class="line">				im = asset.imageWithTraitCollection(tc)<span class="comment">//根据tc当前的屏幕属性来获得图片</span></span><br><span class="line">			&#125;</span><br><span class="line">			im.drawAtPoint(<span class="type">CGPointZero</span>)	<span class="comment">//把得到的image 绘制到原点(0,0)</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代码生成UIImageAsset，设置什么图片在什么tc下显示，加载到asset catalog，真实是没有asset catalog的</p>
+ <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tcdisp = <span class="type">UITraitCollection</span>(displayScale:<span class="type">UIScreen</span>.mainScreen().scale)<span class="comment">//获得当前point 和 pixel 的比例 就是一个点中有多少像素</span></span><br><span class="line"><span class="keyword">let</span> tcphone = <span class="type">UITraitCollection</span>(userInterfaceIdiom:.<span class="type">Phone</span>)</span><br><span class="line"><span class="keyword">let</span> tcreg = <span class="type">UITraitCollection</span>(verticalSizeClass:.<span class="type">Regular</span>)</span><br><span class="line"><span class="comment">//配置第一个tc</span></span><br><span class="line"><span class="keyword">let</span> tc1 = <span class="type">UITraitCollection</span>(traitsFromCollection:[tcdisp,tcphone,tcreg])</span><br><span class="line"><span class="comment">//更改一个sizeclass的东西 用来生成第二个tc</span></span><br><span class="line"><span class="keyword">let</span> tccom = <span class="type">UITraitCollection</span>(verticalSizeClass:.<span class="type">Compact</span>)</span><br><span class="line"><span class="keyword">let</span> tc2 = <span class="type">UITraitCollection</span>(traitsFromCollection:[tcdisp,tcphone,tccom])</span><br><span class="line"><span class="keyword">let</span> moods = <span class="type">UIImageAsset</span>()		<span class="comment">//新建一个新的ImageAsset 这个只能cached 到memory中</span></span><br><span class="line"><span class="keyword">let</span> frowney = <span class="type">UIImage</span>(named:<span class="string">"frowney"</span>)</span><br><span class="line"><span class="keyword">let</span> smiley = <span class="type">UIImage</span>(named:<span class="string">"smiley"</span>)</span><br><span class="line">moods.register(frowney,withTraitCollection:tc1)<span class="comment">//只有当tc1的时候显示图片frowney</span></span><br><span class="line">moods.register(smiley,withTraitCollection:tc2)<span class="comment">//同理</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="UIImageView">UIImageView</h4><ol>
+<li>media Libary 可以通过快捷键(command-option-control-4)</li>
+<li>UIImageView 有两个图片：image和highlightedImage，由highlighted 属性来标识。</li>
+<li>UIImageView 的 默认contentMode为.ScaleToFill，<font color="red">文中提到一开始是view来适应图片的大小(有待考证)</font></li>
+<li>在SB中放置一个imageView，赋值给它一张图片让其显示，这时候ImageView的大小尺寸去决定于他是否使用了autolayout。没有则imageView 本身是多少就是多少，假如使用了autolayout 那么Imageview就会反过来适应图片的size,除非你给imageView加了约束</li>
+</ol>
+<h4 id="Resible_Images">Resible Images</h4><ol>
+<li>resizingMode: 有.Tile、.Stretch 两种</li>
+<li>产生一个resibleimage 通过<code>resizableImageWithCapInsets()</code>方法</li>
+</ol>
+<h4 id="Image_Rendering_Mode">Image Rendering Mode</h4><p>1.UIImage RenderingMode 分为三个：.Automatic .AlwaysOriginal .AlwaysTemplate</p>
+<h4 id="Graphics_Context">Graphics Context</h4><ol>
+<li>只有手头有context 才可以draw.</li>
+<li>context怎么得到。<code>UIGraphicsBeginImageContextWithOptions()</code>创建context并设置为当前的context;绘画完全使用<code>UIGraphicGetImageFromCurrentImageContext()</code>得到先前绘制好的图形；最后使用<code>UIGraphicsEndImageContext</code>去除context。</li>
+<li>继承UIView ，然后在<code>drawRect</code>方法中绘制，这里有意思的是Cocoa 已经创建好一个Graphic context作为当前的context供你使用了，</li>
+<li>但是假如subclass CALayer 实现<code>drawInContext：incontext</code>方法 你必须先把这个incontext作为当前画布，才能进行绘画。<code>UIGraphicPushContext</code>(与之相对的是<code>UIGraphicPopContext</code>).</li>
+<li><strong>UIKit</strong>中 有很多Cocoa Class 知道如何去绘制自己，比如：UIImage、NSString(文字喽)、UIBezierPath（形状），UIColor.在UIKit中 我们只能绘制到当前的context中，否则没有效果的，那么我们必须使用<code>UIGraphicsBeginImageContextWithOptions()</code>或者<code>drawRect</code></li>
+<li><strong>Core Graphics</strong> 这个貌似是完整的绘画API,UIKit中的draw也是封装这个的。</li>
+<li>自然我们也要制定一个context,叫做CGContext。CoreGraphic 我们必须首先生成context 设为当前的context,Core Graphic 还需要去reference 到它才能用，使用方法<code>UIGraphicsGetCurrentContext</code></li>
+</ol>
+<ul>
+<li><p>1.UIKit drawRect方法</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">drawRect</span><span class="params">(rect:CGRect)</span></span>&#123;</span><br><span class="line"><span class="comment">//UIKit已经为我们搞好了context 并指向了它</span></span><br><span class="line"><span class="keyword">let</span> p = <span class="type">UIBezierPath</span>(ovalInRect:<span class="type">CGRectMake</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>))</span><br><span class="line"><span class="type">UIColor</span>.blueColor.setFill()</span><br><span class="line">p.fill()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.Core Graphics drawRect方法,context已经存在，我们要做的是指向它</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">drawRect</span><span class="params">(rect:CGRect)</span></span>&#123;</span><br><span class="line"><span class="keyword">let</span> con = <span class="type">UIGraphicsGetCurrentContext</span>()</span><br><span class="line"><span class="type">CGContextAddEllipseInRect</span>(con,<span class="type">CGRectMake</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>))</span><br><span class="line"><span class="type">CGContextSetFillColorWithColor</span>(con,<span class="type">UIColor</span>.blueColor().<span class="type">CGColor</span>)<span class="comment">//注意这里是CGColor</span></span><br><span class="line"><span class="type">CGContextFillPath</span>(con)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>3.UIKit drawLayer方法</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">overrride <span class="func"><span class="keyword">func</span> <span class="title">drawLayer</span><span class="params">(layer:CALayer,inContext con:CGContext)</span></span>&#123;</span><br><span class="line"><span class="type">UIGraphicPushContext</span>(con)		<span class="comment">//先要推入到当前的context</span></span><br><span class="line"><span class="keyword">let</span> p = <span class="type">UIBezierPath</span>(ovalInRect:<span class="type">CGRectMake</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>))</span><br><span class="line"><span class="type">UIColor</span>.blueColor.setFill()</span><br><span class="line">p.fill()</span><br><span class="line"><span class="type">UIGraphicPopContext</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.Core Graphics drawLayer方法</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">drawLayer</span><span class="params">(layer:CALayer,inContext con:CGContext)</span></span>&#123;</span><br><span class="line"><span class="comment">//注意这里用的是前面参数传进来的con</span></span><br><span class="line"><span class="type">CGContextAddEllipseInRect</span>(con,<span class="type">CGRectMake</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>))</span><br><span class="line"><span class="type">CGContextSetFillColorWithColor</span>(con,<span class="type">UIColor</span>.blueColor().<span class="type">CGColor</span>)<span class="comment">//注意这里是CGColor</span></span><br><span class="line"><span class="type">CGContextFillPath</span>(con)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>5.UIKit的 UIImageView</p>
+  <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UIGraphicBeginImageContextWithOptions</span>(cgsizemake(<span class="number">100</span>,<span class="number">100</span>).<span class="built_in">false</span>,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">let</span> p = <span class="type">UIBezierPath</span>(ovalInRect:cgrecmake(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>))</span><br><span class="line"><span class="type">UIColor</span>.blueColor().setFill()</span><br><span class="line">p.fille()</span><br><span class="line"><span class="keyword">let</span> im = <span class="type">UIGraphicsGetImageFromCurrentImageContext</span>()</span><br><span class="line"><span class="type">UIGraphicEndImageContext</span>()</span><br><span class="line"><span class="keyword">self</span>.iv = im	<span class="comment">//赋值给imageView中的image</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.Core Graphic UIImageView</p>
+</li>
+</ul>
+<pre><code><span class="comment"><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UIGraphicBeginImageContextWithOptions</span>(cgsizemake(<span class="number">100</span>,<span class="number">100</span>))</span><br><span class="line"><span class="keyword">let</span> con = <span class="type">UIGraphicGetCurrentContext</span>()	<span class="comment">//指向当前的context</span></span><br><span class="line"><span class="type">CGContextAddEllipseInRect</span>(con,<span class="type">CGRectMake</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>))</span><br><span class="line"><span class="type">CGContextSetFillColorWithColor</span>(con,<span class="type">UIColor</span>.blueColor().<span class="type">CGColor</span>)<span class="comment">//注意这里是CGColor</span></span><br><span class="line"><span class="type">CGContextFillPath</span>(con)</span><br><span class="line"><span class="keyword">let</span> im = <span class="type">UIgraphicsGetImageFromCurrentImageCOntext</span>()</span><br><span class="line"><span class="type">UIgraphicEndImageContext</span>()</span><br><span class="line"><span class="keyword">self</span>.iv = im</span><br></pre></td></tr></table></figure></span>
+</code></pre><p>总结：由于UIKit是对Core Graphic的封装，预先为我们准备好了context,并指向它了，所以我们只需要用UIBezierPath等都是在context上操作的；而Core graphic，必须要指向当然的current context，由于UIkit已经生成了，那么我们只需要UIgraphicgetCurrentContext即可，仔细观察会发现Core Graphic操作方法都是要把context作为参数传入操作的。</p>
+<h4 id="UIImage_Drawing">UIImage Drawing</h4><ol>
+<li>UIImage的绘制，同样先创建一个context。使用方法<code>UIGraphicBeginImagContextwithOptions()</code>，之后就是绘制，然后从context提取出绘制好的图片image,反馈给imageView的image.</li>
+<li>注意两个方法<code>drawAtPoint</code>和<code>drawInRect</code></li>
+</ol>
+<h4 id="CGImage_Drawing">CGImage Drawing</h4><ol>
+<li>UIImage的Core Graphic版本就是CGImage.</li>
+<li>手头有CGImage 用<code>init(CGImage:)</code>转换到UIimage,另外还有<code>init(CGImage:scale:orientation)</code></li>
+<li><font color="red">有个猜测 是不是所有的UIimage 都是由CGImage得来的呢，然后UIImage中的CGImgae属性就是原始那个CGImage呢？</font></li>
+<li>238页例子会有一些问题，首先是图形上下颠倒了，主要原因还是在于创建完CGImage，用CGContextDrawimage时候发生的上下颠倒，文章指出是市区了native 坐标系产生的，简单的处理是重新绘制一次即可，我理解为负负得正。</li>
+<li>第二个问题是在high-resolution device中，绘制会出现一些问题。</li>
+<li>image.size单位是Point,比如图片名字叫Mars.png、Mars@2x.png,Mar@3x.png 在double-resolution 设别上scale =2 ,在tripl设备上scale=3。通过UIimage(named:)方法得到的image 会按照设备来获得的，意味着double device上会获得2x图片 triple device获得3x图片。 但是size 都是Mars.png的size。</li>
+</ol>
+<h4 id="Snapchots">Snapchots</h4><ol>
+<li>文档讲的不是很清楚 还需要再看下</li>
+</ol>
+<h4 id="CIFilter_and_CIImage">CIFilter and CIImage</h4><ol>
+<li>用法比较简单，此外对于类class 只要继承于NSObject 都能使用KVO方法来获得属性 以及设置属性(比如setvalue(,forkey))</li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/swift-控件/">swift 控件</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/swift-控件/">swift_控件</a>, <a href="/tags/swift-视图/">swift_视图</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2015/07/06/swift-Control/UIImageView/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2015/06/20/swift-Control/tableview_and_collectionview_学习总结/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"optionalswift"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:optionalswift.cn">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Swift-Beginner-Series/">Swift Beginner Series</a><small>6</small></li>
+  
+    <li><a href="/categories/Swift-Resource/">Swift Resource</a><small>1</small></li>
+  
+    <li><a href="/categories/Swift2-0语法改动实例/">Swift2.0语法改动实例</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-language/">swift language</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-控件/">swift 控件</a><small>5</small></li>
+  
+    <li><a href="/categories/swift-框架/">swift 框架</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-语法/">swift 语法</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">博客简介</h3>
+<ul class="entry">
+<li>本体：Optional Swift team</li>
+<li>成员：PMST、暮夜星晨、Jim、ICE</li>
+<li>宣言：value or nil ?</li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+<li>想交友的朋友请<a href="http://optionalswift.cn/about">联系我们</a></li>
+<li>QQ 号：1345614869</li>
+<font color="red">Swift 交流群：392436022</font>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">广告赞助</h3>
+<ul class="entry">
+<li><a href="http://www.aliexpress.com/store/1764462"> Fashion Wardrobe for women</a></li>	
+<li><a href="http://shop123768141.taobao.com/shop/view_shop.htm?spm=a1z0e.1.10010.3.It7e1D">程序员ios资料淘宝小店(raywenderlich等英语资料为主)</a></li>
+</ul>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li>PMST个站：<a href="http://colourfulcode.cn">Colourful Code</a></li>
+<li>Jim 个站：<a href="http://www.jinyejun.com">YeJun Jim</a></li>
+<li>想了解黑客,请戳：<a href="http://mapers.net/forum.php">路标社区</a></li>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">安静的听音乐</h3>
+<ul class="entry">
+<li>
+<audio controls="controls" height="100" width="100">
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/mp3" />
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/ogg" />
+  <embed height="100" width="100" src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" >
+</audio>
+</li>
+</ul>
+</div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+  Redesign by <a href="_widget" target="_blank">PMST</a>
+   | 
+  Owned by <a href="http://optionalswift.cn" target="_blank">Optional Swift Team</a> 
+   |
+  Team was set up in April
+	 <font id="counter"></font>
+</section>
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<!--script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script-->
+<script src="/js/counter.js"></script>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/zippera" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
