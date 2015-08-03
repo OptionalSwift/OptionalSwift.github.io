@@ -23,7 +23,7 @@ var _hmt = _hmt || [];
   <script src="//dn-lbstatics.qbox.me/respond/1.4.2/respond.min.js"></script>
 
   
-  <title>Why coding like This ------ Filter 函数揭秘 | Optional Swift 博客</title>
+  <title>Why coding like This ------ Reduce 函数揭秘 | Optional Swift 博客</title>
   <meta name="author" content="OST">
   
   <meta name="description" content="Swift  you choose">
@@ -31,7 +31,7 @@ var _hmt = _hmt || [];
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Why coding like This ------ Filter 函数揭秘"/>
+  <meta property="og:title" content="Why coding like This ------ Reduce 函数揭秘"/>
   <meta property="og:site_name" content="Optional Swift 博客"/>
 
   
@@ -238,66 +238,111 @@ var _hmt = _hmt || [];
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-08-03T03:24:16.000Z"><a href="/2015/08/03/why-coding-like-this/Filter/">2015-08-03</a></time>
+        <time datetime="2015-08-03T11:24:16.000Z"><a href="/2015/08/03/why-coding-like-this/Reduce/">2015-08-03</a></time>
       
       
   
-    <h1 class="title">Why coding like This ------ Filter 函数揭秘</h1>
+    <h1 class="title">Why coding like This ------ Reduce 函数揭秘</h1>
   
 
     </header>
     <div class="entry">
       
-        <h3 id="2-Filter函数揭秘">2.Filter函数揭秘</h3><h4 id="Topic_1:"><strong>Topic 1:</strong></h4><p>请用<code>Filter</code>函数筛选出<code>String</code>数组中后缀是<code>.swift</code>的文件。</p>
-<h4 id="Example:"><strong>Example:</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例一：</span></span><br><span class="line"><span class="keyword">var</span> filesNeedToFilter = [<span class="string">"ViewController.swift"</span>,<span class="string">"HelloWorld.c"</span>,<span class="string">"Web.java"</span>,<span class="string">"Person.swift"</span>,<span class="string">"Main.c"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出["ViewController.swift","Person.swift"]</span></span><br><span class="line">filesNeedToFilter.<span class="built_in">filter</span>&#123;</span><br><span class="line">  file <span class="keyword">in</span></span><br><span class="line">  file.hasSuffix(<span class="string">".swift"</span>)<span class="comment">//注意suffix是后缀的意思</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="3-Reduce_函数揭秘">3.Reduce 函数揭秘</h3><h4 id="Topic_3:"><strong>Topic 3:</strong></h4><p>请用<code>Reduce</code>函数对<code>Int</code>类型数组内所有元素求和，例如数组[1,2,3,4]的4个元素和为10.</p>
+<h4 id="Example:"><strong>Example:</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例一：</span></span><br><span class="line"><span class="keyword">let</span> intArray = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> sum = intArray.<span class="built_in">reduce</span>(<span class="number">0</span>)&#123;</span><br><span class="line">  result, x <span class="keyword">in</span></span><br><span class="line">  result + x</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h4 id="why_coding_like_this?"><strong>why coding like this?</strong></h4><p><strong>命题：</strong>假设让你写一个函数来实现筛选后缀是<code>.swift</code>的文件，你该如何实现?<br><strong>思路：</strong>首先声明一个数组用于保存符合的结果值，然后遍历需要筛选的数组，通过<code>hasSufffix</code>函数返回<code>true or false</code>来判断数组元素是否含有指定的后缀。<br><strong>代码：</strong>      </p>
+<h4 id="why_coding_like_this?"><strong>why coding like this?</strong></h4><h4 id="1-开篇">1.开篇</h4><p><strong>命题一：</strong>假设让你写一个函数来实现对<code>Int</code>类型数组内所有元素求和，例如数组[1,2,3,4]的求和结果为10。<br><strong>思路：</strong>与类map,filter函数思路不同，前者是对数组内每一个元素单独做处理，而reduce恰恰相反，是将所有数组元素整合到一起。因此关于求和函数思路很明确，遍历整个数组元素，逐一求和后作为结果值返回，大致为 <code>0 + 1 + 2 + 3 +4</code>。其中0是初始值。<br><strong>代码：</strong>     </p>
 <pre><code class="swift"><span class="comment">//例二：</span>
-<span class="func"><span class="keyword">func</span> <span class="title">getSwiftFiles</span><span class="params">(files:[String])</span></span>-&gt;[<span class="type">String</span>]{
-  <span class="keyword">var</span> result:[<span class="type">String</span>] = []
-  <span class="keyword">for</span> file <span class="keyword">in</span> files{
-    <span class="keyword">if</span> file.hasSuffix(<span class="string">".swift"</span>){
-      result.append(file)
-    }
-  }
-  <span class="keyword">return</span> result
-}
-<span class="comment">//不妨来试试//输出["ViewController.swift","Person.swift"]</span>
-getSwiftFiles(filesNeedToFilter)
-</code></pre>
-<p>我们注意到只有<strong>满足</strong>给定的<strong>筛选条件</strong>，这里是<code>file.hasSuffix(&quot;.swift&quot;)</code>返回<code>true</code>表示包含后缀，反之不包含。<br>通过Map章节学习后，立马意识到该函数的局限性—————仅适用筛选后缀是<code>.swift</code>的文件。因此我们需要自己指定筛选条件，而这个筛选条件是一个类型为<code>String-&gt;Bool</code>的闭包，String表示传入需要条件判断的元素，满足返回<code>true</code>，不满足返回<code>false</code>，这也是为什么闭包返回<code>Bool</code>的原因了。修改后的代码如下：      </p>
-<pre><code class="swift"><span class="comment">//例三：</span>
-<span class="func"><span class="keyword">func</span> <span class="title">getFilesByCondition</span><span class="params">(files:[String],f:String-&gt;Bool)</span></span>-&gt;[<span class="type">String</span>]{
-  <span class="keyword">var</span> result:[<span class="type">String</span>] = []
-  <span class="keyword">for</span> file <span class="keyword">in</span> files{
-    <span class="keyword">if</span> f(file){
-      result.append(file)
-    }
-  }
-  <span class="keyword">return</span> result
-}
-<span class="comment">//不妨来试试 采用closure的尾包形式</span>
-getFilesByCondition(filesNeedToFilter){
-  file <span class="keyword">in</span>
-  file.hasSuffix(<span class="string">".c"</span>)<span class="comment">//返回["HelloWorld.c", "Main.c"]</span>
-}
-</code></pre>
-<p>现在可以随心所欲的传入筛选条件了，但是该函数显然仍有不足，缺少什么呢？恩….对！泛型，现在传入的数组不能局<br>限于String类型，那么作为泛型我们就要使用<code>T</code>来泛指所有类型喽(注意泛型并没有特别指明要用<code>T</code>,<code>U</code>,你可以自由给定，建议使用大写以及驼峰写法)。改写代码如下：      </p>
-<pre><code class="swift"><span class="comment">//例四：</span>
-<span class="func"><span class="keyword">func</span> <span class="title">myFilter</span><span class="generics">&lt;T&gt;</span><span class="params">(xs:[T],check:T-&gt;Bool)</span></span>-&gt;[<span class="type">T</span>]{
-  <span class="keyword">var</span> result:[<span class="type">T</span>] = []
+<span class="func"><span class="keyword">func</span> <span class="title">sum</span><span class="params">(xs:[Int])</span></span>-&gt;<span class="type">Int</span>{
+  <span class="keyword">var</span> result:<span class="type">Int</span> = <span class="number">0</span>
   <span class="keyword">for</span> x <span class="keyword">in</span> xs{
-    <span class="comment">//必须经过条件判断才可以</span>
-    <span class="keyword">if</span> check(x){
-      result.append(x)
-    }
+    result += x
   }
   <span class="keyword">return</span> result
 }
+<span class="comment">//不妨测试下</span>
+sum(intArray)<span class="comment">//print 10</span>
 </code></pre>
-<p>看来又实现了一个自定义的方法，不妨试试好用不好用。</p>
+<p>可以看到对于sum函数传入<code>Int</code>类型数组，首先我们声明一个<code>Int</code>类型变量用于保存最后的求和结果值，初始值为0；接着使用<code>for-in</code>语句遍历传入的数组，使用<code>result += x</code>逐一求和累加；最后返回结果值result。     </p>
+<h4 id="2-过渡">2.过渡</h4><p><strong>命题二：</strong>基础过来，照理对条件进行改变，假如把所有元素求和更改为对所有元素求乘，如[1,2,3,4] 返回1 <em> 2 </em> 3 <em> 4 = 24。<br><strong>思路：</strong>显然对于前面的代码稍许改动即可，主要是替换<code>result += x</code>(累加运算) 更为**result = result </em> x<strong>(阶乘运算)。当然有一点切记不要遗忘，就是</strong>初始<strong>值 <code>result = 1</code>。      
+</strong>代码：**       </p>
+<pre><code class="swift"><span class="comment">//例三：</span>
+<span class="func"><span class="keyword">func</span> <span class="title">multiplicator</span><span class="params">(xs:[Int])</span></span>-&gt;<span class="type">Int</span>{
+    <span class="keyword">var</span> result:<span class="type">Int</span> = <span class="number">1</span>
+    <span class="keyword">for</span> x <span class="keyword">in</span> xs{
+        result = x * result
+    }
+    <span class="keyword">return</span> result
+}
+multiplicator(intArray)<span class="comment">//输出24</span>
+</code></pre>
+<p><strong>命题三：</strong> 说完Int类型数组，再来说说String类型,将一个文字片段数组组成一个完整的句子，例如<code>[&quot;hello&quot;,&quot; &quot;,&quot;world&quot;,&quot;!&quot;,&quot;say&quot;,&quot; &quot;,&quot;by&quot;,&quot; &quot;,&quot;optionalswift&quot;]</code>,最后整合成<strong>“hello world!say by optionalswift”</strong>。<br><strong>思路：</strong> 思路大概是遍历数组，然后将所有字符串元素拼接在一起，关键这个拼接用什么？例如有<code>str1</code>和<code>str2</code>，swift中其实只需要简单的<code>newStr = str1 + str2</code> 即可。<br><strong>代码：</strong>     </p>
+<pre><code class="swift"><span class="comment">//例四：</span>
+<span class="func"><span class="keyword">func</span> <span class="title">jointStringArray</span><span class="params">(xs:[String])</span></span>-&gt;<span class="type">String</span>{
+  <span class="keyword">var</span> result :<span class="type">String</span> = <span class="string">""</span>
+
+  <span class="keyword">for</span> x <span class="keyword">in</span> xs{
+    result += x
+  }
+  <span class="keyword">return</span> result
+}
+<span class="keyword">let</span> helloworld = [<span class="string">"hello"</span>,<span class="string">" "</span>,<span class="string">"world"</span>,<span class="string">"!"</span>,<span class="string">"say"</span>,<span class="string">" "</span>,<span class="string">"by"</span>,<span class="string">" "</span>,<span class="string">"optionalswift"</span>]
+jointStringArray(helloworld)<span class="comment">//输出"hello world!say by optionalswift"</span>
+</code></pre>
+<p>你已经急着上手想写泛型函数了吗？等等，我们貌似还忽略了一些复杂的链接情况。比如[“hello”,”world”,”say”,”By”,”optional”]，我们需要在每一个单词之间插入”-“连字符，别问我为什么？因为是我出题！     </p>
+<pre><code class="swift"><span class="comment">//例五：hyphen 意思为连字符`-`</span>
+<span class="func"><span class="keyword">func</span> <span class="title">jointStringArrayByHyphen</span><span class="params">(xs:[String])</span></span>-&gt;<span class="type">String</span>{
+  <span class="keyword">var</span> result : <span class="type">String</span> = <span class="string">"整合后的字符串为："</span>
+  <span class="keyword">for</span> x <span class="keyword">in</span> xs{
+    result = result + <span class="string">"-"</span> + x  <span class="comment">//注意右侧是一个类似combine(result,x)函数进行处理 得到整合后的结果给result</span>
+  }
+  <span class="keyword">return</span> result
+}
+<span class="keyword">let</span> newArray = [<span class="string">"hello"</span>,<span class="string">"world"</span>,<span class="string">"say"</span>,<span class="string">"By"</span>,<span class="string">"optional"</span>]
+jointStringArrayByHyphen(newArray)<span class="comment">//输出"整合后的字符串为：-hello-world-say-By-optional"</span>
+</code></pre>
+<h4 id="3-高潮">3.高潮</h4><p>在开始写我们的泛型reduce函数之前，分析函数的输入输出以及如何实现：首先该函数将传入一个泛型类数组，暂且定为<code>[U]</code>；此外函数可自己设定初始值给<code>result</code>，暂且定为<code>T</code>；最后是重中之重：传入一个闭包作为连接result和数组元素的处理函数，<code>combine(result,x)</code>，不难分析result的类型为<code>T</code>,x是数组xs中的元素，类型为<code>U</code>，返回嘛自然是和result一致的类型喽。因此<code>combine</code>闭包类型为<code>(T,U)-&gt;T</code>。因此代码这么写：    </p>
+<pre><code class="swift"><span class="comment">//例六：</span>
+<span class="func"><span class="keyword">func</span> <span class="title">myReduce</span><span class="generics">&lt;T,U&gt;</span><span class="params">(arr:[T],initialValue:U,combine:<span class="params">(U,T)</span></span></span>-&gt;<span class="type">U</span>)-&gt;<span class="type">U</span>{
+  <span class="keyword">var</span> result = initialValue <span class="comment">//赋值初始值 类型为U 并且是作为结果值返回的</span>
+  <span class="keyword">for</span> elem <span class="keyword">in</span> arr{
+    result = combine(result,elem)   <span class="comment">//注意右侧是传入的闭包 该闭包类型为(U,T)-&gt;U,即把上一次的结果值依次和数组元素做拼接处理，该处理可在闭包中实现，取决于你</span>
+  }
+  <span class="keyword">return</span> result
+}
+myReduce(newArray, <span class="string">"整合后的字符串为："</span>){
+  result , elem <span class="keyword">in</span> <span class="comment">//注意result ,x 于combine(result,elem)相对应</span>
+  <span class="keyword">return</span> result + <span class="string">"-"</span> + x <span class="comment">//注意这里return 其实是可以省略的！</span>
+}
+</code></pre>
+<p>不得不说，这个函数还是有点料的，需要细细品味一番。你以为这就结束了吗，还有落幕呢？</p>
+<h4 id="4-落幕">4.落幕</h4><p>对sum函数进行改写，使用前面自定义的myReduce函数封装</p>
+<pre><code class="swift"><span class="func"><span class="keyword">func</span> <span class="title">sumUsingReduce</span><span class="params">(xs:[Int])</span></span>-&gt;<span class="type">Int</span>{
+    <span class="keyword">return</span> myReduce(xs,<span class="number">0</span>){result, x <span class="keyword">in</span> result + x}
+}
+</code></pre>
+<p>注意到省略了return 因为swift会帮你推算要返回什么。简化的感觉不够彻底。    </p>
+<pre><code class="swift"><span class="func"><span class="keyword">func</span> <span class="title">sumUsingReduce</span><span class="params">(xs:[Int])</span></span>-&gt;<span class="type">Int</span>{
+    <span class="keyword">return</span> myReduce(xs,<span class="number">0</span>,+)
+}
+</code></pre>
+<p>闭包仅仅传入了一个<code>+</code>号，swift推算过程是首先combine闭包有两个传入参数result和elem,除此之外别无其他，因此<code>+</code>只能对这两个参数求和，得到一个结果值x，由于combine函数还需要返回一个结果值，但是思来想去貌似除了x没有其他可用，因此把x作为闭包结果值返回和result相加。</p>
+<p>类似的你可是使用return myReduce(xs,1,*)。</p>
+<p>你以为这就结束了吗？ 现在用reduce来改写map函数 以及filter函数    </p>
+<pre><code class="swift"><span class="func"><span class="keyword">func</span> <span class="title">mapUsingReduce</span><span class="generics">&lt;T,U&gt;</span><span class="params">(xs:[T],f:T-&gt;U)</span></span>-&gt;[<span class="type">U</span>]{
+    <span class="keyword">return</span> xs.<span class="built_in">reduce</span>([]){result,x <span class="keyword">in</span> result + [f(x)]}<span class="comment">//使用了系统API 尝试用自定义的</span>
+}
+</code></pre>
+<p>首先注意到函数传入的两个参数以及返回结果值和早前map函数是一模一样的，关键是在主体的实现上!</p>
+<p>再来看filter的实现：    </p>
+<pre><code class="swift">filterUsingReduce&lt;<span class="type">T</span>&gt;(xs:[<span class="type">T</span>],check:<span class="type">T</span>-&gt;<span class="type">Bool</span>)-&gt;[<span class="type">T</span>]{
+    <span class="keyword">return</span> xs.<span class="built_in">reduce</span>([]){
+        <span class="keyword">return</span> check(x) ? result + [x] : result <span class="comment">//使用了系统API 尝试用自定义的</span>
+    }
+}
+</code></pre>
 <blockquote>
-<p>why coding like this 系列，更多是用<code>Why</code>,<code>How</code>看待代码,摒弃那种<code>我只要会写，至于为什么？因为我一直那么写</code>的思想。希望对大家有帮助！ 下文带来reduce的揭秘。</p>
+<p>map，filter，reduce 小节至此结束！ 希望对大家有收获！</p>
 </blockquote>
 
       
@@ -341,10 +386,8 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
  <nav id="pagination" >
     
-    <a href="/2015/08/03/why-coding-like-this/Reduce/" class="alignleft prev" >上一页</a>
     
-    
-    <a href="/2015/08/02/why-coding-like-this/map/" class="alignright next" >下一页</a>
+    <a href="/2015/08/03/why-coding-like-this/Filter/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
