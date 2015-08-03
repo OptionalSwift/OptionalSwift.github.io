@@ -23,7 +23,7 @@ var _hmt = _hmt || [];
   <script src="//dn-lbstatics.qbox.me/respond/1.4.2/respond.min.js"></script>
 
   
-  <title>Why coding like This ------ Map函数揭秘 | Optional Swift 博客</title>
+  <title>Why coding like This ------ Map 函数揭秘 | Optional Swift 博客</title>
   <meta name="author" content="OST">
   
   <meta name="description" content="Swift  you choose">
@@ -31,7 +31,7 @@ var _hmt = _hmt || [];
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Why coding like This ------ Map函数揭秘"/>
+  <meta property="og:title" content="Why coding like This ------ Map 函数揭秘"/>
   <meta property="og:site_name" content="Optional Swift 博客"/>
 
   
@@ -238,11 +238,11 @@ var _hmt = _hmt || [];
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-08-02T15:24:16.000Z"><a href="/2015/08/02/why-coding-like-this/map filter reduce/">2015-08-02</a></time>
+        <time datetime="2015-08-02T15:24:16.000Z"><a href="/2015/08/02/why-coding-like-this/map/">2015-08-02</a></time>
       
       
   
-    <h1 class="title">Why coding like This ------ Map函数揭秘</h1>
+    <h1 class="title">Why coding like This ------ Map 函数揭秘</h1>
   
 
     </header>
@@ -262,9 +262,9 @@ var _hmt = _hmt || [];
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例四：</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">handleIntArray</span><span class="params">(xs:[Int],f:Int-&gt;Int)</span></span>-&gt;[<span class="type">Int</span>]&#123;</span><br><span class="line">  <span class="keyword">var</span> result :[<span class="type">Int</span>] = []</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> x <span class="keyword">in</span> xs &#123;</span><br><span class="line">    result.append(f(x))</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>值得注意得是，我们除了传入一个xs数组外，还传入了一个<code>f</code>闭包，而这个闭包类型为<code>(Int-&gt;Int)</code>,接受<code>Int</code>类型数据，经过闭包体内处理后再返回一个<code>Int</code>结果值。更多闭包内容，请点击<a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-ID94" target="_blank" rel="external">这里</a>。</p>
 <p>现在来测试下所写的这个函数是否满足我们要求：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输出 3 5 7</span></span><br><span class="line">result = handleIntArray(intArray)&#123;</span><br><span class="line">  x <span class="keyword">in</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">2</span> * x + <span class="number">1</span>		<span class="comment">//2 * x + 1 就是闭包的处理体 </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>可能如此写法仍然让人迷惑，因此我决定再简单分解下。首先声明一个函数名为<code>handleClosure</code>的函数，主要作用是对传入的x元素进行<code>2*x+1</code>的线性变换，最后将处理后的结果值返回。现在来调用<code>handleIntArray</code>函数，首先传入<code>intArray</code>数组，接着将<code>handleClosure</code>函数作为一个参数传入，那么在什么时候调用呢？ 请看<code>result.append(f(x))</code> f(x)此时即为handleClosure(x:)函数，而传入的x参数为遍历数组中的元素。一切问题引刃而解！代码如下。</p>
+<p>可能如此写法仍然让人迷惑，因此我决定再简单分解下。首先声明一个函数名位<code>handleClosure</code>的函数，主要作用是对传入的x元素进行<code>2*x+1</code>的线性变换，最后将处理后的结果值返回。现在来调用<code>handleIntArray</code>函数，首先传入<code>intArray</code>数组，接着将<code>handleClosure</code>函数作为一个参数传入，那么在什么时候调用呢？ 请看<code>result.append(f(x))</code> f(x)此时即为handleClosure(x:)函数，而传入的x参数为遍历数组中的元素。一切问题引刃而解！代码如下。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">handleClosure</span><span class="params">(x:Int)</span></span>-&gt;<span class="type">Int</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">2</span> * x + <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line">result = handleIntArray(intArray, handleClosure)</span><br></pre></td></tr></table></figure>
-<p>新命题：对Int类型数组的每一个元素进行判断，偶数为<code>true</code>，奇数为<code>false</code>，返回数组类型为[Bool].</p>
+<p>新命题：对Int类型数组的每一个元素进行判断，偶数为<code>true</code>，奇数为<code>false</code>，结果数组为[False]</p>
 <p>分析:奇偶判断我们通过 x % 2 == 0 语句轻松实现，然后调用handleIntArray即可，遗憾的是闭包的返回参数与我们的不匹配，我们所期望的是返回Bool类型，而闭包中为Int，不得已我们需要重新构建一个</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例五：</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">handleBoolArray</span><span class="params">(xs:[Int],f:Int-&gt;Bool)</span></span>-&gt;[<span class="type">Bool</span>]&#123;</span><br><span class="line">  <span class="keyword">var</span> result :[<span class="type">Bool</span>] = []</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">for</span> x <span class="keyword">in</span> xs &#123;</span><br><span class="line">    result.append(f(x))</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>现在我们能够使用<code>func handleIntArray(xs:[Int],f:Int-&gt;Int)-&gt;[Int]</code>来处理Int类型的数组，使用<code>func handleBoolArray(xs:[Int],f:Int-&gt;Bool)-&gt;[Bool]</code>来处理Int类型 返回Bool类型，但这都均有局限性。假如下一次是要处理String类型的数组，亦或是Double类型的数组呢？</p>
@@ -275,7 +275,7 @@ var _hmt = _hmt || [];
 <p>更多时候我建议你把<code>genericComputerArray&lt;U&gt;</code>看作是该函数的大家庭family,一个具体的类型<code>U</code>对应一个新函数！该函数传入一个Int类型数组，以及一个闭包(类型为<code>Int-&gt;U</code>)，返回一个<code>U</code>类型的数组<code>[U]</code>。</p>
 </blockquote>
 <p>为了使得函数更通用，尝试稍微修改以上函数来构建我们的<code>map</code>函数：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例七：</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">myMap</span><span class="generics">&lt;T,U&gt;</span><span class="params">(xs:[T],f:T-&gt;U)</span></span>-&gt;[<span class="type">U</span>]&#123;</span><br><span class="line"> <span class="keyword">var</span> result:[<span class="type">U</span>] = []</span><br><span class="line"> <span class="keyword">for</span> x <span class="keyword">in</span> xs&#123;</span><br><span class="line">	result.append(f(x))</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line">myMap(intArray)&#123;</span><br><span class="line">  x <span class="keyword">in</span> x * <span class="number">2</span></span><br><span class="line">&#125;<span class="comment">//输出 [2,4,6]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例七：</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">myMap</span><span class="generics">&lt;T,U&gt;</span><span class="params">(xs:[T],f:T-&gt;U)</span></span>-&gt;[<span class="type">U</span>]&#123;</span><br><span class="line">	<span class="keyword">var</span> result:[<span class="type">U</span>] = []</span><br><span class="line">	<span class="keyword">for</span> x <span class="keyword">in</span> xs&#123;</span><br><span class="line">		result.append(f(x))</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line">myMap(intArray)&#123;</span><br><span class="line">  x <span class="keyword">in</span> x * <span class="number">2</span></span><br><span class="line">&#125;<span class="comment">//输出 [2,4,6]</span></span><br></pre></td></tr></table></figure>
 <p>至于为什么系统的调用是xxx.map{}，其实map函数是作为数组的实例方法存在，遵循了协议实现罢了。好奇的你可以一试。</p>
 <blockquote>
 <p>总结：恭喜你自定义了一个myMap函数，可见系统自带的map函数也并不是那么神秘。 下次带来<code>why coding like this --- filter的实现</code></p>
@@ -321,6 +321,8 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
 
  <nav id="pagination" >
+    
+    <a href="/2015/08/03/why-coding-like-this/Filter/" class="alignleft prev" >上一页</a>
     
     
     <a href="/2015/07/07/swift-Control/Graphics Context/" class="alignright next" >下一页</a>
@@ -378,7 +380,7 @@ var duoshuoQuery = {short_name:"optionalswift"};
   
     <li><a href="/categories/swift-语法/">swift 语法</a><small>4</small></li>
   
-    <li><a href="/categories/why-coding-like-this/">why coding like this</a><small>1</small></li>
+    <li><a href="/categories/why-coding-like-this/">why coding like this</a><small>2</small></li>
   
   </ul>
 </div>

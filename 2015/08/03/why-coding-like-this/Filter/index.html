@@ -23,7 +23,7 @@ var _hmt = _hmt || [];
   <script src="//dn-lbstatics.qbox.me/respond/1.4.2/respond.min.js"></script>
 
   
-  <title>swift 控件 | Optional Swift 博客</title>
+  <title>Why coding like This ------ Filter 函数揭秘 | Optional Swift 博客</title>
   <meta name="author" content="OST">
   
   <meta name="description" content="Swift  you choose">
@@ -31,7 +31,7 @@ var _hmt = _hmt || [];
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="Why coding like This ------ Filter 函数揭秘"/>
   <meta property="og:site_name" content="Optional Swift 博客"/>
 
   
@@ -220,73 +220,155 @@ var _hmt = _hmt || [];
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title category">swift 控件</h2>
-
-
-  <div class="archive">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-07-07T08:34:16.000Z"><a href="/2015/07/07/swift-Control/Graphics Context/">2015-07-07</a></time>
-            
-              <h1 class="title"><a href="/2015/07/07/swift-Control/Graphics Context/">Core Graphic Context </a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-07-06T12:14:16.000Z"><a href="/2015/07/06/swift-Control/UIImageView/">2015-07-06</a></time>
-            
-              <h1 class="title"><a href="/2015/07/06/swift-Control/UIImageView/">UIImage</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-07-06T12:10:16.000Z"><a href="/2015/07/06/swift-Control/drawing_学习笔记/">2015-07-06</a></time>
-            
-              <h1 class="title"><a href="/2015/07/06/swift-Control/drawing_学习笔记/">Drawing 学习笔记</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-06-20T14:10:16.000Z"><a href="/2015/06/20/swift-Control/tableview_and_collectionview_学习总结/">2015-06-20</a></time>
-            
-              <h1 class="title"><a href="/2015/06/20/swift-Control/tableview_and_collectionview_学习总结/">tableview and collectionView 学习总结</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-04-12T07:30:16.000Z"><a href="/2015/04/12/swift-Control/swift_可展开可收缩的表视图/">2015-04-12</a></time>
-            
-              <h1 class="title"><a href="/2015/04/12/swift-Control/swift_可展开可收缩的表视图/">swift 可展开可收缩的表视图</a></h1>
-            
-          </header>
-        </div>
-      </article>
+      <img src="">
     
   </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-08-03T03:24:16.000Z"><a href="/2015/08/03/why-coding-like-this/Filter/">2015-08-03</a></time>
+      
+      
+  
+    <h1 class="title">Why coding like This ------ Filter 函数揭秘</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="2-Filter函数揭秘">2.Filter函数揭秘</h3><h4 id="Topic_1:"><strong>Topic 1:</strong></h4><p>请用<code>Filter</code>函数筛选出<code>String</code>数组中后缀是<code>.swift</code>的文件。</p>
+<h4 id="Example:"><strong>Example:</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例一：</span></span><br><span class="line"><span class="keyword">var</span> filesNeedToFilter = [<span class="string">"ViewController.swift"</span>,<span class="string">"HelloWorld.c"</span>,<span class="string">"Web.java"</span>,<span class="string">"Person.swift"</span>,<span class="string">"Main.c"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出["ViewController.swift","Person.swift"]</span></span><br><span class="line">filesNeedToFilter.<span class="built_in">filter</span>&#123;</span><br><span class="line">  file <span class="keyword">in</span></span><br><span class="line">  file.hasSuffix(<span class="string">".swift"</span>)<span class="comment">//注意suffix是后缀的意思</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="why_coding_like_this?"><strong>why coding like this?</strong></h4><p><strong>命题：</strong>假设让你写一个函数来实现筛选后缀是<code>.swift</code>的文件，你该如何实现?<br><strong>思路：</strong>首先声明一个数组用于保存符合的结果值，然后遍历需要筛选的数组，通过<code>hasSufffix</code>函数返回<code>true or false</code>来判断数组元素是否含有指定的后缀。<br><strong>代码：</strong>      </p>
+<pre><code class="swift"><span class="comment">//例二：</span>
+<span class="func"><span class="keyword">func</span> <span class="title">getSwiftFiles</span><span class="params">(files:[String])</span></span>-&gt;[<span class="type">String</span>]{
+  <span class="keyword">var</span> result:[<span class="type">String</span>] = []
+  <span class="keyword">for</span> file <span class="keyword">in</span> files{
+    <span class="keyword">if</span> file.hasSuffix(<span class="string">".swift"</span>){
+      result.append(file)
+    }
+  }
+  <span class="keyword">return</span> result
+}
+<span class="comment">//不妨来试试//输出["ViewController.swift","Person.swift"]</span>
+getSwiftFiles(filesNeedToFilter)
+</code></pre>
+<p>我们注意到只有<strong>满足</strong>给定的<strong>筛选条件</strong>，这里是<code>file.hasSuffix(&quot;.swift&quot;)</code>返回<code>true</code>表示包含后缀，反之不包含。<br>通过Map章节学习后，立马意识到该函数的局限性—————仅适用筛选后缀是<code>.swift</code>的文件。因此我们需要自己指定筛选条件，而这个筛选条件是一个类型为<code>String-&gt;Bool</code>的闭包，String表示传入需要条件判断的元素，满足返回<code>true</code>，不满足返回<code>false</code>，这也是为什么闭包返回<code>Bool</code>的原因了。修改后的代码如下：      </p>
+<pre><code class="swift"><span class="comment">//例三：</span>
+<span class="func"><span class="keyword">func</span> <span class="title">getFilesByCondition</span><span class="params">(files:[String],f:String-&gt;Bool)</span></span>-&gt;[<span class="type">String</span>]{
+  <span class="keyword">var</span> result:[<span class="type">String</span>] = []
+  <span class="keyword">for</span> file <span class="keyword">in</span> files{
+    <span class="keyword">if</span> f(file){
+      result.append(file)
+    }
+  }
+  <span class="keyword">return</span> result
+}
+<span class="comment">//不妨来试试 采用closure的尾包形式</span>
+getFilesByCondition(filesNeedToFilter){
+  file <span class="keyword">in</span>
+  file.hasSuffix(<span class="string">".c"</span>)<span class="comment">//返回["HelloWorld.c", "Main.c"]</span>
+}
+</code></pre>
+<p>现在可以随心所欲的传入筛选条件了，但是该函数显然仍有不足，缺少什么呢？恩….对！泛型，现在传入的数组不能局<br>限于String类型，那么作为泛型我们就要使用<code>T</code>来泛指所有类型喽(注意泛型并没有特别指明要用<code>T</code>,<code>U</code>,你可以自由给定，建议使用大写以及驼峰写法)。改写代码如下：      </p>
+<pre><code class="swift"><span class="comment">//例四：</span>
+<span class="func"><span class="keyword">func</span> <span class="title">myFilter</span><span class="generics">&lt;T&gt;</span><span class="params">(xs:[T],check:T-&gt;Bool)</span></span>-&gt;[<span class="type">T</span>]{
+  <span class="keyword">var</span> result:[<span class="type">T</span>] = []
+  <span class="keyword">for</span> x <span class="keyword">in</span> xs{
+    <span class="comment">//必须经过条件判断才可以</span>
+    <span class="keyword">if</span> check(x){
+      result.append(x)
+    }
+  }
+  <span class="keyword">return</span> result
+}
+</code></pre>
+<p>看来又实现了一个自定义的方法，不妨试试好用不好用。</p>
+<blockquote>
+<p>why coding like this 系列，更多是用<code>Why</code>,<code>How</code>看待代码,摒弃那种<code>我只要会写，至于为什么？因为我一直那么写</code>的思想。希望对大家有帮助！ 下文带来reduce的揭秘。</p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/why-coding-like-this/">why coding like this</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/swift进阶/">swift进阶</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/08/02/why-coding-like-this/map/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"optionalswift"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">
