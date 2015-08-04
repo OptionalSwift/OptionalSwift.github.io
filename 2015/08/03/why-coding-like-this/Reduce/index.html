@@ -264,8 +264,7 @@ var _hmt = _hmt || [];
 sum(intArray)<span class="comment">//print 10</span>
 </code></pre>
 <p>可以看到对于sum函数传入<code>Int</code>类型数组，首先我们声明一个<code>Int</code>类型变量用于保存最后的求和结果值，初始值为0；接着使用<code>for-in</code>语句遍历传入的数组，使用<code>result += x</code>逐一求和累加；最后返回结果值result。     </p>
-<h4 id="2-过渡">2.过渡</h4><p><strong>命题二：</strong>基础过来，照理对条件进行改变，假如把所有元素求和更改为对所有元素求乘，如[1,2,3,4] 返回1 <em> 2 </em> 3 <em> 4 = 24。<br><strong>思路：</strong>显然对于前面的代码稍许改动即可，主要是替换<code>result += x</code>(累加运算) 更为**result = result </em> x<strong>(阶乘运算)。当然有一点切记不要遗忘，就是</strong>初始<strong>值 <code>result = 1</code>。      
-</strong>代码：**       </p>
+<h4 id="2-过渡">2.过渡</h4><p><strong>命题二：</strong>基础入门之后，按照惯例对条件进行改变，假如把所有元素求和更改为对所有元素求乘，如[1,2,3,4] 返回1 <em> 2 </em> 3 <em> 4 = 24。<br><strong>思路：</strong>显然对于前面的代码稍许改动即可，主要是替换<code>result += x</code>(累加运算) 更为result = result </em> x(阶乘运算)。当然有一点切记不要遗忘，就是<strong>初始</strong>值 <code>result = 1</code>。<br><strong>代码：</strong>       </p>
 <pre><code class="swift"><span class="comment">//例三：</span>
 <span class="func"><span class="keyword">func</span> <span class="title">multiplicator</span><span class="params">(xs:[Int])</span></span>-&gt;<span class="type">Int</span>{
     <span class="keyword">var</span> result:<span class="type">Int</span> = <span class="number">1</span>
@@ -301,7 +300,7 @@ jointStringArray(helloworld)<span class="comment">//输出"hello world!say by op
 <span class="keyword">let</span> newArray = [<span class="string">"hello"</span>,<span class="string">"world"</span>,<span class="string">"say"</span>,<span class="string">"By"</span>,<span class="string">"optional"</span>]
 jointStringArrayByHyphen(newArray)<span class="comment">//输出"整合后的字符串为：-hello-world-say-By-optional"</span>
 </code></pre>
-<h4 id="3-高潮">3.高潮</h4><p>在开始写我们的泛型reduce函数之前，分析函数的输入输出以及如何实现：首先该函数将传入一个泛型类数组，暂且定为<code>[U]</code>；此外函数可自己设定初始值给<code>result</code>，暂且定为<code>T</code>；最后是重中之重：传入一个闭包作为连接result和数组元素的处理函数，<code>combine(result,x)</code>，不难分析result的类型为<code>T</code>,x是数组xs中的元素，类型为<code>U</code>，返回嘛自然是和result一致的类型喽。因此<code>combine</code>闭包类型为<code>(T,U)-&gt;T</code>。因此代码这么写：    </p>
+<h4 id="3-高潮">3.高潮</h4><p>在开始写我们的泛型reduce函数之前，分析函数的输入输出以及如何实现：首先该函数将传入一个泛型类数组，暂且定为<code>[T]</code>；此外函数可自己设定初始值给<code>result</code>，暂且定为<code>U</code>；最后是重中之重：传入一个闭包作为连接result和数组元素的处理函数，<code>combine(result,x)</code>，不难分析result的类型为<code>T</code>,x是数组xs中的元素，类型为<code>U</code>，返回嘛自然是和result一致的类型喽。因此<code>combine</code>闭包类型为<code>(U,T)-&gt;U</code>。因此代码这么写：    </p>
 <pre><code class="swift"><span class="comment">//例六：</span>
 <span class="func"><span class="keyword">func</span> <span class="title">myReduce</span><span class="generics">&lt;T,U&gt;</span><span class="params">(arr:[T],initialValue:U,combine:<span class="params">(U,T)</span></span></span>-&gt;<span class="type">U</span>)-&gt;<span class="type">U</span>{
   <span class="keyword">var</span> result = initialValue <span class="comment">//赋值初始值 类型为U 并且是作为结果值返回的</span>
