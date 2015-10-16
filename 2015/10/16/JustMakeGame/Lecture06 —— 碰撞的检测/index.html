@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE HTML>
+<html>
+
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?94f6ddbfbc53cb18818538cafd3ba350";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <script src="//dn-lbstatics.qbox.me/jquery/1.11.2/jquery.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.7.2.min.js"></script> 
+  <script src="//dn-lbstatics.qbox.me/pintuer/1.0/pintuer.mini.js"></script>
+  <script src="//dn-lbstatics.qbox.me/respond/1.4.2/respond.min.js"></script>
+
+  
+  <title>用Swift做个游戏Lecture06 —— 碰撞的检测 | Optional Swift 博客</title>
+  <meta name="author" content="OST">
+  
+  <meta name="description" content="Swift  you choose">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="用Swift做个游戏Lecture06 —— 碰撞的检测"/>
+  <meta property="og:site_name" content="Optional Swift 博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Optional Swift 博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">Optional Swift 博客</a></h1>
+  <h2><a href="/">Optional means having a value in it or equaling nil</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/categories">分类</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-10-16T12:05:15.000Z"><a href="/2015/10/16/JustMakeGame/Lecture06 —— 碰撞的检测/">2015-10-16</a></time>
+      
+      
+  
+    <h1 class="title">用Swift做个游戏Lecture06 —— 碰撞的检测</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>作者：PMST<br>团队博客地址:<a href="http://optionalswift.cn" target="_blank" rel="external">optional Swift</a><br>个人博客地址:<a href="http://colourfulcode.cn" target="_blank" rel="external">colourful code</a><br>简书博客地址:<a href="http://www.jianshu.com/users/596f2ba91ce9/latest_articles" target="_blank" rel="external">PPPPPPMST</a><br>VERSION:V1.0<br>NOTICE:目前第一版以叙述内容为主，之后对其中一些细节知识点进行讲解。</p>
+</blockquote>
+<p>本教程参考自RayWenderlich的视频教程<a href="http://www.raywenderlich.com/video-tutorials#swiftflappy" target="_blank" rel="external">How To Make a Game Like Flappy Bird Series (Swift)</a>。本教程中，你将从无到有亲自开发一个基于<em>SpriteKit</em>框架的<em>Flappy bird</em>小游戏。总体难度不大，但要求你掌握<em>Swift</em>基础语法与<em>SpriteKit</em>框架知识。此外，教程中所有素材均来自<em>Raywenderlich</em>，鼓励学习交流，但请勿用于商业用途。</p>
+<a id="more"></a>
+<h3 id="正文">正文</h3><p>前文已经为各个精灵新增了<em>Physics Body</em>,设置了三个掩码:</p>
+<ul>
+<li><em>categoryBitMask</em>表明了分属类别。</li>
+<li><em>collisionBitMask</em>告知能与哪些物体碰撞。</li>
+<li><em>contactTestBitMask</em>则告知能与哪些物体接触。</li>
+</ul>
+<p>现在遗留的问题是如何检测碰撞?难道是在<em>update()</em>方法进行检测:遍历所有的节点，通过判断节点的位置是否有交集吗？天呐！这也太麻烦了。确实，如果通过自己实时检测实在过于劳累，何不让<em>Sprite Kit</em>来帮你代劳，每当物体之间发生碰撞了，立马通知你来处理事件。<em>Bingo！！</em> 显然这里要用<strong>协议+代理</strong>了，设置场景为代理，每当<em>Sprite Kit</em>检测到碰撞事件发生，就通知<em>GameScene</em>来处理，当前哪里事情都是在协议(<em>Protocol</em>)中声明了。</p>
+<h3 id="01-游戏状态">01.游戏状态</h3><p>在正式开始今天的碰撞检测课程之前，谈谈如何划分游戏各时的状态，仅以<em>Flappy bird</em>游戏为例，简单划分如下:</p>
+<ul>
+<li><em>MaiMenu</em>。开始一次游戏、查看排名以及游戏帮助。</li>
+<li><em>Tutorial</em>。考虑到新手对于新游戏的上手，在选择进行一次新游戏时，展示玩法教程显然是一个明确且友好的措施。</li>
+<li><em>Play</em>。正处于游戏的状态。</li>
+<li><em>Falling</em>。<em>Player</em>因为不小心碰到障碍物失败下落时刻。<strong>注意:接触障碍物，失败掉落才算!</strong></li>
+<li><em>ShowingScore</em>。显示得分。</li>
+<li><em>GameeOver</em>。告知游戏结束。</li>
+</ul>
+<p>为此请打开<em>Lecture05</em>的完成工程，打开<em>GameScene.swift</em>文件，新增游戏状态的枚举声明到<code>enum Layer{}</code>下方:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">GameState</span></span>&#123;</span><br><span class="line">   <span class="keyword">case</span> <span class="type">MainMenu</span></span><br><span class="line">   <span class="keyword">case</span> <span class="type">Tutorial</span></span><br><span class="line">   <span class="keyword">case</span> <span class="type">Play</span></span><br><span class="line">   <span class="keyword">case</span> <span class="type">Falling</span></span><br><span class="line">   <span class="keyword">case</span> <span class="type">ShowingScore</span></span><br><span class="line">   <span class="keyword">case</span> <span class="type">GameOver</span></span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">当然，我们还需要声明一个变量用于存储游戏场景的状态，请找到*<span class="type">GameScene</span>*类中`<span class="keyword">let</span> sombrero = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"Sombrero"</span>)`这条代码，在下方新增三个新变量:</span><br><span class="line"></span><br><span class="line">```<span class="built_in">swift</span></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="keyword">var</span> hitGround = <span class="built_in">false</span></span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="keyword">var</span> hitObstacle = <span class="built_in">false</span></span><br><span class="line"><span class="comment">//3</span></span><br><span class="line"><span class="keyword">var</span> gameState: <span class="type">GameState</span> = .<span class="type">Play</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>标识符，记录<em>Player</em>是否掉落至地面。</li>
+<li>标识符，记录<em>Player</em>是否碰撞了仙人掌。</li>
+<li>游戏状态，默认是正在玩。</li>
+</ol>
+<h3 id="02-碰撞检测">02.碰撞检测</h3><p>正如前面提及的<strong>协议+代理</strong>方式检测物体之间的碰撞情况。首先请使得类<em>GameScene</em>遵循<code>SKPhysicsContactDelegate</code>协议:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GameScene</span>: <span class="title">SKScene</span>,<span class="title">SKPhysicsContactDelegate</span></span>&#123;...&#125;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">接着在*didMoveToView()*方法中设置代理为`<span class="keyword">self</span>`，找到`physicsWorld.gravity = <span class="type">CGVector</span>(dx: <span class="number">0</span>, dy: <span class="number">0</span>)`这行代码，添加该行代码`physicsWorld.contactDelegate = <span class="keyword">self</span>`。</span><br><span class="line"></span><br><span class="line">`<span class="type">SKPhysicsContactDelegate</span>`协议中定义了两个可选方法,分别是:</span><br><span class="line"></span><br><span class="line">* `optional public <span class="func"><span class="keyword">func</span> <span class="title">didBeginContact</span><span class="params">(contact: SKPhysicsContact)</span></span>`</span><br><span class="line">* `optional public <span class="func"><span class="keyword">func</span> <span class="title">didEndContact</span><span class="params">(contact: SKPhysicsContact)</span></span>`</span><br><span class="line"></span><br><span class="line">分别用于反馈两个物体开始接触、结束接触两个时刻。本文采用第一个方法用户处理物体接触事件。</span><br><span class="line"></span><br><span class="line">```<span class="built_in">swift</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">didBeginContact</span><span class="params">(contact: SKPhysicsContact)</span></span> &#123;</span><br><span class="line">    <span class="keyword">let</span> other = contact.bodyA.categoryBitMask == <span class="type">PhysicsCategory</span>.<span class="type">Player</span> ? contact.bodyB : contact.bodyA</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> other.categoryBitMask == <span class="type">PhysicsCategory</span>.<span class="type">Ground</span> &#123;</span><br><span class="line">        hitGround = <span class="built_in">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> other.categoryBitMask == <span class="type">PhysicsCategory</span>.<span class="type">Obstacle</span> &#123;</span><br><span class="line">        hitObstacle = <span class="built_in">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">`contact`包含了接触的所有信息，其中*bodyA*和*bodyB*代表两个碰撞的物体，显然发生碰撞的结果只有两种可能：<span class="number">1</span>.*<span class="type">Player</span>*和地面；<span class="number">2</span>.*<span class="type">Player</span>*和障碍物。可惜我们无法确实*bodyA*就是*<span class="type">Player</span>*,亦或是*bodyB*就是它。这是有不确定性的，我们需要通过`categoryBitMask`来区分“阵营”。一旦确定哪个是*<span class="type">Player</span>*之后，我们就能取到与之发生接触的*other*，通过判断其类别来分别置为标志位。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">一旦标志位设置之后，我们需要在*update()*方法中进行处理了！</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">###<span class="number">03</span>.根据游戏状态来处理事件</span><br><span class="line"></span><br><span class="line">请定位到`update()`方法，修改其中的内容:</span><br><span class="line"></span><br><span class="line">```<span class="built_in">swift</span></span><br><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">update</span><span class="params">(currentTime: CFTimeInterval)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> lastUpdateTime &gt; <span class="number">0</span> &#123;</span><br><span class="line">        dt = currentTime - lastUpdateTime</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        dt = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    lastUpdateTime = currentTime</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">switch</span> gameState &#123;</span><br><span class="line">    <span class="keyword">case</span> .<span class="type">MainMenu</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> .<span class="type">Tutorial</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> .<span class="type">Play</span>:</span><br><span class="line">        updateForeground()</span><br><span class="line">        updatePlayer()</span><br><span class="line">        <span class="comment">//1</span></span><br><span class="line">        checkHitObstacle()	<span class="comment">//Play状态下检测是否碰撞了障碍物</span></span><br><span class="line">        <span class="comment">//2</span></span><br><span class="line">        checkHitGround()	<span class="comment">//Play状态下检测是否碰撞了地面</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> .<span class="type">Falling</span>:</span><br><span class="line">        updatePlayer()</span><br><span class="line">        <span class="comment">//3</span></span><br><span class="line">        checkHitGround()	<span class="comment">//Falling状态下检测是否掉落至地面 此时已经失败了</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> .<span class="type">ShowingScore</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> .<span class="type">GameOver</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中1，2，3中三个方法均是通过状态标志位来处理碰撞事件，请添加<code>checkHitObstacle()</code>以及<code>checkHitGround()</code>方法到<code>updateForeground()</code>方法下方:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 与障碍物发生碰撞</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">checkHitObstacle</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> hitObstacle &#123;</span><br><span class="line">        hitObstacle = <span class="built_in">false</span></span><br><span class="line">        switchToFalling()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 掉落至地面</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">checkHitGround</span><span class="params">()</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> hitGround &#123;</span><br><span class="line">        hitGround = <span class="built_in">false</span></span><br><span class="line">        playerVelocity = <span class="type">CGPoint</span>.zero</span><br><span class="line">        player.zRotation = <span class="type">CGFloat</span>(-<span class="number">90</span>).degreesToRadians()</span><br><span class="line">        player.position = <span class="type">CGPoint</span>(x: player.position.x, y: playableStart + player.size.width/<span class="number">2</span>)</span><br><span class="line">        runAction(hitGroundAction)</span><br><span class="line">        switchToShowScore()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MARK: - Game States</span></span><br><span class="line"><span class="comment">// 由Play状态变为Falling状态</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">switchToFalling</span><span class="params">()</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">    gameState = .<span class="type">Falling</span></span><br><span class="line">    </span><br><span class="line">    runAction(<span class="type">SKAction</span>.sequence([</span><br><span class="line">        whackAction,</span><br><span class="line">        <span class="type">SKAction</span>.waitForDuration(<span class="number">0.1</span>),</span><br><span class="line">        fallingAction</span><br><span class="line">        ]))</span><br><span class="line">    </span><br><span class="line">    player.removeAllActions()</span><br><span class="line">    stopSpawning()</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 显示分数状态</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">switchToShowScore</span><span class="params">()</span></span> &#123;</span><br><span class="line">    gameState = .<span class="type">ShowingScore</span></span><br><span class="line">    player.removeAllActions()</span><br><span class="line">    stopSpawning()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 重新开始一次游戏</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">switchToNewGame</span><span class="params">()</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">    runAction(popAction)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> newScene = <span class="type">GameScene</span>(size: size)</span><br><span class="line">    <span class="keyword">let</span> transition = <span class="type">SKTransition</span>.fadeWithColor(<span class="type">SKColor</span>.blackColor(), duration: <span class="number">0.5</span>)</span><br><span class="line">    view?.presentScene(newScene, transition: transition)</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完成后自然你发现<code>stopSpawning()</code>方法并未实现，因为我打算好好讲讲这个。早前在<code>didMoveToView()</code>方法中调用<code>startSpawning()</code>源源不断地产生障碍物，但是一旦游戏结束，我们所要做的事情有两个:1.停止继续产生障碍物；2.已经在场景中的障碍物停止移动。那么如何制定某个动作<em>Action</em>停止呢？答案是先为这个动作命名(简单来说设置一个<strong>Key</strong>而已)，然后用<code>removeActionForKey()</code>来移除。</p>
+<p>OK,找到<code>startSpawning()</code>方法，将<code>runAction(overallSequence)</code>替换成<code>runAction(overallSequence, withKey: &quot;spawn&quot;)</code>；定位到<code>spawnObstacle()</code>方法，分别设置<em>bottomObstacle</em>和<em>topObstacle</em>精灵的名字,方便之后找到它们并进行操作:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">bottomObstacle.name = <span class="string">"BottomObstacle"</span></span><br><span class="line">worldNode.addChild(bottomObstacle)</span><br><span class="line">...</span><br><span class="line">topObstacle.name = <span class="string">"TopObstacle"</span></span><br><span class="line">worldNode.addChild(topObstacle)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>现在来实现<code>stopSpawning()</code>方法,在<code>startSpawning()</code>下方添加就好:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">stopSpawning</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line"> removeActionForKey(<span class="string">"spawn"</span>)</span><br><span class="line"> </span><br><span class="line"> worldNode.enumerateChildNodesWithName(<span class="string">"TopObstacle"</span>, usingBlock: &#123; node, stop <span class="keyword">in</span></span><br><span class="line">   node.removeAllActions()</span><br><span class="line"> &#125;)</span><br><span class="line"> worldNode.enumerateChildNodesWithName(<span class="string">"BottomObstacle"</span>, usingBlock: &#123; node, stop <span class="keyword">in</span></span><br><span class="line">   node.removeAllActions()</span><br><span class="line"> &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击运行，我擦！还没来得及点就掉地上了……好吧，只能在游戏进入一瞬间先让<em>Player</em>向上蹦跶下。添加<code>flapPlayer()</code>到<code>didMoveToView()</code>方法的最下方。</p>
+<p>点击运行，Nice!!<em>Player</em>顺利穿过了障碍，不小心碰到了障碍物，再点击，等等!怎么还能动…好吧，看来<code>touchesBegan(touches: Set&lt;UITouch&gt;, withEvent event: UIEvent?)</code>点击事件中我们并未根据游戏状态来处理，是时候修改了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">touchesBegan</span><span class="params">(touches: Set&lt;UITouch&gt;, withEvent event: UIEvent?)</span></span> &#123;</span><br><span class="line">    <span class="keyword">switch</span> gameState &#123;</span><br><span class="line">    <span class="keyword">case</span> .<span class="type">MainMenu</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> .<span class="type">Tutorial</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> .<span class="type">Play</span>:</span><br><span class="line">        flapPlayer()</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> .<span class="type">Falling</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> .<span class="type">ShowingScore</span>:</span><br><span class="line">        switchToNewGame()</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> .<span class="type">GameOver</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击运行，失败重新开始游戏…等等貌似还有问题，怎么点击想重新开始游戏会突然掉落到地面上…好吧，请看<a href="http://www.jianshu.com/p/82697ebf5cad" target="_blank" rel="external">lecture02</a>中的时间间隔图，匆忙的你找找原因，试试解决吧。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/JUSTMAKEGAME/">JUSTMAKEGAME</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/SpriteKit/">SpriteKit</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2015/10/16/JustMakeGame/Lecture07 —— 老板，来块记分牌！/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2015/10/16/JustMakeGame/lecture05——真实的物理世界/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"optionalswift"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:optionalswift.cn">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JUSTMAKEGAME/">JUSTMAKEGAME</a><small>9</small></li>
+  
+    <li><a href="/categories/Swift-Beginner-Series/">Swift Beginner Series</a><small>6</small></li>
+  
+    <li><a href="/categories/Swift-Resource/">Swift Resource</a><small>1</small></li>
+  
+    <li><a href="/categories/Swift2-0语法改动实例/">Swift2.0语法改动实例</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-language/">swift language</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-控件/">swift 控件</a><small>5</small></li>
+  
+    <li><a href="/categories/swift-框架/">swift 框架</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-语法/">swift 语法</a><small>4</small></li>
+  
+    <li><a href="/categories/why-coding-like-this/">why coding like this</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">博客简介</h3>
+<ul class="entry">
+<li>本体：Optional Swift team</li>
+<li>成员：PMST、暮夜星晨、Jim、ICE</li>
+<li>宣言：value or nil ?</li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+<li>想交友的朋友请<a href="http://optionalswift.cn/about">联系我们</a></li>
+<li>QQ 号：1345614869</li>
+<font color="red">Swift 交流群：392436022</font>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">广告赞助</h3>
+<ul class="entry">
+<li><a href="http://www.aliexpress.com/store/1764462"> Fashion Wardrobe for women</a></li>	
+<li><a href="http://shop123768141.taobao.com/shop/view_shop.htm?spm=a1z0e.1.10010.3.It7e1D">程序员ios资料淘宝小店(raywenderlich等英语资料为主)</a></li>
+</ul>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li>PMST个站：<a href="http://colourfulcode.cn">Colourful Code</a></li>
+<li>Jim 个站：<a href="http://www.jinyejun.com">YeJun Jim</a></li>
+<li>想了解黑客,请戳：<a href="http://mapers.net/forum.php">路标社区</a></li>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">安静的听音乐</h3>
+<ul class="entry">
+<li>
+<audio controls="controls" height="100" width="100">
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/mp3" />
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/ogg" />
+  <embed height="100" width="100" src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" >
+</audio>
+</li>
+</ul>
+</div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+  Redesign by <a href="_widget" target="_blank">PMST</a>
+   | 
+  Owned by <a href="http://optionalswift.cn" target="_blank">Optional Swift Team</a> 
+   |
+  Team was set up in April
+	 <font id="counter"></font>
+</section>
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<!--script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script-->
+<script src="/js/counter.js"></script>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/zippera" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>

@@ -1,0 +1,566 @@
+
+
+<!DOCTYPE HTML>
+<html>
+
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?94f6ddbfbc53cb18818538cafd3ba350";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <script src="//dn-lbstatics.qbox.me/jquery/1.11.2/jquery.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.7.2.min.js"></script> 
+  <script src="//dn-lbstatics.qbox.me/pintuer/1.0/pintuer.mini.js"></script>
+  <script src="//dn-lbstatics.qbox.me/respond/1.4.2/respond.min.js"></script>
+
+  
+  <title>用Swift做个游戏Lecture05 —— 真实的物理世界 | Optional Swift 博客</title>
+  <meta name="author" content="OST">
+  
+  <meta name="description" content="Swift  you choose">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="用Swift做个游戏Lecture05 —— 真实的物理世界"/>
+  <meta property="og:site_name" content="Optional Swift 博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Optional Swift 博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">Optional Swift 博客</a></h1>
+  <h2><a href="/">Optional means having a value in it or equaling nil</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/categories">分类</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-10-16T12:05:15.000Z"><a href="/2015/10/16/JustMakeGame/lecture05——真实的物理世界/">2015-10-16</a></time>
+      
+      
+  
+    <h1 class="title">用Swift做个游戏Lecture05 —— 真实的物理世界</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>作者：PMST<br>团队博客地址:<a href="http://optionalswift.cn" target="_blank" rel="external">optional Swift</a><br>个人博客地址:<a href="http://colourfulcode.cn" target="_blank" rel="external">colourful code</a><br>简书博客地址:<a href="http://www.jianshu.com/users/596f2ba91ce9/latest_articles" target="_blank" rel="external">PPPPPPMST</a><br>VERSION:V1.0<br>NOTICE:目前第一版以叙述内容为主，之后对其中一些细节知识点进行讲解。</p>
+</blockquote>
+<p>本教程参考自RayWenderlich的视频教程<a href="http://www.raywenderlich.com/video-tutorials#swiftflappy" target="_blank" rel="external">How To Make a Game Like Flappy Bird Series (Swift)</a>。本教程中，你将从无到有亲自开发一个基于<em>SpriteKit</em>框架的<em>Flappy bird</em>小游戏。总体难度不大，但要求你掌握<em>Swift</em>基础语法与<em>SpriteKit</em>框架知识。此外，教程中所有素材均来自<em>Raywenderlich</em>，鼓励学习交流，但请勿用于商业用途。</p>
+<a id="more"></a>
+<blockquote>
+<p><strong>友情提示:</strong>为了方便大家快速上手项目，我上传了课时的教程至<a href="https://github.com/colourful987/JustMakeGame-FlappyBird" target="_blank" rel="external">github</a>，请找到<strong>Code文件夹中-&gt;L05文件夹-&gt;FlappyBird-Start</strong>下载。</p>
+</blockquote>
+<p>游戏的雏形已经基本实现，呈现了背景，地面持续滚动，<em>Player</em>上下跳窜以及源源不断的仙人掌。不过细心的你也应当发现有以下几个不足:</p>
+<ol>
+<li><em>Player</em>可以通过不断点击升高到屏幕外。</li>
+<li>仙人掌表示不服:你丫想穿越我就穿越，当我是透明吗？</li>
+</ol>
+<p>因此本节的任务是设置场景精灵的物理体，当课时完毕，<em>Player</em>一旦触碰到仙人掌就会下落，不能继续游戏。</p>
+<h3 id="01-设置场景内精灵的物体形状">01.设置场景内精灵的物体形状</h3><p>暂且对游戏内容按下不表，先谈谈咱们真实的世界，重力加速度9.8g,非透明的物体之间碰撞会发生形变。而在<em>Sprite Kit</em>中的物理世界，首先我需要引出<em>Physics Shapes</em> —— 物体形状，就拿人来说，倘若我粗略地来形容一个人的物理体，我就会给出一个<code>x*y*z</code>(长宽高计算体积)的长方体，一旦外物触碰轮廓表面，我就说两者发生了接触；不过若已精确角度来说，形容人的物理体以其皮肤表面为轮廓勾勒出一个体积，显然这比先前的立方体来的精确太多了；当然有时候嫌麻烦，指定头部(姑且就当成一个球体吧)作为人的物理体，因此除头部外的身体都相当于是透明的，外物接触了手、腿等都不算发生接触，只有与头部接触才算。</p>
+<p>讲了那么多，现在回到游戏，开始塑造真实的物理世界,首先找到<code>didMoveToView()</code>方法，在最上方添加一行代码设置场景物理世界的重力为(0,0)，原因是我们打算使用自定义设置的参数:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">didMoveToView</span><span class="params">(view: SKView)</span></span> &#123;</span><br><span class="line">    physicsWorld.gravity = <span class="type">CGVector</span>(dx: <span class="number">0</span>, dy: <span class="number">0</span>)</span><br><span class="line">    <span class="comment">//... 以下为早前内容</span></span><br><span class="line">&#125;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">接着咱们要说**physicsBody**，译为物理体。我们可以设置每个节点的物理体，那样它就可以和其他同样设置了物理体的节点发生碰撞、检测接触等，它有三个属性，值均为<span class="type">UInt32</span>类型:</span><br><span class="line"></span><br><span class="line">* *categoryBitMask*: 表明当前body属于哪个类别。</span><br><span class="line">* *collisionBitMask*: 当前物体可以与哪些类别发生碰撞。</span><br><span class="line">* *contactTestBitMask*:用于告知当前物体与哪些类别物理发生接触时。</span><br><span class="line"></span><br><span class="line">游戏中类似这种，我们往往用二进制数来表示物体，譬如*<span class="number">0b1</span>*表明是*<span class="type">Player</span>*,*<span class="number">0b10</span>*表明障碍物，*<span class="number">0b100</span>*表明地面。想必编程男都不陌生吧。<span class="type">OK</span>，请在`<span class="class"><span class="keyword">enum</span> <span class="title">Layer</span>:<span class="title">CGFLoat</span></span>&#123;&#125;`下方新增一个结构体用于表明分类，注意里面均为类型属性:</span><br><span class="line"></span><br><span class="line">```<span class="built_in">swift</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">PhysicsCategory</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">let</span> <span class="type">None</span>: <span class="type">UInt32</span> = <span class="number">0</span></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">let</span> <span class="type">Player</span>: <span class="type">UInt32</span> =     <span class="number">0b1</span> <span class="comment">// 1</span></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">let</span> <span class="type">Obstacle</span>: <span class="type">UInt32</span> =  <span class="number">0b10</span> <span class="comment">// 2</span></span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">let</span> <span class="type">Ground</span>: <span class="type">UInt32</span> =   <span class="number">0b100</span> <span class="comment">// 4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于类型属性，调用方法形如:<code>PhysicsCategory.None</code>，更多关于类型属性，请参看官方文档<em>Type properties</em>一节。</p>
+<p>接下来我们主要添加以下物理体到场景中:</p>
+<ol>
+<li>Player，这里我们将借助一个勾勒工具来绘制其物理体。</li>
+<li>障碍物,同上。</li>
+<li>地面，其实就是一条水平线。</li>
+</ol>
+<p>为啥要设置以上三个物理体呢？因为设置完物理体后，我们才能知道谁和谁发生了接触<em>contact</em>，如此进行下一步计算。至于<code>collision</code>咱们是不关心的，不需要设置。</p>
+<h3 id="设置地面的物理体">设置地面的物理体</h3><p>找到<code>setupBackground()</code>方法 在方法最下方添加如下内容:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">setupBackground</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">	<span class="comment">//===以上为早前内容===</span></span><br><span class="line">	<span class="comment">//===以下为新增内容===</span></span><br><span class="line">   <span class="keyword">let</span> lowerLeft = <span class="type">CGPoint</span>(x: <span class="number">0</span>, y: playableStart)<span class="comment">//地板表面的最左侧一点</span></span><br><span class="line">   <span class="keyword">let</span> lowerRight = <span class="type">CGPoint</span>(x: size.width, y: playableStart) <span class="comment">//地板表面的最右侧一点</span></span><br><span class="line">   <span class="comment">// 1</span></span><br><span class="line">   <span class="keyword">self</span>.physicsBody = <span class="type">SKPhysicsBody</span>(edgeFromPoint: lowerLeft, toPoint: lowerRight)</span><br><span class="line">   <span class="keyword">self</span>.physicsBody?.categoryBitMask = <span class="type">PhysicsCategory</span>.<span class="type">Ground</span></span><br><span class="line">   <span class="keyword">self</span>.physicsBody?.collisionBitMask = <span class="number">0</span></span><br><span class="line">   <span class="keyword">self</span>.physicsBody?.contactTestBitMask = <span class="type">PhysicsCategory</span>.<span class="type">Player</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于1中，我们用一条平行线来实例化物理体，然后是三部曲，分别设置了其分类为<em>Ground</em>；不予其他任何物理发生碰撞(因为设置了0)；设置了能与其发生接触的物体有<em>Player</em>。</p>
+<h3 id="设置Player的物理体">设置Player的物理体</h3><p>找到<code>setupPlayer()</code>方法 同样新增以下内容到方法最后:</p>
+<pre><code class="swift"><span class="func"><span class="keyword">func</span> <span class="title">setupPlayer</span><span class="params">()</span></span>{
+   player.position = <span class="type">CGPointMake</span>(size.width * <span class="number">0.2</span>, playableHeight * <span class="number">0.4</span> + playableStart)
+   player.zPosition = <span class="type">Layer</span>.<span class="type">Player</span>.rawValue
+    <span class="comment">// 注意我们将worldNode.addChild(player)移到了最下方。</span>
+
+    <span class="comment">//=========以下为新增内容===========</span>
+   <span class="keyword">let</span> offsetX = player.size.width * player.anchorPoint.x
+   <span class="keyword">let</span> offsetY = player.size.height * player.anchorPoint.y
+
+   <span class="keyword">let</span> path = <span class="type">CGPathCreateMutable</span>()
+
+   <span class="type">CGPathMoveToPoint</span>(path, <span class="built_in">nil</span>, <span class="number">17</span> - offsetX, <span class="number">23</span> - offsetY)
+   <span class="type">CGPathAddLineToPoint</span>(path, <span class="built_in">nil</span>, <span class="number">39</span> - offsetX, <span class="number">22</span> - offsetY)
+   <span class="type">CGPathAddLineToPoint</span>(path, <span class="built_in">nil</span>, <span class="number">38</span> - offsetX, <span class="number">10</span> - offsetY)
+   <span class="type">CGPathAddLineToPoint</span>(path, <span class="built_in">nil</span>, <span class="number">21</span> - offsetX, <span class="number">0</span> - offsetY)
+   <span class="type">CGPathAddLineToPoint</span>(path, <span class="built_in">nil</span>, <span class="number">4</span> - offsetX, <span class="number">1</span> - offsetY)
+   <span class="type">CGPathAddLineToPoint</span>(path, <span class="built_in">nil</span>, <span class="number">3</span> - offsetX, <span class="number">15</span> - offsetY)
+
+   <span class="type">CGPathCloseSubpath</span>(path)
+
+   player.physicsBody = <span class="type">SKPhysicsBody</span>(polygonFromPath: path)
+   player.physicsBody?.categoryBitMask = <span class="type">PhysicsCategory</span>.<span class="type">Player</span>
+   player.physicsBody?.collisionBitMask = <span class="number">0</span>
+   player.physicsBody?.contactTestBitMask = <span class="type">PhysicsCategory</span>.<span class="type">Obstacle</span> | <span class="type">PhysicsCategory</span>.<span class="type">Ground</span>
+
+   worldNode.addChild(player)<span class="comment">// hey 我现在在这里！！！！</span>
+}
+</code></pre>
+<p>我们通过绘制路径来勾勒出<em>Player</em>的自定义物理体，别吃惊，我只不过借助了某些工具，地址在<a href="http://stackoverflow.com/questions/19040144/spritekits-skphysicsbody-with-polygon-helper-tool" target="_blank" rel="external">这里</a>,ps:可能需要翻墙。</p>
+<h3 id="设置仙人掌的物理体">设置仙人掌的物理体</h3><p>同理我们只需要在产生仙人掌的实例方法中添加其物理体即可，请定位到<code>createObstacle()-&gt;SKSpriteNode</code>方法:</p>
+<pre><code class="swift"><span class="func"><span class="keyword">func</span> <span class="title">createObstacle</span><span class="params">()</span></span> -&gt; <span class="type">SKSpriteNode</span> {
+  <span class="keyword">let</span> sprite = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"Cactus"</span>)
+  sprite.zPosition = <span class="type">Layer</span>.<span class="type">Obstacle</span>.rawValue
+
+  <span class="comment">//========以下为新增内容=========</span>
+  <span class="keyword">let</span> offsetX = sprite.size.width * sprite.anchorPoint.x
+  <span class="keyword">let</span> offsetY = sprite.size.height * sprite.anchorPoint.y
+
+  <span class="keyword">let</span> path = <span class="type">CGPathCreateMutable</span>()
+
+  <span class="type">CGPathMoveToPoint</span>(path, <span class="built_in">nil</span>, <span class="number">3</span> - offsetX, <span class="number">0</span> - offsetY)
+  <span class="type">CGPathAddLineToPoint</span>(path, <span class="built_in">nil</span>, <span class="number">5</span> - offsetX, <span class="number">309</span> - offsetY)
+  <span class="type">CGPathAddLineToPoint</span>(path, <span class="built_in">nil</span>, <span class="number">16</span> - offsetX, <span class="number">315</span> - offsetY)
+  <span class="type">CGPathAddLineToPoint</span>(path, <span class="built_in">nil</span>, <span class="number">39</span> - offsetX, <span class="number">315</span> - offsetY)
+  <span class="type">CGPathAddLineToPoint</span>(path, <span class="built_in">nil</span>, <span class="number">51</span> - offsetX, <span class="number">306</span> - offsetY)
+  <span class="type">CGPathAddLineToPoint</span>(path, <span class="built_in">nil</span>, <span class="number">49</span> - offsetX, <span class="number">1</span> - offsetY)
+
+  <span class="type">CGPathCloseSubpath</span>(path)
+
+  sprite.physicsBody = <span class="type">SKPhysicsBody</span>(polygonFromPath: path)
+  sprite.physicsBody?.categoryBitMask = <span class="type">PhysicsCategory</span>.<span class="type">Obstacle</span>
+  sprite.physicsBody?.collisionBitMask = <span class="number">0</span>
+  sprite.physicsBody?.contactTestBitMask = <span class="type">PhysicsCategory</span>.<span class="type">Player</span>
+
+  <span class="keyword">return</span> sprite
+}
+</code></pre>
+<p>注意到不管是哪种方式设置物理体，我们都需要设置其分类，碰撞掩码以及测试接触掩码，不过这里我们并不需要碰撞，所以全部设为0，即None。</p>
+<p>最后请点击运行，你会发现场景中的<em>Player</em>、<em>仙人掌</em>以及地面表层都有一层轮廓。没错！这就是其各自的物理体。我们在<em>GameViewCOntroller</em>中通过设置了<code>skView.showsPhysics = true</code>来显示的。</p>
+<p><img src="https://raw.githubusercontent.com/colourful987/JustMakeGame-FlappyBird/master/Resource/L05/L05-Result.png" alt=""></p>
+<blockquote>
+<p>下文我将更新如何处理物体与物体之间的接触事件。 倘若觉得文章不错，点击喜欢或者关注我吧。^.^</p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/JUSTMAKEGAME/">JUSTMAKEGAME</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/SpriteKit/">SpriteKit</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2015/10/16/JustMakeGame/Lecture06 —— 碰撞的检测/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2015/10/16/JustMakeGame/lecture04 障碍物的生成/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"optionalswift"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:optionalswift.cn">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JUSTMAKEGAME/">JUSTMAKEGAME</a><small>9</small></li>
+  
+    <li><a href="/categories/Swift-Beginner-Series/">Swift Beginner Series</a><small>6</small></li>
+  
+    <li><a href="/categories/Swift-Resource/">Swift Resource</a><small>1</small></li>
+  
+    <li><a href="/categories/Swift2-0语法改动实例/">Swift2.0语法改动实例</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-language/">swift language</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-控件/">swift 控件</a><small>5</small></li>
+  
+    <li><a href="/categories/swift-框架/">swift 框架</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-语法/">swift 语法</a><small>4</small></li>
+  
+    <li><a href="/categories/why-coding-like-this/">why coding like this</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">博客简介</h3>
+<ul class="entry">
+<li>本体：Optional Swift team</li>
+<li>成员：PMST、暮夜星晨、Jim、ICE</li>
+<li>宣言：value or nil ?</li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+<li>想交友的朋友请<a href="http://optionalswift.cn/about">联系我们</a></li>
+<li>QQ 号：1345614869</li>
+<font color="red">Swift 交流群：392436022</font>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">广告赞助</h3>
+<ul class="entry">
+<li><a href="http://www.aliexpress.com/store/1764462"> Fashion Wardrobe for women</a></li>	
+<li><a href="http://shop123768141.taobao.com/shop/view_shop.htm?spm=a1z0e.1.10010.3.It7e1D">程序员ios资料淘宝小店(raywenderlich等英语资料为主)</a></li>
+</ul>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li>PMST个站：<a href="http://colourfulcode.cn">Colourful Code</a></li>
+<li>Jim 个站：<a href="http://www.jinyejun.com">YeJun Jim</a></li>
+<li>想了解黑客,请戳：<a href="http://mapers.net/forum.php">路标社区</a></li>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">安静的听音乐</h3>
+<ul class="entry">
+<li>
+<audio controls="controls" height="100" width="100">
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/mp3" />
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/ogg" />
+  <embed height="100" width="100" src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" >
+</audio>
+</li>
+</ul>
+</div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+  Redesign by <a href="_widget" target="_blank">PMST</a>
+   | 
+  Owned by <a href="http://optionalswift.cn" target="_blank">Optional Swift Team</a> 
+   |
+  Team was set up in April
+	 <font id="counter"></font>
+</section>
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<!--script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script-->
+<script src="/js/counter.js"></script>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/zippera" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>

@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE HTML>
+<html>
+
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?94f6ddbfbc53cb18818538cafd3ba350";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <script src="//dn-lbstatics.qbox.me/jquery/1.11.2/jquery.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.7.2.min.js"></script> 
+  <script src="//dn-lbstatics.qbox.me/pintuer/1.0/pintuer.mini.js"></script>
+  <script src="//dn-lbstatics.qbox.me/respond/1.4.2/respond.min.js"></script>
+
+  
+  <title>用Swift做个游戏Lecture02 —— Player的添加以及上下移动的实现 | Optional Swift 博客</title>
+  <meta name="author" content="OST">
+  
+  <meta name="description" content="Swift  you choose">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="用Swift做个游戏Lecture02 —— Player的添加以及上下移动的实现"/>
+  <meta property="og:site_name" content="Optional Swift 博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Optional Swift 博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">Optional Swift 博客</a></h1>
+  <h2><a href="/">Optional means having a value in it or equaling nil</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/categories">分类</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-10-16T12:01:15.000Z"><a href="/2015/10/16/JustMakeGame/lecture02——player的添加以及上下移动的实现/">2015-10-16</a></time>
+      
+      
+  
+    <h1 class="title">用Swift做个游戏Lecture02 —— Player的添加以及上下移动的实现</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>作者：PMST<br>团队博客地址:<a href="http://optionalswift.cn" target="_blank" rel="external">optional Swift</a><br>个人博客地址:<a href="http://colourfulcode.cn" target="_blank" rel="external">colourful code</a><br>简书博客地址:<a href="http://www.jianshu.com/users/596f2ba91ce9/latest_articles" target="_blank" rel="external">PPPPPPMST</a><br>VERSION:V1.0<br>NOTICE:目前第一版以叙述内容为主，之后对其中一些细节知识点进行讲解。</p>
+</blockquote>
+<p>本教程参考自RayWenderlich的视频教程<a href="http://www.raywenderlich.com/video-tutorials#swiftflappy" target="_blank" rel="external">How To Make a Game Like Flappy Bird Series (Swift)</a>。本教程中，你将从无到有亲自开发一个基于<em>SpriteKit</em>框架的<em>Flappy bird</em>小游戏。总体难度不大，但要求你掌握<em>Swift</em>基础语法与<em>SpriteKit</em>框架知识。此外，教程中所有素材均来自<em>Raywenderlich</em>，鼓励学习交流，但请勿用于商业用途。</p>
+<p><strong>友情帮助</strong>: 为了方便大家快速上手项目，我在<em>github</em>中上传了起始项目文件供大家下载，请点击<a href="https://github.com/colourful987/JustMakeGame-FlappyBird" target="_blank" rel="external">这里</a>下载。</p>
+<a id="more"></a>
+<h3 id="01-游戏音乐实现">01.游戏音乐实现</h3><p>音乐主要有:<em>Player</em>挥动翅膀上升的声音、撞击障碍物的声音、坠落至地面的声音、过关得分的声音等等。请打开项目看到<em>Resource</em>中的<em>Sounds</em>文件夹，包含了上述所有声音，格式为<code>.wav</code>。</p>
+<p><em>SpritKit</em>提供<code>playSoundFileNamed(soundFile: , waitForCompletion wait: )-&gt;SKAction</code>方法用于实现音乐的播放，注意播放音乐也是一个<em>Action</em>动作。请定位到<em>GameScene.swift</em>文件,找到<code>GameScene</code>类中的<code>var playableHeight:CGFloat = 0</code>，在其下方添加如下代码:      </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MARK: 音乐Action</span></span><br><span class="line"><span class="keyword">let</span> dingAction = <span class="type">SKAction</span>.playSoundFileNamed(<span class="string">"ding.wav"</span>, waitForCompletion: <span class="built_in">false</span>)</span><br><span class="line"><span class="keyword">let</span> flapAction = <span class="type">SKAction</span>.playSoundFileNamed(<span class="string">"flapping.wav"</span>, waitForCompletion: <span class="built_in">false</span>)</span><br><span class="line"><span class="keyword">let</span> whackAction = <span class="type">SKAction</span>.playSoundFileNamed(<span class="string">"whack.wav"</span>, waitForCompletion: <span class="built_in">false</span>)</span><br><span class="line"><span class="keyword">let</span> fallingAction = <span class="type">SKAction</span>.playSoundFileNamed(<span class="string">"falling.wav"</span>, waitForCompletion: <span class="built_in">false</span>)</span><br><span class="line"><span class="keyword">let</span> hitGroundAction = <span class="type">SKAction</span>.playSoundFileNamed(<span class="string">"hitGround.wav"</span>, waitForCompletion: <span class="built_in">false</span>)</span><br><span class="line"><span class="keyword">let</span> popAction = <span class="type">SKAction</span>.playSoundFileNamed(<span class="string">"pop.wav"</span>, waitForCompletion: <span class="built_in">false</span>)</span><br><span class="line"><span class="keyword">let</span> coinAction = <span class="type">SKAction</span>.playSoundFileNamed(<span class="string">"coin.wav"</span>, waitForCompletion: <span class="built_in">false</span>)</span><br><span class="line">```       </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">之后在需要音乐播放的时候调用这些已经定义的动作即可。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">###<span class="number">02</span>.添加<span class="type">Player</span></span><br><span class="line"></span><br><span class="line">通过课程一的代码练习，添加一个*<span class="type">Player</span>*只需实例化一个`<span class="type">SKSpriteNode</span>`实例，纹理为*<span class="type">Bird0</span>*这张照片。由于这个精灵之后将在各个函数调用，因此设定了全局变量，请在`<span class="keyword">var</span> playableHeight: <span class="type">CGFloat</span> = <span class="number">0</span>`下添加如下代码实例化一个名为<span class="string">"Player"</span>的精灵。如下:</span><br><span class="line"></span><br><span class="line">```<span class="built_in">swift</span></span><br><span class="line"><span class="keyword">let</span> player = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"Bird0"</span>)</span><br><span class="line">```     </span><br><span class="line"></span><br><span class="line">注意到此时我们并未添加该精灵到场景中的`worldNode`节点中，因此我们需要实现一个名为`setupPlayer()`的方法，代码如下</span><br><span class="line"></span><br><span class="line">```<span class="built_in">swift</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">setupPlayer</span><span class="params">()</span></span>&#123;</span><br><span class="line">    player.position = <span class="type">CGPointMake</span>(size.width * <span class="number">0.2</span>, playableHeight * <span class="number">0.4</span> + playableStart)</span><br><span class="line">    player.zPosition = <span class="type">Layer</span>.<span class="type">Player</span>.rawValue</span><br><span class="line">    worldNode.addChild(player)</span><br><span class="line">&#125;</span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line">函数中仅设置了*position*以及*zPosition*属性，而锚点*anchorPoint*并未设置，采用默认值(<span class="number">0.5</span>,<span class="number">0.5</span>)。找到`didMoveToView(view:)`中的`setupForeground()`这行代码，将上述方法添加至其下方。</span><br><span class="line"></span><br><span class="line">点击运行程序，*<span class="type">Player</span>*出现在场景之中。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">###<span class="number">03</span>.update方法</span><br><span class="line"></span><br><span class="line">不知道你有没有玩过翻书动画，先准备一个厚厚的小本子，然后在每一页上描画，最后通过快速翻阅组成最简短的动画。如下:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">![<span class="type">L02</span>-<span class="type">Animation</span>](https:<span class="comment">//raw.githubusercontent.com/colourful987/JustMakeGame-FlappyBird/master/Resource/L02/L02-Animation.png)</span></span><br><span class="line"></span><br><span class="line">前文谈及右下角的*30fps*客官可曾记得？*fps*是*<span class="type">Frame</span> <span class="type">Per</span> <span class="type">Second</span>*的缩写，即每秒的帧数，而一帧为一个画面。因此*30fps*意味着在一秒钟时间内，**<span class="type">App</span>**要渲染<span class="number">30</span>次左右，平均每隔<span class="number">0.033333</span>秒就要重新绘制一次画面。而渲染(绘制)完毕立刻跳入`update(currentTime:)`方法中，大约间隔<span class="number">33.33</span>毫秒左右，执行方法内的代码。不妨你在该函数中设个断点感受一下。     </span><br><span class="line"></span><br><span class="line">注意到左下角的帧数并不是始终保持在*30fps*,而是不断在上下浮动变化。相邻两帧画面之间的时间并不固定，可能是<span class="number">0.033</span>秒，也可能是<span class="number">0.030</span>秒。不妨测试打印下两帧之间的时间差值,请在`player`下添加两个全局变量:`lastUpdateTime`以及`dt`：</span><br><span class="line"></span><br><span class="line">```<span class="built_in">swift</span></span><br><span class="line"><span class="keyword">var</span> lastUpdateTime :<span class="type">NSTimeInterval</span> = <span class="number">0</span>	<span class="comment">//记录上次更新时间</span></span><br><span class="line"><span class="keyword">var</span> dt:<span class="type">NSTimeInterval</span> = <span class="number">0</span>				<span class="comment">//两次时间差值</span></span><br></pre></td></tr></table></figure>
+<p>接着在<code>Update(currenTime:)</code>方法中添加如下方法：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">update</span><span class="params">(currentTime: CFTimeInterval)</span></span> &#123;</span><br><span class="line">   <span class="keyword">if</span> lastUpdateTime &gt; <span class="number">0</span>&#123;</span><br><span class="line">       dt = currentTime - lastUpdateTime</span><br><span class="line">   &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">       dt = <span class="number">0</span></span><br><span class="line">   &#125;</span><br><span class="line">   lastUpdateTime = currentTime</span><br><span class="line">   <span class="built_in">print</span>(<span class="string">"时间差值为:<span class="subst">\(dt*<span class="number">1000</span>)</span> 毫秒"</span>)</span><br><span class="line">&#125;</span><br><span class="line">```     </span><br><span class="line"></span><br><span class="line">可以看到打印结果(注意红色框框处):</span><br><span class="line"></span><br><span class="line">![](https:<span class="comment">//raw.githubusercontent.com/colourful987/JustMakeGame-FlappyBird/master/Resource/L02/L02-Frame.png)</span></span><br><span class="line"></span><br><span class="line">当应用刚启动时，帧数并不稳定，导致时间间隔略大，不过之后基本稳定在<span class="number">33</span>毫秒左右。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">###<span class="number">04</span>.<span class="type">Player</span>的下落公式</span><br><span class="line"></span><br><span class="line">这里可能要涉及一些高中的物理知识。地球上的重力加速度为<span class="number">9</span>.8g。物体在半空中静止到下落，每隔dt时间。</span><br><span class="line"></span><br><span class="line">* 速度`<span class="type">V</span> = <span class="type">V1</span> + a * dt`，即**当前速度=初速度 + 加速度 * 时间间隔**。</span><br><span class="line">* dt时间内，下落距离`d =<span class="type">V</span> * dt`,这里采用**平均速度 * 时间差**得到下落距离。</span><br><span class="line"></span><br><span class="line">游戏中设定且只有<span class="type">Y</span>轴方向上的重力加速度`kGravity = -<span class="number">1500</span>`,这个值是可调节的，我觉得恰到好处；此外每次玩家点击屏幕，对*<span class="type">Player</span>*要有一个向上的拉力，不妨设为`kImpulse = <span class="number">400</span>`；最后声明一个变量`playerVelocity`追踪当前*<span class="type">Player</span>*的速度。请添加上述三个全局变量的声明,现在*<span class="type">GameScene</span>*类中的全局变量有以下这些:</span><br><span class="line"></span><br><span class="line">```<span class="built_in">swift</span></span><br><span class="line"><span class="comment">// MARK: - 常量</span></span><br><span class="line"><span class="keyword">let</span> kGravity:<span class="type">CGFloat</span> = -<span class="number">1500.0</span>	<span class="comment">//重力</span></span><br><span class="line"><span class="keyword">let</span> kImpulse:<span class="type">CGFloat</span> = <span class="number">400</span>		<span class="comment">//上升力</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> worldNode = <span class="type">SKNode</span>()</span><br><span class="line"><span class="keyword">var</span> playableStart:<span class="type">CGFloat</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">var</span> playableHeight:<span class="type">CGFloat</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> player = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"Bird0"</span>)</span><br><span class="line"><span class="keyword">var</span> lastUpdateTime :<span class="type">NSTimeInterval</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">var</span> dt:<span class="type">NSTimeInterval</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">var</span> playerVelocity = <span class="type">CGPoint</span>.zero	<span class="comment">//速度 注意变量类型为一个点</span></span><br><span class="line"><span class="comment">//...其他内容</span></span><br></pre></td></tr></table></figure>
+<p>请在<em>GameScene</em>类中添加一个方法，将先前公式用swift实现更新<em>player</em>的<em>position</em>。</p>
+<pre><code class="swift"><span class="func"><span class="keyword">func</span> <span class="title">updatePlayer</span><span class="params">()</span></span>{
+    <span class="comment">// 只有Y轴上的重力加速度为-1500</span>
+    <span class="keyword">let</span> gravity = <span class="type">CGPoint</span>(x: <span class="number">0</span>, y: kGravity)
+    <span class="keyword">let</span> gravityStep = gravity * <span class="type">CGFloat</span>(dt) <span class="comment">//计算dt时间下速度的增量</span>
+    playerVelocity += gravityStep           <span class="comment">//计算当前速度</span>
+
+    <span class="comment">// 位置计算</span>
+    <span class="keyword">let</span> velocityStep = playerVelocity * <span class="type">CGFloat</span>(dt) <span class="comment">//计算dt时间中下落或上升距离</span>
+    player.position += velocityStep                 <span class="comment">//计算player的位置</span>
+
+    <span class="comment">// 倘若Player的Y坐标位置在地面上了就不能再下落了 直接设置其位置的y值为地面的表层坐标</span>
+    <span class="keyword">if</span> player.position.y - player.size.height/<span class="number">2</span> &lt; playableStart {
+        player.position = <span class="type">CGPoint</span>(x: player.position.x, y: playableStart + player.size.height/<span class="number">2</span>)
+    }
+}
+</code></pre>
+<p>将该方法添加至<code>update(currentTime)</code>方法中的最下面。意味着每隔33.3毫秒左右就要更新一次<em>Player</em>的位置。</p>
+<p>点击运行，<em>Player</em>自由落地至地面，不错吧！</p>
+<h3 id="05-让Player动起来">05.让Player动起来</h3><p>游戏中我们点击一次屏幕，<em>Player</em>会获得一个向上的牵引力，挥动翅膀向上飞一段距离，倘若之后没有持续的力，则开始自由落体。怎么实现呢？实现机制不难,只需每次玩家点击屏幕，使得<em>Player</em>获得向上的速度，具体为先前设定的400即可。</p>
+<p>因此，添加一个方法到<em>GameScene</em>类中，用于每次用户点击屏幕时调用，作用是让<em>Player</em>获得向上的速度！</p>
+<pre><code class="swift"><span class="func"><span class="keyword">func</span> <span class="title">flapPlayer</span><span class="params">()</span></span>{
+    <span class="comment">// 发出一次煽动翅膀的声音</span>
+    runAction(flapAction)
+    <span class="comment">// 重新设定player的速度！！</span>
+    playerVelocity  = <span class="type">CGPointMake</span>(<span class="number">0</span>, kImpulse)
+}
+</code></pre>
+<p>正如前面谈到的，方法中主要做两件事:1.发出一次挥动翅膀的声音。2.重新设定player的速度。</p>
+<p>而用户每次点击都会调用<code>touchesBegan(touches: Set&lt;UITouch&gt;, withEvent event: UIEvent?)</code>方法。不用我多说了吧，把<code>flapPlayer()</code>方法添加进去吧。</p>
+<p>运行工程，<em>player</em>坠落，点击几下，哇靠，飞起来了！</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/JUSTMAKEGAME/">JUSTMAKEGAME</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/SpriteKit/">SpriteKit</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2015/10/16/JustMakeGame/lecture 03—— 实现foreground的持续移动/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2015/10/16/JustMakeGame/lecture01——游戏场景/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"optionalswift"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:optionalswift.cn">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JUSTMAKEGAME/">JUSTMAKEGAME</a><small>9</small></li>
+  
+    <li><a href="/categories/Swift-Beginner-Series/">Swift Beginner Series</a><small>6</small></li>
+  
+    <li><a href="/categories/Swift-Resource/">Swift Resource</a><small>1</small></li>
+  
+    <li><a href="/categories/Swift2-0语法改动实例/">Swift2.0语法改动实例</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-language/">swift language</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-控件/">swift 控件</a><small>5</small></li>
+  
+    <li><a href="/categories/swift-框架/">swift 框架</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-语法/">swift 语法</a><small>4</small></li>
+  
+    <li><a href="/categories/why-coding-like-this/">why coding like this</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">博客简介</h3>
+<ul class="entry">
+<li>本体：Optional Swift team</li>
+<li>成员：PMST、暮夜星晨、Jim、ICE</li>
+<li>宣言：value or nil ?</li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+<li>想交友的朋友请<a href="http://optionalswift.cn/about">联系我们</a></li>
+<li>QQ 号：1345614869</li>
+<font color="red">Swift 交流群：392436022</font>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">广告赞助</h3>
+<ul class="entry">
+<li><a href="http://www.aliexpress.com/store/1764462"> Fashion Wardrobe for women</a></li>	
+<li><a href="http://shop123768141.taobao.com/shop/view_shop.htm?spm=a1z0e.1.10010.3.It7e1D">程序员ios资料淘宝小店(raywenderlich等英语资料为主)</a></li>
+</ul>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li>PMST个站：<a href="http://colourfulcode.cn">Colourful Code</a></li>
+<li>Jim 个站：<a href="http://www.jinyejun.com">YeJun Jim</a></li>
+<li>想了解黑客,请戳：<a href="http://mapers.net/forum.php">路标社区</a></li>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">安静的听音乐</h3>
+<ul class="entry">
+<li>
+<audio controls="controls" height="100" width="100">
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/mp3" />
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/ogg" />
+  <embed height="100" width="100" src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" >
+</audio>
+</li>
+</ul>
+</div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+  Redesign by <a href="_widget" target="_blank">PMST</a>
+   | 
+  Owned by <a href="http://optionalswift.cn" target="_blank">Optional Swift Team</a> 
+   |
+  Team was set up in April
+	 <font id="counter"></font>
+</section>
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<!--script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script-->
+<script src="/js/counter.js"></script>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/zippera" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>

@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE HTML>
+<html>
+
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?94f6ddbfbc53cb18818538cafd3ba350";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <script src="//dn-lbstatics.qbox.me/jquery/1.11.2/jquery.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.7.2.min.js"></script> 
+  <script src="//dn-lbstatics.qbox.me/pintuer/1.0/pintuer.mini.js"></script>
+  <script src="//dn-lbstatics.qbox.me/respond/1.4.2/respond.min.js"></script>
+
+  
+  <title>用Swift做个游戏Lecture09 —— 菜单的实现 | Optional Swift 博客</title>
+  <meta name="author" content="OST">
+  
+  <meta name="description" content="Swift  you choose">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="用Swift做个游戏Lecture09 —— 菜单的实现"/>
+  <meta property="og:site_name" content="Optional Swift 博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Optional Swift 博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">Optional Swift 博客</a></h1>
+  <h2><a href="/">Optional means having a value in it or equaling nil</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/categories">分类</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-10-16T12:09:15.000Z"><a href="/2015/10/16/JustMakeGame/lecture09 —— 添加主菜单/">2015-10-16</a></time>
+      
+      
+  
+    <h1 class="title">用Swift做个游戏Lecture09 —— 菜单的实现</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>作者：PMST<br>团队博客地址:<a href="http://optionalswift.cn" target="_blank" rel="external">optional Swift</a><br>个人博客地址:<a href="http://colourfulcode.cn" target="_blank" rel="external">colourful code</a><br>简书博客地址:<a href="http://www.jianshu.com/users/596f2ba91ce9/latest_articles" target="_blank" rel="external">PPPPPPMST</a><br>VERSION:V1.0<br>NOTICE:目前第一版以叙述内容为主，之后对其中一些细节知识点进行讲解。</p>
+</blockquote>
+<p>本教程参考自RayWenderlich的视频教程<a href="http://www.raywenderlich.com/video-tutorials#swiftflappy" target="_blank" rel="external">How To Make a Game Like Flappy Bird Series (Swift)</a>。本教程中，你将从无到有亲自开发一个基于<em>SpriteKit</em>框架的<em>Flappy bird</em>小游戏。总体难度不大，但要求你掌握<em>Swift</em>基础语法与<em>SpriteKit</em>框架知识。此外，教程中所有素材均来自<em>Raywenderlich</em>，鼓励学习交流，但请勿用于商业用途。</p>
+<a id="more"></a>
+<h3 id="正文">正文</h3><p>Lecture08课程结束，我们已经走过了90%，剩下的10%是对游戏体验的改进罢了。就比如，刚启动游戏，“Player”就出现在屏幕中Flap一下翅膀，然后还没等用户清楚这个游戏是什么情况的时候，“Player”已经坠地阵亡了。这种游戏体验可谓是差到极致，试想一个用户下载游戏并启动，此时还对游戏没有一丝认知，渴求先看看帮助说明或者玩法介绍之类吧！</p>
+<p>因为本课程中，将剔除早前的直接进入游戏的弊端，通过添加主菜单供用户选择开始一次游戏亦或是查看游戏帮助说明等选项。如下:</p>
+<p><img src="https://raw.githubusercontent.com/colourful987/JustMakeGame-FlappyBird/master/Resource/L09/L09-MainMenu.png" alt=""></p>
+<p>前文已经给出了游戏状态有如下几种:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">GameState</span></span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">MainMenu</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Tutorial</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Play</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Falling</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">ShowingScore</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">GameOver</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当我们开始一个游戏的时候，必须制定当前新游戏的状态，比如是<em>MainMenu</em>显示主菜单呢还是直接进入正题<em>Play</em>开始进行游戏。为此我们自定义一个构造函数<code>init(size: CGSize, gameState: GameState)</code>传入gameState设置新游戏初识状态。请添加如下两个方法到<em>GameScene.swift</em>中的<em>GameScene</em>类中。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">init</span>(size: <span class="type">CGSize</span>, gameState: <span class="type">GameState</span>) &#123;</span><br><span class="line">    <span class="keyword">self</span>.gameState = gameState</span><br><span class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>(size: size)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加完毕之后，你会发现编译器报错，这也是情理之中，毕竟修改了构造方法导致早前的初始化方法都不能使用了。不急，慢慢修改。请定位到<code>switchToNewGame()</code>方法，要知道早前我们开始一个新游戏就是调用该函数，但是未指定新游戏的状态，为此我们要大刀阔斧地小改一番…如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">switchToNewGame</span><span class="params">(gameState: GameState)</span></span> &#123;	<span class="comment">//改动1 添加了一个传入参数</span></span><br><span class="line">    </span><br><span class="line">    runAction(popAction)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> newScene = <span class="type">GameScene</span>(size: size,gameState:gameState)<span class="comment">//修改传入参数</span></span><br><span class="line">    <span class="keyword">let</span> transition = <span class="type">SKTransition</span>.fadeWithColor(<span class="type">SKColor</span>.blackColor(), duration: <span class="number">0.5</span>)</span><br><span class="line">    view?.presentScene(newScene, transition: transition)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>wo ca!!这下早前所有调用<code>switchToNewGame()</code>方法的地方都报错了。请不要着急，凡是循序渐进，首先找到<code>touchesBegan(touches: Set&lt;UITouch&gt;, withEvent event: UIEvent?)</code>方法，这次真要大改一番了:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">touchesBegan</span><span class="params">(touches: Set&lt;UITouch&gt;, withEvent event: UIEvent?)</span></span> &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//1</span></span><br><span class="line">   <span class="keyword">let</span> touch = touches.first</span><br><span class="line">   <span class="keyword">let</span> touchLocation = touch?.locationInNode(<span class="keyword">self</span>)</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">switch</span> gameState &#123;</span><br><span class="line">   <span class="keyword">case</span> .<span class="type">MainMenu</span>:</span><br><span class="line">   		<span class="comment">//2</span></span><br><span class="line">       <span class="keyword">if</span> touchLocation?.y &lt; size.height * <span class="number">0.15</span> &#123;</span><br><span class="line">           <span class="comment">//TODO: 之后添加</span></span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> touchLocation?.x &lt; size.width * <span class="number">0.6</span> &#123;</span><br><span class="line">       		<span class="comment">//3</span></span><br><span class="line">           switchToNewGame(.<span class="type">Tutorial</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">break</span></span><br><span class="line">   <span class="keyword">case</span> .<span class="type">Tutorial</span>:</span><br><span class="line">       <span class="comment">//TODO: 之后添加</span></span><br><span class="line">       <span class="keyword">break</span></span><br><span class="line">   <span class="keyword">case</span> .<span class="type">Play</span>:</span><br><span class="line">       flapPlayer()</span><br><span class="line">       <span class="keyword">break</span></span><br><span class="line">   <span class="keyword">case</span> .<span class="type">Falling</span>:</span><br><span class="line">       <span class="keyword">break</span></span><br><span class="line">   <span class="keyword">case</span> .<span class="type">ShowingScore</span>:</span><br><span class="line">       <span class="keyword">break</span></span><br><span class="line">   <span class="keyword">case</span> .<span class="type">GameOver</span>:</span><br><span class="line">   		<span class="comment">//4</span></span><br><span class="line">       <span class="keyword">if</span> touchLocation?.x &lt; size.width * <span class="number">0.6</span> &#123;</span><br><span class="line">           switchToNewGame(.<span class="type">MainMenu</span>)</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">break</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>改动还是蛮大的，起码现在需要根据你点击的位置来执行相应的点击事件：</p>
+<ol>
+<li>获得第一个点击，然后得到在场景中的位置Position,自然就是点Point：包括x坐标值和y坐标值了。</li>
+<li>这里我们只是简单判断点击位置的范围，比如点击位置下偏下方时，就装作点击了”Learn to make this game的按钮”。</li>
+<li>倘若通过位置判断，你点击了<em>Play</em>按钮，则新建一个初始游戏状态为<code>.Tutorial</code>的新游戏，此时并不会立刻开始游戏，而是显示一个教程画面，只有当再次点击时才会开始游戏。</li>
+<li>此时处于游戏结束状态，通过点击OK按钮开启一个新游戏，但是游戏状态为.Menu。</li>
+</ol>
+<p>此时还有个报错来自于”GameViewController.switf文件”，请找到<code>let scene = GameScene(size:CGSizeMake(320, 320 * aspectRatio))</code>这一行，改为我们定义的构造方法<code>let scene = GameScene(size:CGSizeMake(320, 320 * aspectRatio),gameState:.MainMenu)</code>即可。   </p>
+<p>点击运行，我去!! 咋不灵了…..</p>
+<p>貌似<code>didMoveToView()</code>方法中 我们并没有根据游戏初始状态来初始化游戏场景…请转到<code>GameScene</code>类中，定位到<code>didMoveToView()</code>,将其中内容替换成如下内容:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="func"><span class="keyword">func</span> <span class="title">didMoveToView</span><span class="params">(view: SKView)</span></span> &#123;</span><br><span class="line">    physicsWorld.gravity = <span class="type">CGVector</span>(dx: <span class="number">0</span>, dy: <span class="number">0</span>)</span><br><span class="line">    physicsWorld.contactDelegate = <span class="keyword">self</span></span><br><span class="line">    </span><br><span class="line">    addChild(worldNode)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 以下为替换内容 </span></span><br><span class="line">    <span class="keyword">if</span> gameState == .<span class="type">MainMenu</span> &#123;</span><br><span class="line">        switchToMainMenu()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        switchToTutorial()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//MARK: Game States </span></span><br><span class="line"><span class="comment">//添加剩余两个场景切换方法</span></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">switchToMainMenu</span><span class="params">()</span></span> &#123;</span><br><span class="line">   </span><br><span class="line">   gameState = .<span class="type">MainMenu</span></span><br><span class="line">   setupBackground()</span><br><span class="line">   setupForeground()</span><br><span class="line">   setupPlayer()</span><br><span class="line">   setupSomebrero()</span><br><span class="line">   <span class="comment">//TODO: 实现setupMainMenu()主界面布局 之后把注释去掉</span></span><br><span class="line">   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">switchToTutorial</span><span class="params">()</span></span> &#123;</span><br><span class="line">   gameState = .<span class="type">Tutorial</span></span><br><span class="line">   setupBackground()</span><br><span class="line">   setupForeground()</span><br><span class="line">   setupPlayer()</span><br><span class="line">   setupSomebrero()</span><br><span class="line">   setupLabel()</span><br><span class="line">   <span class="comment">//TODO: 实现setupTutorial()教程界面布局 之后把注释去掉</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中我们还未实现对主界面的布局，以及教程界面的布局，这也是接下来所要干的事了。</p>
+<p><strong>实现主界面的布局:</strong></p>
+<p>代码貌似很长，但内容很熟悉不是吗，当年你在配置ScoreCard界面的时候不也这么做过？先布局几个button，然后执行几个动画罢了，请边码边回忆是怎么对精灵位置放置，添加动作的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">setupMainMenu</span><span class="params">()</span></span> &#123;</span><br><span class="line">     </span><br><span class="line">     <span class="keyword">let</span> logo = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"Logo"</span>)</span><br><span class="line">     logo.position = <span class="type">CGPoint</span>(x: size.width/<span class="number">2</span>, y: size.height * <span class="number">0.8</span>)</span><br><span class="line">     logo.zPosition = <span class="type">Layer</span>.<span class="type">UI</span>.rawValue</span><br><span class="line">     worldNode.addChild(logo)</span><br><span class="line">     </span><br><span class="line">     <span class="comment">// Play button</span></span><br><span class="line">     <span class="keyword">let</span> playButton = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"Button"</span>)</span><br><span class="line">     playButton.position = <span class="type">CGPoint</span>(x: size.width * <span class="number">0.25</span>, y: size.height * <span class="number">0.25</span>)</span><br><span class="line">     playButton.zPosition = <span class="type">Layer</span>.<span class="type">UI</span>.rawValue</span><br><span class="line">     worldNode.addChild(playButton)</span><br><span class="line">     </span><br><span class="line">     <span class="keyword">let</span> play = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"Play"</span>)</span><br><span class="line">     play.position = <span class="type">CGPoint</span>.zero</span><br><span class="line">     playButton.addChild(play)</span><br><span class="line">     </span><br><span class="line">     <span class="comment">// Rate button</span></span><br><span class="line">     <span class="keyword">let</span> rateButton = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"Button"</span>)</span><br><span class="line">     rateButton.position = <span class="type">CGPoint</span>(x: size.width * <span class="number">0.75</span>, y: size.height * <span class="number">0.25</span>)</span><br><span class="line">     rateButton.zPosition = <span class="type">Layer</span>.<span class="type">UI</span>.rawValue</span><br><span class="line">     worldNode.addChild(rateButton)</span><br><span class="line">     </span><br><span class="line">     <span class="keyword">let</span> rate = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"Rate"</span>)</span><br><span class="line">     rate.position = <span class="type">CGPoint</span>.zero</span><br><span class="line">     rateButton.addChild(rate)</span><br><span class="line">     </span><br><span class="line">     <span class="comment">// Learn button</span></span><br><span class="line">     <span class="keyword">let</span> learn = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"button_learn"</span>)</span><br><span class="line">     learn.position = <span class="type">CGPoint</span>(x: size.width * <span class="number">0.5</span>, y: learn.size.height/<span class="number">2</span> + kMargin)</span><br><span class="line">     learn.zPosition = <span class="type">Layer</span>.<span class="type">UI</span>.rawValue</span><br><span class="line">     worldNode.addChild(learn)</span><br><span class="line">     </span><br><span class="line">     <span class="comment">// Bounce button</span></span><br><span class="line">     <span class="keyword">let</span> scaleUp = <span class="type">SKAction</span>.scaleTo(<span class="number">1.02</span>, duration: <span class="number">0.75</span>)</span><br><span class="line">     scaleUp.timingMode = .<span class="type">EaseInEaseOut</span></span><br><span class="line">     <span class="keyword">let</span> scaleDown = <span class="type">SKAction</span>.scaleTo(<span class="number">0.98</span>, duration: <span class="number">0.75</span>)</span><br><span class="line">     scaleDown.timingMode = .<span class="type">EaseInEaseOut</span></span><br><span class="line">     </span><br><span class="line">     learn.runAction(<span class="type">SKAction</span>.repeatActionForever(<span class="type">SKAction</span>.sequence([</span><br><span class="line">         scaleUp, scaleDown</span><br><span class="line">         ])))</span><br><span class="line">     </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>实现教程界面设置:</strong></p>
+<p>反观这个教程界面就显得简单多了，只需要添加一章玩法帮助的图就ok了，如下:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">setupTutorial</span><span class="params">()</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> tutorial = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"Tutorial"</span>)</span><br><span class="line">    tutorial.position = <span class="type">CGPoint</span>(x: size.width * <span class="number">0.5</span>, y: playableHeight * <span class="number">0.4</span> + playableStart)</span><br><span class="line">    tutorial.name = <span class="string">"Tutorial"</span></span><br><span class="line">    tutorial.zPosition = <span class="type">Layer</span>.<span class="type">UI</span>.rawValue</span><br><span class="line">    worldNode.addChild(tutorial)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> ready = <span class="type">SKSpriteNode</span>(imageNamed: <span class="string">"Ready"</span>)</span><br><span class="line">    ready.position = <span class="type">CGPoint</span>(x: size.width * <span class="number">0.5</span>, y: playableHeight * <span class="number">0.7</span> + playableStart)</span><br><span class="line">    ready.name = <span class="string">"Tutorial"</span></span><br><span class="line">    ready.zPosition = <span class="type">Layer</span>.<span class="type">UI</span>.rawValue</span><br><span class="line">    worldNode.addChild(ready)</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>好了，定位到<code>switchToMainMenu()</code>和<code>switchToTutorial()</code>方法，把<em>TODO字样的之后方法进行调用</em>。</p>
+<p>点击运行项目，恩…出来了，而且再次点击Play会转到教程界面。不过再点击的话，貌似没反应了，聪明的你肯定会转到<code>touchesBegan()</code>方法，定位到.Tutorial状态，你会发现此时名下啥都没有，怎么可能开始愉快的玩耍呢？？？</p>
+<p>为此在下方添加一个<code>switchToPlay()</code>方法并在.Tutorial下调用。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">switchToPlay</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 从.Tutorial 状态转到.Play状态</span></span><br><span class="line">    gameState = .<span class="type">Play</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 移除Tutorial精灵 </span></span><br><span class="line">    worldNode.enumerateChildNodesWithName(<span class="string">"Tutorial"</span>, usingBlock: &#123; node, stop <span class="keyword">in</span></span><br><span class="line">        node.runAction(<span class="type">SKAction</span>.sequence([</span><br><span class="line">            <span class="type">SKAction</span>.fadeOutWithDuration(<span class="number">0.5</span>),</span><br><span class="line">            <span class="type">SKAction</span>.removeFromParent()</span><br><span class="line">            ]))</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 开始产生障碍物 从右向左移动</span></span><br><span class="line">    startSpawning()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 让Player 向上蹦跶一次...</span></span><br><span class="line">    flapPlayer()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击运行项目，请尽情享受成功的果实吧！</p>
+<p>倘若你对游戏某一部分不太熟悉，请到<a href="">github</a>下载所有课程的代码和课件。</p>
+<blockquote>
+<p>此教程已接近尾声，博主忙于工作，文章更新速度不快，请见谅！ 请期待下文对游戏的进一步优化。</p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/JUSTMAKEGAME/">JUSTMAKEGAME</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/SpriteKit/">SpriteKit</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/10/16/JustMakeGame/lecture08_——_show_me_得分面板！/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"optionalswift"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:optionalswift.cn">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JUSTMAKEGAME/">JUSTMAKEGAME</a><small>9</small></li>
+  
+    <li><a href="/categories/Swift-Beginner-Series/">Swift Beginner Series</a><small>6</small></li>
+  
+    <li><a href="/categories/Swift-Resource/">Swift Resource</a><small>1</small></li>
+  
+    <li><a href="/categories/Swift2-0语法改动实例/">Swift2.0语法改动实例</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-language/">swift language</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-控件/">swift 控件</a><small>5</small></li>
+  
+    <li><a href="/categories/swift-框架/">swift 框架</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-语法/">swift 语法</a><small>4</small></li>
+  
+    <li><a href="/categories/why-coding-like-this/">why coding like this</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">博客简介</h3>
+<ul class="entry">
+<li>本体：Optional Swift team</li>
+<li>成员：PMST、暮夜星晨、Jim、ICE</li>
+<li>宣言：value or nil ?</li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+<li>想交友的朋友请<a href="http://optionalswift.cn/about">联系我们</a></li>
+<li>QQ 号：1345614869</li>
+<font color="red">Swift 交流群：392436022</font>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">广告赞助</h3>
+<ul class="entry">
+<li><a href="http://www.aliexpress.com/store/1764462"> Fashion Wardrobe for women</a></li>	
+<li><a href="http://shop123768141.taobao.com/shop/view_shop.htm?spm=a1z0e.1.10010.3.It7e1D">程序员ios资料淘宝小店(raywenderlich等英语资料为主)</a></li>
+</ul>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li>PMST个站：<a href="http://colourfulcode.cn">Colourful Code</a></li>
+<li>Jim 个站：<a href="http://www.jinyejun.com">YeJun Jim</a></li>
+<li>想了解黑客,请戳：<a href="http://mapers.net/forum.php">路标社区</a></li>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">安静的听音乐</h3>
+<ul class="entry">
+<li>
+<audio controls="controls" height="100" width="100">
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/mp3" />
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/ogg" />
+  <embed height="100" width="100" src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" >
+</audio>
+</li>
+</ul>
+</div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+  Redesign by <a href="_widget" target="_blank">PMST</a>
+   | 
+  Owned by <a href="http://optionalswift.cn" target="_blank">Optional Swift Team</a> 
+   |
+  Team was set up in April
+	 <font id="counter"></font>
+</section>
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<!--script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script-->
+<script src="/js/counter.js"></script>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/zippera" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>

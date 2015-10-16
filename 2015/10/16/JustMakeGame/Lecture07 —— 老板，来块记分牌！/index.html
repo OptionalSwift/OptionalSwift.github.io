@@ -1,0 +1,518 @@
+
+
+<!DOCTYPE HTML>
+<html>
+
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?94f6ddbfbc53cb18818538cafd3ba350";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <script src="//dn-lbstatics.qbox.me/jquery/1.11.2/jquery.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.7.2.min.js"></script> 
+  <script src="//dn-lbstatics.qbox.me/pintuer/1.0/pintuer.mini.js"></script>
+  <script src="//dn-lbstatics.qbox.me/respond/1.4.2/respond.min.js"></script>
+
+  
+  <title>用Swift做个游戏Lecture07 —— 老板，来块记分牌 | Optional Swift 博客</title>
+  <meta name="author" content="OST">
+  
+  <meta name="description" content="Swift  you choose">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="用Swift做个游戏Lecture07 —— 老板，来块记分牌"/>
+  <meta property="og:site_name" content="Optional Swift 博客"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="Optional Swift 博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">Optional Swift 博客</a></h1>
+  <h2><a href="/">Optional means having a value in it or equaling nil</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">主页</a></li>
+    
+      <li><a href="/categories">分类</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+<li> <a title="把这个链接拖到你的Chrome收藏夹工具栏中" href='javascript:(function() {
+	function c() {
+		var e = document.createElement("link");
+		e.setAttribute("type", "text/css");
+		e.setAttribute("rel", "stylesheet");
+		e.setAttribute("href", f);
+		e.setAttribute("class", l);
+		document.body.appendChild(e)
+	}
+ 
+	function h() {
+		var e = document.getElementsByClassName(l);
+		for (var t = 0; t < e.length; t++) {
+			document.body.removeChild(e[t])
+		}
+	}
+ 
+	function p() {
+		var e = document.createElement("div");
+		e.setAttribute("class", a);
+		document.body.appendChild(e);
+		setTimeout(function() {
+			document.body.removeChild(e)
+		}, 100)
+	}
+ 
+	function d(e) {
+		return {
+			height : e.offsetHeight,
+			width : e.offsetWidth
+		}
+	}
+ 
+	function v(i) {
+		var s = d(i);
+		return s.height > e && s.height < n && s.width > t && s.width < r
+	}
+ 
+	function m(e) {
+		var t = e;
+		var n = 0;
+		while (!!t) {
+			n += t.offsetTop;
+			t = t.offsetParent
+		}
+		return n
+	}
+ 
+	function g() {
+		var e = document.documentElement;
+		if (!!window.innerWidth) {
+			return window.innerHeight
+		} else if (e && !isNaN(e.clientHeight)) {
+			return e.clientHeight
+		}
+		return 0
+	}
+ 
+	function y() {
+		if (window.pageYOffset) {
+			return window.pageYOffset
+		}
+		return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+	}
+ 
+	function E(e) {
+		var t = m(e);
+		return t >= w && t <= b + w
+	}
+ 
+	function S() {
+		var e = document.createElement("audio");
+		e.setAttribute("class", l);
+		e.src = i;
+		e.loop = false;
+		e.addEventListener("canplay", function() {
+			setTimeout(function() {
+				x(k)
+			}, 500);
+			setTimeout(function() {
+				N();
+				p();
+				for (var e = 0; e < O.length; e++) {
+					T(O[e])
+				}
+			}, 15500)
+		}, true);
+		e.addEventListener("ended", function() {
+			N();
+			h()
+		}, true);
+		e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+		document.body.appendChild(e);
+		e.play()
+	}
+ 
+	function x(e) {
+		e.className += " " + s + " " + o
+	}
+ 
+	function T(e) {
+		e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+	}
+ 
+	function N() {
+		var e = document.getElementsByClassName(s);
+		var t = new RegExp("\\b" + s + "\\b");
+		for (var n = 0; n < e.length; ) {
+			e[n].className = e[n].className.replace(t, "")
+		}
+	}
+ 
+	var e = 30;
+	var t = 30;
+	var n = 350;
+	var r = 350;
+	var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+	var s = "mw-harlem_shake_me";
+	var o = "im_first";
+	var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+	var a = "mw-strobe_light";
+	var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+	var l = "mw_added_css";
+	var b = g();
+	var w = y();
+	var C = document.getElementsByTagName("*");
+	var k = null;
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			if (E(A)) {
+				k = A;
+				break
+			}
+		}
+	}
+	if (A === null) {
+		console.warn("Could not find a node of the right size. Please try a different page.");
+		return
+	}
+	c();
+	S();
+	var O = [];
+	for (var L = 0; L < C.length; L++) {
+		var A = C[L];
+		if (v(A)) {
+			O.push(A)
+		}
+	}
+})()    '>High一下</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-10-16T12:06:15.000Z"><a href="/2015/10/16/JustMakeGame/Lecture07 —— 老板，来块记分牌！/">2015-10-16</a></time>
+      
+      
+  
+    <h1 class="title">用Swift做个游戏Lecture07 —— 老板，来块记分牌</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>作者：PMST<br>团队博客地址:<a href="http://optionalswift.cn" target="_blank" rel="external">optional Swift</a><br>个人博客地址:<a href="http://colourfulcode.cn" target="_blank" rel="external">colourful code</a><br>简书博客地址:<a href="http://www.jianshu.com/users/596f2ba91ce9/latest_articles" target="_blank" rel="external">PPPPPPMST</a><br>VERSION:V1.0<br>NOTICE:目前第一版以叙述内容为主，之后对其中一些细节知识点进行讲解。</p>
+</blockquote>
+<p>本教程参考自RayWenderlich的视频教程<a href="http://www.raywenderlich.com/video-tutorials#swiftflappy" target="_blank" rel="external">How To Make a Game Like Flappy Bird Series (Swift)</a>。本教程中，你将从无到有亲自开发一个基于<em>SpriteKit</em>框架的<em>Flappy bird</em>小游戏。总体难度不大，但要求你掌握<em>Swift</em>基础语法与<em>SpriteKit</em>框架知识。此外，教程中所有素材均来自<em>Raywenderlich</em>，鼓励学习交流，但请勿用于商业用途。</p>
+<a id="more"></a>
+<h3 id="正文">正文</h3><ul>
+<li>“Hey!我昨天<em>Flappy Bird</em>得了100分!!!”</li>
+<li>“我叶良辰表示不服!”</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/colourful987/JustMakeGame-FlappyBird/master/Resource/L07/L07-yeliangcheng2.jpg" alt=""></p>
+<p><em>Lecture06</em>课时完毕，我们已经初步完成游戏的主体，可惜却没有一个衡量得分的标准。类似<em>FlappyBird</em>游戏，当然是谁通过的障碍物越多，就越牛逼。不如我们设定如下规则:</p>
+<ul>
+<li>通过一对障碍物得1分。</li>
+<li>触碰地面或者障碍物判定失败，结算分数。</li>
+</ul>
+<p>当前任务主要分为:</p>
+<ol>
+<li>显示分数牌</li>
+<li>如何判断通过障碍物。</li>
+</ol>
+<h3 id="01-显示分数牌">01.显示分数牌</h3><p>像<em>Flappy Bird</em>的小游戏，我们不妨仅用<em>SKLabelNode</em>来显示分数，就类似平常我们所用的<em>UILabel</em>。请在<code>var gameState: GameState = .Play</code>语句下方添加对记分牌的声明<code>var scoreLabel: SKLabelNode!</code>,同时我们还需要用一个变量存储分数，继续在下方添加<code>var score = 0</code>;此外对于这些显示额外帮主内容的，我们还需要添加一个<code>UI</code>层，请修改早前的<code>Layer</code>枚举：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Layer</span>: <span class="title">CGFloat</span> </span>&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="type">Background</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Obstacle</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Foreground</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">Player</span></span><br><span class="line">    <span class="keyword">case</span> <span class="type">UI</span>	<span class="comment">//新内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类似早前<em>setupBackground()</em>,<em>setupForeground()</em>那样，我们依葫芦画瓢设置记分牌，请添加一个方法，如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">setupLabel</span><span class="params">()</span></span> &#123;</span><br><span class="line">  scoreLabel = <span class="type">SKLabelNode</span>(fontNamed: <span class="string">"AmericanTypewriter-Bold"</span>)</span><br><span class="line">  scoreLabel.fontColor = <span class="type">SKColor</span>(red: <span class="number">101.0</span>/<span class="number">255.0</span>, green: <span class="number">71.0</span>/<span class="number">255.0</span>, blue: <span class="number">73.0</span>/<span class="number">255.0</span>, alpha: <span class="number">1.0</span>)</span><br><span class="line">  scoreLabel.position = <span class="type">CGPoint</span>(x: size.width/<span class="number">2</span>, y: size.height - <span class="number">20</span>)</span><br><span class="line">  scoreLabel.text = <span class="string">"0"</span></span><br><span class="line">  scoreLabel.verticalAlignmentMode = .<span class="type">Top</span></span><br><span class="line">  scoreLabel.zPosition = <span class="type">Layer</span>.<span class="type">UI</span>.rawValue</span><br><span class="line">  worldNode.addChild(scoreLabel)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意到在设置字体名字为<code>AmericanTypewriter-Bold</code>过长且之后可能还需要用到，不妨新增一个常量<code>let kFontName = &quot;AmericanTypewriter-Bold&quot;</code>(在<code>kEverySpawnDelay</code>下方即可)，另外<code>size.height - 20</code>中的20是一个页边距，也是一个常量，不妨也一并替换掉，声明一个常量<code>let kMargin: CGFloat = 20.0</code>。<strong>注意:新增的两个常量都是在GameScene类中作为全局变量。</strong></p>
+<p>现在<code>setupLabel()</code>函数改为:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">setupLabel</span><span class="params">()</span></span> &#123;</span><br><span class="line">  scoreLabel = <span class="type">SKLabelNode</span>(fontNamed: kFontName)<span class="comment">//改动1</span></span><br><span class="line">  scoreLabel.fontColor = <span class="type">SKColor</span>(red: <span class="number">101.0</span>/<span class="number">255.0</span>, green: <span class="number">71.0</span>/<span class="number">255.0</span>, blue: <span class="number">73.0</span>/<span class="number">255.0</span>, alpha: <span class="number">1.0</span>)</span><br><span class="line">  scoreLabel.position = <span class="type">CGPoint</span>(x: size.width/<span class="number">2</span>, y: size.height - kMargin)<span class="comment">//改动2  </span></span><br><span class="line">  scoreLabel.text = <span class="string">"0"</span></span><br><span class="line">  scoreLabel.verticalAlignmentMode = .<span class="type">Top</span></span><br><span class="line">  scoreLabel.zPosition = <span class="type">Layer</span>.<span class="type">UI</span>.rawValue</span><br><span class="line">  worldNode.addChild(scoreLabel)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>点击运行，不出意外屏幕正中间靠上已经显示一个大大的”0”,可惜无论你经过多少个障碍物，还是鸭蛋，那是因为还未实现计分功能。</p>
+<p><img src="https://raw.githubusercontent.com/colourful987/JustMakeGame-FlappyBird/master/Resource/L07/L07-ScoreScene.png" alt=""></p>
+<h3 id="02-实现计分">02.实现计分</h3><p><strong>思路:</strong><br>在<code>update()</code>方法中，每隔大约33毫秒时间检测一次<em>Player</em>是否过了障碍物，倘若过了就得一分，不过这里又有一个问题，倘若已经得知过了第一个障碍物，但紧随33毫秒后之后，仍然只过了第一个障碍物，难道还得分？？显然不是!为此我们需要为已经过了一次的障碍物添加一个[Passed]标志，而没有过的障碍物是没有标志位为[]。如下图:</p>
+<p><img src="https://raw.githubusercontent.com/colourful987/JustMakeGame-FlappyBird/master/Resource/L07/L07-Passed.png" alt="">   </p>
+<p>图中的设置了障碍物的标志位:[“Passed”]或者[]两种。那么问题来了，哪里存储这些标志位呢？答案是<em>Sprite</em>中的<code>userData</code>属性，其类型是<code>NSMutableDictionary</code>可变字典，请在<code>func createObstacle()-&gt;SKSpriteNode{}</code>方法中找到<code>sprite.zPosition = Layer.Obstacle.rawValue</code>语句下添加一条新语句:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//...</span></span><br><span class="line">sprite.userData = <span class="type">NSMutableDictionary</span>()</span><br><span class="line"><span class="comment">//...</span></span><br></pre></td></tr></table></figure>
+<p>注意到一开始<code>userData</code>是一个空字典[],倘若执行<code>userData[&quot;Passed&quot;] = NSNumber(bool: true)</code>，就新增了一个键为<code>Passed</code>，值为<code>true</code>的元素。</p>
+<p>理解完这些，开始构思咱们的<code>updateScore()</code>方法:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="func"><span class="keyword">func</span> <span class="title">updateScore</span><span class="params">()</span></span> &#123;</span><br><span class="line">worldNode.enumerateChildNodesWithName(<span class="string">"BottomObstacle"</span>, usingBlock: &#123; node, stop <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">let</span> obstacle = node <span class="keyword">as</span>? <span class="type">SKSpriteNode</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> passed = obstacle.userData?[<span class="string">"Passed"</span>] <span class="keyword">as</span>? <span class="type">NSNumber</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> passed.boolValue &#123;</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">self</span>.player.position.x &gt; obstacle.position.x + obstacle.size.width/<span class="number">2</span> &#123;</span><br><span class="line">            <span class="keyword">self</span>.score++</span><br><span class="line">            <span class="keyword">self</span>.scoreLabel.text = <span class="string">"<span class="subst">\(<span class="keyword">self</span>.score)</span>"</span></span><br><span class="line">            <span class="keyword">self</span>.runAction(<span class="keyword">self</span>.coinAction)</span><br><span class="line">            obstacle.userData?[<span class="string">"Passed"</span>] = <span class="type">NSNumber</span>(bool: <span class="built_in">true</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>讲解:</strong></p>
+<ol>
+<li>起初场景中产生的障碍物都是携带的[]空字典内容。</li>
+<li><em>Player</em>从一对障碍物的左侧穿越到右侧，才算”Passed”,计分一次。</li>
+<li>检测方法很简单，只需要循环遍历<em>worldNode</em>节点中的所有障碍物，检查它的<em>userData</em>是否包含了<em>Passed</em>键值。两种情况:1.包含意味着当前障碍物已经经过且计算过分数了，所以无须再次累加，直接返回即可;2.当前障碍物为[]，说明还未被穿越过，因此需要通过位置检测(<em>Player</em>当前位置位于障碍物右侧?)，来判断是否穿越得分，是就分数累加且设置当前障碍物为已经”Passed”，否则什么都不处理，返回。</li>
+</ol>
+<p>请将<em>updateScore()</em>添加到<em>update()</em>方法中<strong>.Play</strong>情况最下方。</p>
+<p>点击运行，通过障碍物得分！！！</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/JUSTMAKEGAME/">JUSTMAKEGAME</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/SpriteKit/">SpriteKit</a>
+  </div>
+
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    <a href="/2015/10/16/JustMakeGame/lecture08_——_show_me_得分面板！/" class="alignleft prev" >上一页</a>
+    
+    
+    <a href="/2015/10/16/JustMakeGame/Lecture06 —— 碰撞的检测/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"optionalswift"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->  
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:optionalswift.cn">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JUSTMAKEGAME/">JUSTMAKEGAME</a><small>9</small></li>
+  
+    <li><a href="/categories/Swift-Beginner-Series/">Swift Beginner Series</a><small>6</small></li>
+  
+    <li><a href="/categories/Swift-Resource/">Swift Resource</a><small>1</small></li>
+  
+    <li><a href="/categories/Swift2-0语法改动实例/">Swift2.0语法改动实例</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-language/">swift language</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-控件/">swift 控件</a><small>5</small></li>
+  
+    <li><a href="/categories/swift-框架/">swift 框架</a><small>1</small></li>
+  
+    <li><a href="/categories/swift-语法/">swift 语法</a><small>4</small></li>
+  
+    <li><a href="/categories/why-coding-like-this/">why coding like this</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">博客简介</h3>
+<ul class="entry">
+<li>本体：Optional Swift team</li>
+<li>成员：PMST、暮夜星晨、Jim、ICE</li>
+<li>宣言：value or nil ?</li>
+<li>Theme: <a href="https://github.com/zippera/lightum">Lightum</a>
+<li>想交友的朋友请<a href="http://optionalswift.cn/about">联系我们</a></li>
+<li>QQ 号：1345614869</li>
+<font color="red">Swift 交流群：392436022</font>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">广告赞助</h3>
+<ul class="entry">
+<li><a href="http://www.aliexpress.com/store/1764462"> Fashion Wardrobe for women</a></li>	
+<li><a href="http://shop123768141.taobao.com/shop/view_shop.htm?spm=a1z0e.1.10010.3.It7e1D">程序员ios资料淘宝小店(raywenderlich等英语资料为主)</a></li>
+</ul>
+</div>
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li>PMST个站：<a href="http://colourfulcode.cn">Colourful Code</a></li>
+<li>Jim 个站：<a href="http://www.jinyejun.com">YeJun Jim</a></li>
+<li>想了解黑客,请戳：<a href="http://mapers.net/forum.php">路标社区</a></li>
+</ul>
+</div>
+
+
+
+  <div class="widget tag">
+<h3 class="title">安静的听音乐</h3>
+<ul class="entry">
+<li>
+<audio controls="controls" height="100" width="100">
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/mp3" />
+  <source src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" type="audio/ogg" />
+  <embed height="100" width="100" src="http://7xiol9.com1.z0.glb.clouddn.com/musicComing Home.mp3" >
+</audio>
+</li>
+</ul>
+</div>
+
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+  Redesign by <a href="_widget" target="_blank">PMST</a>
+   | 
+  Owned by <a href="http://optionalswift.cn" target="_blank">Optional Swift Team</a> 
+   |
+  Team was set up in April
+	 <font id="counter"></font>
+</section>
+<div class="clearfix"></div>
+
+<script src="//buru.u.qiniudn.com/firebase-2.0.5.js"></script>
+<!--script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script-->
+<script src="/js/counter.js"></script>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/zippera" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
